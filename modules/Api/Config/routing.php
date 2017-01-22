@@ -22,6 +22,10 @@ $operators->addPost('', array(
     'action' => 'create'
 ));
 
+$operators->addPost('/login', array(
+    'action' => 'login'
+));
+
 $operators->addPut('/{id:[0-9]+}', array(
     'action' => 'update'
 ));
@@ -44,6 +48,10 @@ $users->addGet('', array(
 
 $users->addPost('', array(
     'action' => 'create'
+));
+
+$users->addPost('/login', array(
+    'action' => 'login'
 ));
 
 $users->addPut('/{id:[0-9]+}', array(
@@ -302,4 +310,5 @@ $router->mount($bets);
 $router->mount($invests);
 $router->mount($deposits);
 $router->mount($withdrawals);
+
 ?>

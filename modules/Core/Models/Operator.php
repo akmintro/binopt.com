@@ -23,6 +23,13 @@ class Operator extends \Phalcon\Mvc\Model
     /**
      *
      * @var string
+     * @Column(type="string", length=200, nullable=false)
+     */
+    protected $password;
+
+    /**
+     *
+     * @var string
      * @Column(type="string", length=20, nullable=false)
      */
     protected $emailsuffix;
@@ -63,6 +70,19 @@ class Operator extends \Phalcon\Mvc\Model
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field password
+     *
+     * @param string $password
+     * @return $this
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
 
         return $this;
     }
@@ -124,6 +144,16 @@ class Operator extends \Phalcon\Mvc\Model
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Returns the value of field password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 
     /**

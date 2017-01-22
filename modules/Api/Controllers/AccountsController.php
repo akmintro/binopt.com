@@ -72,12 +72,15 @@ class AccountsController extends BaseController {
     public function updateAction($id) {
         try {
             $manager = $this->getDI()->get('core_account_manager');
+            /*
             if ($this->request->getHeader('CONTENT_TYPE') ==
                 'application/json') {
                 $data = $this->request->getJsonRawBody(true);
             } else {
-                $data = [$this->request->getPut()];
+                $data = $this->request->getPost();
             }
+            */
+            $data = $this->request->getJsonRawBody(true);
             if (count($data[0]) == 0) {
                 throw new \Exception('Please provide data', 400);
             }
@@ -109,12 +112,15 @@ class AccountsController extends BaseController {
 
         try {
             $manager = $this->getDI()->get('core_account_manager');
+            /*
             if ($this->request->getHeader('CONTENT_TYPE') ==
                 'application/json') {
                 $data = $this->request->getJsonRawBody(true);
             } else {
                 $data = $this->request->getPost();
             }
+            */
+            $data = $this->request->getJsonRawBody(true);
             if (count($data) == 0) {
                 throw new \Exception('Please provide data', 400);
             }

@@ -123,5 +123,41 @@ class UserManager extends BaseManager
         if(isset($data['phone']))
             $item->setPhone($data['phone']);
     }
+
+    public function restLogin($data)
+    {
+        $opdata = $data[0];
+
+        if(!isset($opdata['name']))
+            throw new \Exception('name is required', 500);
+
+        if(!isset($opdata['password']))
+            throw new \Exception('password is required', 500);
+
+        $parameters = [
+            "CONCAT(lastname,'.',firstname) = :name:",
+            'bind' => ['name' => $opdata['name']],
+        ];
+
+        $items = $this->find($parameters);
+        $data = $items->filter(function($item){
+            return $item->toArray();
+        });
+
+        if (count($data) == 0)
+            throw new \Exception('no user found', 500);
+
+        if (count($data) > 1)
+            throw new \Exception('many users found', 500);
+
+        if (!($this->security->checkHash($opdata['password'], $data[0]['password']))) {
+            throw new \Exception('incorrect password', 500);
+        }
+
+        return ["meta" => [
+            "code" => 200,
+            "message" => "OK"
+        ], "data" => []];
+    }
 }
 ?>

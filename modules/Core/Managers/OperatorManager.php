@@ -101,6 +101,9 @@ class OperatorManager extends BaseManager
         if(isset($data['name']))
             $item->setName($data['name']);
 
+        if(isset($data['password']))
+            $item->setPassword($this->getDI()->get('security')->hash($data['password']));
+
         if(isset($data['emailsuffix']))
             $item->setEmailsuffix($data['emailsuffix']);
 
@@ -109,6 +112,42 @@ class OperatorManager extends BaseManager
 
         if(isset($data['regdate']))
             $item->setRegDate($data['regdate']);
+    }
+
+    public function restLogin($data)
+    {
+        $opdata = $data[0];
+
+        if(!isset($opdata['name']))
+            throw new \Exception('name is required', 500);
+
+        if(!isset($opdata['password']))
+            throw new \Exception('password is required', 500);
+
+        $parameters = [
+            'name = :name:',
+            'bind' => ['name' => $opdata['name']],
+        ];
+
+        $items = $this->find($parameters);
+        $data = $items->filter(function($item){
+            return $item->toArray();
+        });
+
+        if (count($data) == 0)
+            throw new \Exception('no operator found', 500);
+
+        if (count($data) > 1)
+            throw new \Exception('many operators found', 500);
+
+        if (!($this->security->checkHash($opdata['password'], $data[0]['password']))) {
+            throw new \Exception('incorrect password', 500);
+        }
+
+        return ["meta" => [
+            "code" => 200,
+            "message" => "OK"
+        ], "data" => []];
     }
 }
 ?>
