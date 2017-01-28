@@ -15,21 +15,22 @@ class BetManager extends BaseManager
         return Bet::findFirst($parameters);
     }
 
-    public function restGet(array $parameters = null, $limit = 10, $offset = 0) {
+    public function restGet(array $parameters = null, $limit = 10, $offset = 0)
+    {
         $items = $this->find($parameters);
-        $data = $items->filter(function($item){
+        $data = $items->filter(function ($item) {
             return $item->toArray();
         });
         $meta = [
             "code" => 200,
             "message" => "OK",
-            "limit" => $limit,
-            "offset" => $offset,
+            "limit" => (int)$limit,
+            "offset" => (int)$offset,
             "total" => count($data)
         ];
 
         if (count($data) > 0) {
-            return ["meta" => $meta, "data" => $data];
+            return ["meta" => $meta, "data" => array_slice($data, $offset, $limit)];
         }
 
         if (isset($parameters['bind']['id'])) {

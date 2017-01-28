@@ -15,21 +15,22 @@ class OperatorManager extends BaseManager
         return Operator::findFirstById((int)$id);
     }
 
-    public function restGet(array $parameters = null, $limit = 10, $offset = 0) {
+    public function restGet(array $parameters = null, $limit = 10, $offset = 0)
+    {
         $items = $this->find($parameters);
-        $data = $items->filter(function($item){
+        $data = $items->filter(function ($item) {
             return $item->toArray();
         });
         $meta = [
             "code" => 200,
             "message" => "OK",
-            "limit" => $limit,
-            "offset" => $offset,
+            "limit" => (int)$limit,
+            "offset" => (int)$offset,
             "total" => count($data)
         ];
 
         if (count($data) > 0) {
-            return ["meta" => $meta, "data" => $data];
+            return ["meta" => $meta, "data" => array_slice($data, $offset, $limit)];
         }
 
         if (isset($parameters['bind']['id'])) {
@@ -39,7 +40,8 @@ class OperatorManager extends BaseManager
         }
     }
 
-    public function restUpdate($id, $data) {
+    public function restUpdate($id, $data)
+    {
         $item = $this->findFirstById($id);
         if (!$item) {
             return ["meta" => [
@@ -61,7 +63,8 @@ class OperatorManager extends BaseManager
         ], "data" => $item];
     }
 
-    public function restDelete($id) {
+    public function restDelete($id)
+    {
         $item = $this->findFirstById($id);
 
         if (!$item) {
@@ -80,7 +83,8 @@ class OperatorManager extends BaseManager
         ]];
     }
 
-    public function restCreate($data) {
+    public function restCreate($data)
+    {
         $item = new Operator();
         $this->setFields($item, $data[0]);
 
@@ -98,19 +102,19 @@ class OperatorManager extends BaseManager
 
     private function setFields($item, $data)
     {
-        if(isset($data['name']))
+        if (isset($data['name']))
             $item->setName($data['name']);
 
-        if(isset($data['password']))
+        if (isset($data['password']))
             $item->setPassword($this->getDI()->get('security')->hash($data['password']));
 
-        if(isset($data['emailsuffix']))
+        if (isset($data['emailsuffix']))
             $item->setEmailsuffix($data['emailsuffix']);
 
-        if(isset($data['ip']))
+        if (isset($data['ip']))
             $item->setIp($data['ip']);
 
-        if(isset($data['regdate']))
+        if (isset($data['regdate']))
             $item->setRegDate($data['regdate']);
     }
 
@@ -118,10 +122,10 @@ class OperatorManager extends BaseManager
     {
         $opdata = $data[0];
 
-        if(!isset($opdata['name']))
+        if (!isset($opdata['name']))
             throw new \Exception('name is required', 500);
 
-        if(!isset($opdata['password']))
+        if (!isset($opdata['password']))
             throw new \Exception('password is required', 500);
 
         $parameters = [
@@ -130,7 +134,7 @@ class OperatorManager extends BaseManager
         ];
 
         $items = $this->find($parameters);
-        $data = $items->filter(function($item){
+        $data = $items->filter(function ($item) {
             return $item->toArray();
         });
 
@@ -147,7 +151,7 @@ class OperatorManager extends BaseManager
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => []];
+        ]
+        ];
     }
 }
-?>

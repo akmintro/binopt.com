@@ -55,16 +55,14 @@ class OperatorsController extends BaseController {
             }
 
             $offset = $this->request->getQuery('offset');
-            if($offset != null) {
-                $parameters['offset'] = $offset;
-            }
+            if($offset == null)
+                $offset = 0;
 
             $limit = $this->request->getQuery('limit');
-            if($limit != null) {
-                $parameters['limit'] = $limit;
-            }
+            if($limit == null)
+                $limit = 10;
 
-            $st_output = $manager->restGet($parameters);
+            $st_output = $manager->restGet($parameters, $limit, $offset);
 
             return $this->render($st_output);
         } catch (\Exception $e) {

@@ -4,6 +4,8 @@ $di['router'] = function () use ($default_module, $modules, $di, $config) {
 
     $router = new \Phalcon\Mvc\Router(false);
     $router->clear();
+    $router->setDefaultModule('api');
+    $router->setUriSource(\Phalcon\Mvc\Router::URI_SOURCE_SERVER_REQUEST_URI);
 
     $moduleRouting = __DIR__.'/../modules/'.ucfirst($default_module).'/Config/routing.php';
 
