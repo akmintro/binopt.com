@@ -30,7 +30,7 @@ class UserManager extends BaseManager
         ];
 
         if (count($data) > 0) {
-            return ["meta" => $meta, "data" => array_slice($data, $offset, $limit)];
+            return ["meta" => $meta, "data" => array_slice($this->getItems($data), $offset, $limit)];
         }
 
         if (isset($parameters['bind']['id'])) {
@@ -59,7 +59,7 @@ class UserManager extends BaseManager
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => $item];
+        ], "data" => $this->getItems($item)];
     }
 
     public function restDelete($id) {
@@ -94,7 +94,35 @@ class UserManager extends BaseManager
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => $item];
+        ], "data" => $this->getItems($item)];
+    }
+
+    private function getItems($items)
+    {
+        if(is_array($items))
+            $new_items = $items;
+        else
+            $new_items = array($items->toArray());
+
+        foreach ($new_items as &$item)
+        {
+            $user = $this->findFirstById($item['id']);
+            $emailsuffix = $user->operator->getEmailsuffix();
+
+            $item['username'] = $item['lastname'].'.'.$item['firstname'].$emailsuffix;
+
+            unset($item['firstname']);
+            unset($item['lastname']);
+            unset($item['email']);
+            unset($item['password']);
+            unset($item['country']);
+            unset($item['birthday']);
+            unset($item['lastip']);
+            unset($item['timezoneoffset']);
+            unset($item['operator']);
+        }
+
+        return $new_items;
     }
 
     private function setFields($item, $data)

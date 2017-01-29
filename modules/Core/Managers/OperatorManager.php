@@ -30,7 +30,7 @@ class OperatorManager extends BaseManager
         ];
 
         if (count($data) > 0) {
-            return ["meta" => $meta, "data" => array_slice($data, $offset, $limit)];
+            return ["meta" => $meta, "data" => array_slice($this->getItems($data), $offset, $limit)];
         }
 
         if (isset($parameters['bind']['id'])) {
@@ -60,7 +60,7 @@ class OperatorManager extends BaseManager
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => $item];
+        ], "data" => $this->getItems($item)];
     }
 
     public function restDelete($id)
@@ -97,7 +97,7 @@ class OperatorManager extends BaseManager
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => $item];
+        ], "data" => $this->getItems($item)];
     }
 
     private function setFields($item, $data)
@@ -116,6 +116,21 @@ class OperatorManager extends BaseManager
 
         if (isset($data['regdate']))
             $item->setRegDate($data['regdate']);
+    }
+
+    private function getItems($items)
+    {
+        if(is_array($items))
+            $new_items = $items;
+        else
+            $new_items = array($items->toArray());
+
+        foreach ($new_items as &$item)
+        {
+            unset($item['password']);
+        }
+
+        return $new_items;
     }
 
     public function restLogin($data)

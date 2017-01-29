@@ -429,7 +429,7 @@ class User extends \Phalcon\Mvc\Model
         $this->setSchema("binopt");
         $this->hasMany('id', 'Account', 'user', ['alias' => 'Account']);
         $this->belongsTo('country', '\Country', 'id', ['alias' => 'Country']);
-        $this->belongsTo('operator', '\Operator', 'id', ['alias' => 'Operator']);
+        $this->belongsTo('operator', 'App\Core\Models\Operator', 'id', ['alias' => 'Operator']);
     }
 
     /**
