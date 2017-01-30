@@ -40,6 +40,25 @@ class UserManager extends BaseManager
         }
     }
 
+    public function restGetById($id)
+    {
+        $data= $this->findFirstById($id);
+
+        if (!$data)
+            throw new \Exception('Not Found', 404);
+
+        $meta = [
+            "code" => 200,
+            "message" => "OK"
+        ];
+
+        $item = $data->toArray();
+
+        unset($item['password']);
+
+        return ["meta" => $meta, "data" => $item];
+    }
+
     public function restUpdate($id, $data) {
         $item = $this->findFirstById($id);
         if (!$item) {
@@ -106,10 +125,14 @@ class UserManager extends BaseManager
 
         foreach ($new_items as &$item)
         {
-            $user = $this->findFirstById($item['id']);
-            $emailsuffix = $user->operator->getEmailsuffix();
+            $this->findFirstById($item['id']);
 
-            $item['username'] = $item['lastname'].'.'.$item['firstname'].$emailsuffix;
+            $item['username'] = $this->getUsername($item);
+
+            $account = $this->getRealAccount($item);
+            $item['deposits'] = $this->getDepostits($account);
+            $item['withdrawals'] = $this->getWithdrawals($account);
+            $this->getWinsLoses($account, $item['wins'], $item['loses']);
 
             unset($item['firstname']);
             unset($item['lastname']);
@@ -123,6 +146,66 @@ class UserManager extends BaseManager
         }
 
         return $new_items;
+    }
+
+    private function getRealAccount($item)
+    {
+        $user = $this->findFirstById($item['id']);
+        $accounts = $user->account;
+
+        foreach ($accounts as $account)
+        {
+            if($account->getRealdemo() == 1)
+                return $account;
+        }
+    }
+
+
+    private function getDepostits($account)
+    {
+        $value = 0;
+        $deposits = $account->deposit;
+        foreach ($deposits as $deposit)
+        {
+            $value += $deposit->getAmount();
+        }
+        return $value;
+    }
+
+    private function getWithdrawals($account)
+    {
+        $value = 0;
+        $withdrawals = $account->withdrawal;
+        foreach ($withdrawals as $withdrawal)
+        {
+            if($withdrawal->getState() == 2)
+                $value += $withdrawal->getAmount();
+        }
+        return $value;
+    }
+
+    private function getWinsLoses($account, &$wins, &$loses)
+    {
+        $wins = $loses = 0;
+        $bets = $account->bet;
+        foreach ($bets as $bet)
+        {
+            $result = $bet->getResult();
+            if($result == null)
+                continue;
+            if($result > 0)
+                $wins += $result;
+            else
+                $loses += -$result;
+        }
+    }
+
+    private function getUsername($item)
+    {
+        $user = $this->findFirstById($item['id']);
+        $emailsuffix = $user->operator->getEmailsuffix();
+
+        return $item['lastname'].'.'.$item['firstname'].$emailsuffix;
     }
 
     private function setFields($item, $data)

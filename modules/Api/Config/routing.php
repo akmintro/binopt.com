@@ -46,6 +46,10 @@ $users->addGet('', array(
     'action' => 'read'
 ));
 
+$users->addGet('/{id:[0-9]+}', array(
+    'action' => 'get'
+));
+
 $users->addPost('', array(
     'action' => 'create'
 ));

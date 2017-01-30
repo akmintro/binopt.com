@@ -33,6 +33,10 @@ return new \Phalcon\Config(array(
 
     'apiKeys' => array(
         '6y825Oei113X3vbz78Ck7Fh7k3xF68Uc0lki41GKs2Z73032T4z8m1I81648JcrY'
+    ),
+
+    'parameters' => array(
+        'winpercent' => 0.76
     )
 ));
 ?>

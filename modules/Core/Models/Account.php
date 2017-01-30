@@ -131,9 +131,9 @@ class Account extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("binopt");
-        $this->hasMany('id', 'Bet', 'account', ['alias' => 'Bet']);
-        $this->hasMany('id', 'Deposit', 'account', ['alias' => 'Deposit']);
-        $this->hasMany('id', 'Withdrawal', 'account', ['alias' => 'Withdrawal']);
+        $this->hasMany('id', 'App\Core\Models\Bet', 'account', ['alias' => 'Bet']);
+        $this->hasMany('id', 'App\Core\Models\Deposit', 'account', ['alias' => 'Deposit']);
+        $this->hasMany('id', 'App\Core\Models\Withdrawal', 'account', ['alias' => 'Withdrawal']);
         $this->belongsTo('user', '\User', 'id', ['alias' => 'User']);
     }
 

@@ -108,6 +108,21 @@ class BetManager extends BaseManager
 
         if(isset($data['invest']))
             $item->setInvest($data['invest']);
+
+        if($item->getEndtime() > $item->getStarttime())
+            $item->setResult($this->getResult($item));
+    }
+
+    private function getResult($bet)
+    {
+        $winpercent = $this->config->parameters->winpercent;
+        $invest = $bet->invest->getSize();
+        if(($bet->getUpdown() == 1 && $bet->getEndval() > $bet->getStartval()) || ($bet->getUpdown() == 0 && $bet->getEndval() < $bet->getStartval()))
+            $result = $invest * $winpercent;
+        else
+            $result = -$invest;
+
+        return $result;
     }
 }
 ?>

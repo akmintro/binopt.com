@@ -91,6 +91,21 @@ class UsersController extends BaseController {
         }
     }
 
+    public function getAction($id) {
+        try {
+            $manager = $this->getDI()->get('core_user_manager');
+
+            $st_output = $manager->restGetById($id);
+
+            return $this->render($st_output);
+        } catch (\Exception $e) {
+            return $this->render(["meta" => [
+                'code' => $e->getCode(),
+                'message' => $e->getMessage()
+            ]]);
+        }
+    }
+
     public function updateAction($id) {
         try {
             $manager = $this->getDI()->get('core_user_manager');

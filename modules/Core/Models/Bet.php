@@ -61,6 +61,13 @@ class Bet extends \Phalcon\Mvc\Model
     protected $invest;
 
     /**
+     *
+     * @var double
+     * @Column(type="double", length=10, nullable=true)
+     */
+    protected $result;
+
+    /**
      * Method to set the value of field account
      *
      * @param integer $account
@@ -165,6 +172,19 @@ class Bet extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field result
+     *
+     * @param string $result
+     * @return $this
+     */
+    public function setResult($result)
+    {
+        $this->result = $result;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field account
      *
      * @return integer
@@ -245,6 +265,16 @@ class Bet extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field result
+     *
+     * @return string
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
@@ -252,7 +282,7 @@ class Bet extends \Phalcon\Mvc\Model
         $this->setSchema("binopt");
         $this->belongsTo('account', '\Account', 'id', ['alias' => 'Account']);
         $this->belongsTo('instrument', '\Instrument', 'id', ['alias' => 'Instrument']);
-        $this->belongsTo('invest', '\Invest', 'id', ['alias' => 'Invest']);
+        $this->belongsTo('invest', 'App\Core\Models\Invest', 'id', ['alias' => 'Invest']);
     }
 
     /**
