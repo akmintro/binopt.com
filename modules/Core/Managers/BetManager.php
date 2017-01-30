@@ -16,32 +16,7 @@ class BetManager extends BaseManager
     {
         return Bet::findFirst($parameters);
     }
-/*
-    public function restGet(array $parameters = null, $limit = 10, $offset = 0)
-    {
-        $items = $this->find($parameters);
-        $data = $items->filter(function ($item) {
-            return $item->toArray();
-        });
-        $meta = [
-            "code" => 200,
-            "message" => "OK",
-            "limit" => (int)$limit,
-            "offset" => (int)$offset,
-            "total" => count($data)
-        ];
 
-        if (count($data) > 0) {
-            return ["meta" => $meta, "data" => array_slice($this->getItems($data), $offset, $limit)];
-        }
-
-        if (isset($parameters['bind']['id'])) {
-            throw new \Exception('Not Found', 404);
-        } else {
-            throw new \Exception('No Content', 204);
-        }
-    }
-*/
     public function restGet(array $parameters = null, $limit = 10, $offset = 0)
     {
         $items = $this->find($parameters);
@@ -49,7 +24,7 @@ class BetManager extends BaseManager
             return $item->toArray();
         });
 
-        $data = $this->getFilteredData($data, $this->dispatcher->getParam("realdemo"), $this->request->getQuery('username'));
+        $data = $this->getFilteredData($data, $this->dispatcher->getParam("realdemo"), $this->request->getQuery('username'), $this->request->getQuery('status'));
 
         $meta = [
             "code" => 200,
@@ -70,7 +45,7 @@ class BetManager extends BaseManager
         }
     }
 
-    private function getFilteredData($data, $realdemo, $username = null)
+    private function getFilteredData($data, $realdemo, $username = null, $status = null)
     {
         $result = [];
         foreach ($data as $bet)
@@ -78,6 +53,14 @@ class BetManager extends BaseManager
             $account = Account::findFirstById($bet['account']);
             if(($account->getRealdemo() != $realdemo) || ($username != null && $account->user->getUsername() != $username))
                 continue;
+
+            if(($status == "active" && $bet['result'] != null)
+                || ($status == "finished" && $bet['result'] == null)
+                || ($status == "won" && $bet['result'] <= 0)
+                || ($status == "lost" && $bet['result'] >= 0)
+                || ($status == "draw" && $bet['result'] != 0))
+                continue;
+
             $result[] = $bet;
         }
         return $result;
@@ -177,7 +160,10 @@ class BetManager extends BaseManager
     {
         $winpercent = $this->config->parameters->winpercent;
         $invest = $bet->invest->getSize();
-        if(($bet->getUpdown() == 1 && $bet->getEndval() > $bet->getStartval()) || ($bet->getUpdown() == 0 && $bet->getEndval() < $bet->getStartval()))
+
+        if($bet->getEndval() == $bet->getStartval())
+            $result = 0;
+        elseif(($bet->getUpdown() == 1 && $bet->getEndval() > $bet->getStartval()) || ($bet->getUpdown() == 0 && $bet->getEndval() < $bet->getStartval()))
             $result = $invest * $winpercent;
         else
             $result = -$invest;
