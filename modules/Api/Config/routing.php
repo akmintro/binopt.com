@@ -218,8 +218,14 @@ $bets = new \Phalcon\Mvc\Router\Group(array(
 
 $bets->setPrefix($versions['v1'].'/bets');
 
-$bets->addGet('', array(
-    'action' => 'read'
+$bets->addGet('/real', array(
+    'action' => 'read',
+    'realdemo' => 1
+));
+
+$bets->addGet('/demo', array(
+    'action' => 'read',
+    'realdemo' => 0
 ));
 
 $bets->addPost('', array(

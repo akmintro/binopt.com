@@ -1,6 +1,7 @@
 <?php
 namespace App\Core\Managers;
 
+use App\Core\Models\Account;
 use App\Core\Models\Bet;
 use App\Core\Models\Instrument;
 
@@ -15,7 +16,7 @@ class BetManager extends BaseManager
     {
         return Bet::findFirst($parameters);
     }
-
+/*
     public function restGet(array $parameters = null, $limit = 10, $offset = 0)
     {
         $items = $this->find($parameters);
@@ -39,6 +40,47 @@ class BetManager extends BaseManager
         } else {
             throw new \Exception('No Content', 204);
         }
+    }
+*/
+    public function restGet(array $parameters = null, $limit = 10, $offset = 0)
+    {
+        $items = $this->find($parameters);
+        $data = $items->filter(function ($item) {
+            return $item->toArray();
+        });
+
+        $data = $this->getFilteredData($data, $this->dispatcher->getParam("realdemo"), $this->request->getQuery('username'));
+
+        $meta = [
+            "code" => 200,
+            "message" => "OK",
+            "limit" => (int)$limit,
+            "offset" => (int)$offset,
+            "total" => count($data)
+        ];
+
+        if (count($data) > 0) {
+            return ["meta" => $meta, "data" => array_slice($this->getItems($data), $offset, $limit)];
+        }
+
+        if (isset($parameters['bind']['id'])) {
+            throw new \Exception('Not Found', 404);
+        } else {
+            throw new \Exception('No Content', 204);
+        }
+    }
+
+    private function getFilteredData($data, $realdemo, $username = null)
+    {
+        $result = [];
+        foreach ($data as $bet)
+        {
+            $account = Account::findFirstById($bet['account']);
+            if(($account->getRealdemo() != $realdemo) || ($username != null && $account->user->getUsername() != $username))
+                continue;
+            $result[] = $bet;
+        }
+        return $result;
     }
 
     public function restUpdate($parameters, $data) {
@@ -67,6 +109,8 @@ class BetManager extends BaseManager
         ], "data" => $this->getItems($item)];
     }
 
+
+
     public function restCreate($data) {
         $item = new Bet();
 
@@ -93,7 +137,7 @@ class BetManager extends BaseManager
 
         foreach ($new_items as &$item)
         {
-            $item['instrument'] = Instrument::findFirstById($item['instrument'])->getName();
+            $item['instrumentname'] = Instrument::findFirstById($item['instrument'])->getName();
         }
 
         return $new_items;

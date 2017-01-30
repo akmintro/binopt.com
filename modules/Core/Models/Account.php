@@ -134,7 +134,7 @@ class Account extends \Phalcon\Mvc\Model
         $this->hasMany('id', 'App\Core\Models\Bet', 'account', ['alias' => 'Bet']);
         $this->hasMany('id', 'App\Core\Models\Deposit', 'account', ['alias' => 'Deposit']);
         $this->hasMany('id', 'App\Core\Models\Withdrawal', 'account', ['alias' => 'Withdrawal']);
-        $this->belongsTo('user', '\User', 'id', ['alias' => 'User']);
+        $this->belongsTo('user', 'App\Core\Models\User', 'id', ['alias' => 'User']);
     }
 
     /**

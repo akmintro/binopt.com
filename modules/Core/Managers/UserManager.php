@@ -125,7 +125,7 @@ class UserManager extends BaseManager
 
         foreach ($new_items as &$item)
         {
-            $item['username'] = $this->getUsername($item);
+            $item['username'] = User::findFirstById($item['id'])->getUsername();
 
             $account = $this->getRealAccount($item);
             $item['deposits'] = $this->getDepostits($account);
@@ -196,14 +196,6 @@ class UserManager extends BaseManager
             else
                 $loses += -$result;
         }
-    }
-
-    private function getUsername($item)
-    {
-        $user = $this->findFirstById($item['id']);
-        $emailsuffix = $user->operator->getEmailsuffix();
-
-        return $item['lastname'].'.'.$item['firstname'].$emailsuffix;
     }
 
     private function setFields($item, $data)

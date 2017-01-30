@@ -464,4 +464,9 @@ class User extends \Phalcon\Mvc\Model
         return parent::findFirst($parameters);
     }
 
+    public function getUsername()
+    {
+        return $this->lastname.'.'.$this->firstname.$this->getRelated('operator')->getEmailsuffix();
+    }
+
 }
