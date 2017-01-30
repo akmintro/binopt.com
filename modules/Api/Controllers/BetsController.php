@@ -1,6 +1,8 @@
 <?php
 namespace App\Api\Controllers;
 
+use Phalcon\Cli\Console;
+
 class BetsController extends BaseController {
 
     public function readAction() {

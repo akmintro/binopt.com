@@ -125,8 +125,6 @@ class UserManager extends BaseManager
 
         foreach ($new_items as &$item)
         {
-            $this->findFirstById($item['id']);
-
             $item['username'] = $this->getUsername($item);
 
             $account = $this->getRealAccount($item);
@@ -191,7 +189,7 @@ class UserManager extends BaseManager
         foreach ($bets as $bet)
         {
             $result = $bet->getResult();
-            if($result == null)
+            if($result == null || $result == 0)
                 continue;
             if($result > 0)
                 $wins += $result;

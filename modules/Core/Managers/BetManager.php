@@ -2,6 +2,7 @@
 namespace App\Core\Managers;
 
 use App\Core\Models\Bet;
+use App\Core\Models\Instrument;
 
 class BetManager extends BaseManager
 {
@@ -30,7 +31,7 @@ class BetManager extends BaseManager
         ];
 
         if (count($data) > 0) {
-            return ["meta" => $meta, "data" => array_slice($data, $offset, $limit)];
+            return ["meta" => $meta, "data" => array_slice($this->getItems($data), $offset, $limit)];
         }
 
         if (isset($parameters['bind']['id'])) {
@@ -63,7 +64,7 @@ class BetManager extends BaseManager
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => $item];
+        ], "data" => $this->getItems($item)];
     }
 
     public function restCreate($data) {
@@ -80,7 +81,22 @@ class BetManager extends BaseManager
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => $item];
+        ], "data" => $this->getItems($item)];
+    }
+
+    private function getItems($items)
+    {
+        if(is_array($items))
+            $new_items = $items;
+        else
+            $new_items = array($items->toArray());
+
+        foreach ($new_items as &$item)
+        {
+            $item['instrument'] = Instrument::findFirstById($item['instrument'])->getName();
+        }
+
+        return $new_items;
     }
 
     private function setFields($item, $data)

@@ -281,7 +281,7 @@ class Bet extends \Phalcon\Mvc\Model
     {
         $this->setSchema("binopt");
         $this->belongsTo('account', '\Account', 'id', ['alias' => 'Account']);
-        $this->belongsTo('instrument', '\Instrument', 'id', ['alias' => 'Instrument']);
+        $this->belongsTo('instrument', 'App\Core\Models\Instrument', 'id', ['alias' => 'Instrument']);
         $this->belongsTo('invest', 'App\Core\Models\Invest', 'id', ['alias' => 'Invest']);
     }
 
