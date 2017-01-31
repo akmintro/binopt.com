@@ -469,4 +469,25 @@ class User extends \Phalcon\Mvc\Model
         return $this->lastname.'.'.$this->firstname.$this->getRelated('operator')->getEmailsuffix();
     }
 
+    public function getRealAccount()
+    {
+        $accounts = $this->getRelated('account');
+
+        foreach ($accounts as $account)
+        {
+            if($account->getRealdemo() == 1)
+                return $account;
+        }
+    }
+
+    public function getBalance()
+    {
+        $account = $this->getRealAccount();
+
+        if($account == 0)
+            return 0;
+        $wins = $loses = 0;
+        $account->getWinsLoses($wins, $loses);
+        return $account->getAmount() + $account->getDeposits() - $account->getWithdrawals() + $wins - $loses;
+    }
 }

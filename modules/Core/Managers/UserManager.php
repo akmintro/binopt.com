@@ -61,12 +61,12 @@ class UserManager extends BaseManager
         unset($item['operator']['ip']);
         unset($item['operator']['regdate']);
 
-        $account = $this->getRealAccount($item);
-        $item['deposits'] = $this->getDepostits($account);
-        $item['withdrawals'] = $this->getWithdrawals($account);
+        $account = $data->getRealAccount();
+        $item['deposits'] = $account->getDeposits();
+        $item['withdrawals'] = $account->getWithdrawals();
         $item['startbalance'] = $account->getAmount();
         $wins = $loses = 0;
-        $this->getWinsLoses($account, $wins, $loses);
+        $account->getWinsLoses($wins, $loses);
         $item['currentbalance'] = $item['startbalance'] + $item['deposits'] - $item['withdrawals'] + $wins - $loses;
 
         return ["meta" => $meta, "data" => $item];
@@ -138,12 +138,18 @@ class UserManager extends BaseManager
 
         foreach ($new_items as &$item)
         {
-            $item['username'] = User::findFirstById($item['id'])->getUsername();
+            $user = User::findFirstById($item['id']);
+            $item['username'] = $user->getUsername();
 
-            $account = $this->getRealAccount($item);
-            $item['deposits'] = $this->getDepostits($account);
-            $item['withdrawals'] = $this->getWithdrawals($account);
-            $this->getWinsLoses($account, $item['wins'], $item['loses']);
+            $account = $user->getRealAccount();
+            if($account == null)
+                $item['deposits'] = $item['withdrawals'] = $item['wins'] = $item['loses'] = 0;
+            else {
+                $item['deposits'] = $account->getDeposits();
+                $item['withdrawals'] = $account->getWithdrawals();
+                $account->getWinsLoses($item['wins'], $item['loses']);
+            }
+
 
             unset($item['firstname']);
             unset($item['lastname']);
@@ -157,58 +163,6 @@ class UserManager extends BaseManager
         }
 
         return $new_items;
-    }
-
-    private function getRealAccount($item)
-    {
-        $user = $this->findFirstById($item['id']);
-        $accounts = $user->account;
-
-        foreach ($accounts as $account)
-        {
-            if($account->getRealdemo() == 1)
-                return $account;
-        }
-    }
-
-
-    private function getDepostits($account)
-    {
-        $value = 0;
-        $deposits = $account->deposit;
-        foreach ($deposits as $deposit)
-        {
-            $value += $deposit->getAmount();
-        }
-        return $value;
-    }
-
-    private function getWithdrawals($account)
-    {
-        $value = 0;
-        $withdrawals = $account->withdrawal;
-        foreach ($withdrawals as $withdrawal)
-        {
-            if($withdrawal->getState() == 2)
-                $value += $withdrawal->getAmount();
-        }
-        return $value;
-    }
-
-    private function getWinsLoses($account, &$wins, &$loses)
-    {
-        $wins = $loses = 0;
-        $bets = $account->bet;
-        foreach ($bets as $bet)
-        {
-            $result = $bet->getResult();
-            if($result == null || $result == 0)
-                continue;
-            if($result > 0)
-                $wins += $result;
-            else
-                $loses += -$result;
-        }
     }
 
     private function setFields($item, $data)

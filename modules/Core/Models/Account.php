@@ -169,4 +169,43 @@ class Account extends \Phalcon\Mvc\Model
         return parent::findFirst($parameters);
     }
 
+    public function getDeposits()
+    {
+        $value = 0;
+        $deposits = $this->getRelated('deposit');
+        foreach ($deposits as $deposit)
+        {
+            if($deposit->getState() == 1)
+                $value += $deposit->getAmount();
+        }
+        return $value;
+    }
+
+    public function getWithdrawals()
+    {
+        $value = 0;
+        $withdrawals = $this->getRelated('withdrawal');
+        foreach ($withdrawals as $withdrawal)
+        {
+            if($withdrawal->getState() == 2)
+                $value += $withdrawal->getAmount();
+        }
+        return $value;
+    }
+
+    public function getWinsLoses(&$wins, &$loses)
+    {
+        $wins = $loses = 0;
+        $bets = $this->getRelated('bet');
+        foreach ($bets as $bet)
+        {
+            $result = $bet->getResult();
+            if($result == null || $result == 0)
+                continue;
+            if($result > 0)
+                $wins += $result;
+            else
+                $loses += -$result;
+        }
+    }
 }

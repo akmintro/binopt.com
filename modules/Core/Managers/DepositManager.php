@@ -1,6 +1,7 @@
 <?php
 namespace App\Core\Managers;
 
+use App\Core\Models\Account;
 use App\Core\Models\Deposit;
 
 class DepositManager extends BaseManager
@@ -21,6 +22,9 @@ class DepositManager extends BaseManager
         $data = $items->filter(function ($item) {
             return $item->toArray();
         });
+
+        $data = $this->getFilteredData($data, $this->request->getQuery('username'), $this->request->getQuery('operator'), $this->request->getQuery('status'));
+
         $meta = [
             "code" => 200,
             "message" => "OK",
@@ -38,6 +42,28 @@ class DepositManager extends BaseManager
         } else {
             throw new \Exception('No Content', 204);
         }
+    }
+
+    private function getFilteredData($data, $username = null, $operator = null, $status = null)
+    {
+        $result = [];
+        foreach ($data as $deposit)
+        {
+            $account = Account::findFirstById($deposit['account']);
+            if(($account->getRealdemo() != 1) || ($username != null && $account->user->getUsername() != $username) || ($operator != null && $account->user->getOperator() != $operator))
+                continue;
+
+            if(($status == "try" && $deposit['state'] != 0)
+                || ($status == "success" && $deposit['state'] != 1))
+                continue;
+
+            $deposit['balance'] = $account->user->getBalance();
+            $deposit['username'] = $account->user->getUsername();
+            $deposit['registration'] = $account->user->getRegistration();
+
+            $result[] = $deposit;
+        }
+        return $result;
     }
 
     public function restUpdate($id, $data) {

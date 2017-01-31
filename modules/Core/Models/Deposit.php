@@ -48,6 +48,13 @@ class Deposit extends \Phalcon\Mvc\Model
     protected $promo;
 
     /**
+     *
+     * @var integer
+     * @Column(type="integer", length=6, nullable=false)
+     */
+    protected $state;
+
+    /**
      * Method to set the value of field id
      *
      * @param integer $id
@@ -126,6 +133,19 @@ class Deposit extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field state
+     *
+     * @param integer $state
+     * @return $this
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field id
      *
      * @return integer
@@ -183,6 +203,16 @@ class Deposit extends \Phalcon\Mvc\Model
     public function getPromo()
     {
         return $this->promo;
+    }
+
+    /**
+     * Returns the value of field state
+     *
+     * @return integer
+     */
+    public function getState()
+    {
+        return $this->state;
     }
 
     /**

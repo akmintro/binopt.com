@@ -16,12 +16,6 @@ class DepositsController extends BaseController {
                 $binds['id'] = $id;
             }
 
-            $account = $this->request->getQuery('account');
-            if($account != null) {
-                $conditions[] = 'account = :account:';
-                $binds['account'] = $account;
-            }
-
             $start = $this->request->getQuery('start');
             if($start != null) {
                 $conditions[] = 'deposittime >= date(:start:)';
