@@ -149,4 +149,8 @@ $di['core_deposit_manager'] = function() {
 $di['core_withdrawal_manager'] = function() {
     return new App\Core\Managers\WithdrawalManager();
 };
+
+$di['core_summary_manager'] = function() {
+    return new App\Core\Managers\SummaryManager();
+};
 ?>

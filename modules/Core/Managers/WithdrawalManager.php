@@ -2,6 +2,7 @@
 namespace App\Core\Managers;
 
 use App\Core\Models\Withdrawal;
+use App\Core\Models\Account;
 
 class WithdrawalManager extends BaseManager
 {
@@ -21,6 +22,9 @@ class WithdrawalManager extends BaseManager
         $data = $items->filter(function ($item) {
             return $item->toArray();
         });
+
+        $data = $this->getFilteredData($data, $this->request->getQuery('username'), $this->request->getQuery('operator'), $this->request->getQuery('status'));
+
         $meta = [
             "code" => 200,
             "message" => "OK",
@@ -38,6 +42,29 @@ class WithdrawalManager extends BaseManager
         } else {
             throw new \Exception('No Content', 204);
         }
+    }
+
+    private function getFilteredData($data, $username = null, $operator = null, $status = null)
+    {
+        $result = [];
+        foreach ($data as $withdrawal)
+        {
+            $account = Account::findFirstById($withdrawal['account']);
+            if(($account->getRealdemo() != 1) || ($username != null && $account->user->getUsername() != $username) || ($operator != null && $account->user->getOperator() != $operator))
+                continue;
+
+            if(($status == "canceled" && $withdrawal['state'] != 0)
+                || ($status == "completed" && $withdrawal['state'] != 1)
+                || ($status == "active" && $withdrawal['state'] != 2))
+                continue;
+
+            $withdrawal['balance'] = $account->user->getBalance();
+            $withdrawal['username'] = $account->user->getUsername();
+            $withdrawal['registration'] = $account->user->getRegistration();
+
+            $result[] = $withdrawal;
+        }
+        return $result;
     }
 
     public function restUpdate($id, $data) {

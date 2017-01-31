@@ -169,13 +169,13 @@ class Account extends \Phalcon\Mvc\Model
         return parent::findFirst($parameters);
     }
 
-    public function getDeposits()
+    public function getDeposits($start = null, $end = null)
     {
         $value = 0;
         $deposits = $this->getRelated('deposit');
         foreach ($deposits as $deposit)
         {
-            if($deposit->getState() == 1)
+            if($deposit->getState() == 1 && ($start == null || $deposit->getDeposittime() >= $start) && ($end == null || $deposit->getDeposittime() <= $end))
                 $value += $deposit->getAmount();
         }
         return $value;

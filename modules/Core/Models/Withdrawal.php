@@ -38,7 +38,14 @@ class Withdrawal extends \Phalcon\Mvc\Model
      * @var string
      * @Column(type="string", nullable=false)
      */
-    protected $withdrawaltime;
+    protected $addtime;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", nullable=false)
+     */
+    protected $finishtime;
 
     /**
      *
@@ -100,14 +107,27 @@ class Withdrawal extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Method to set the value of field withdrawaltime
+     * Method to set the value of field addtime
      *
-     * @param string $withdrawaltime
+     * @param string $addtime
      * @return $this
      */
-    public function setWithdrawaltime($withdrawaltime)
+    public function setAddtime($addtime)
     {
-        $this->withdrawaltime = $withdrawaltime;
+        $this->addtime = $addtime;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field finishtime
+     *
+     * @param string $addtime
+     * @return $this
+     */
+    public function setFinishtime($finishtime)
+    {
+        $this->finishtime = $finishtime;
 
         return $this;
     }
@@ -166,13 +186,23 @@ class Withdrawal extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Returns the value of field withdrawaltime
+     * Returns the value of field addtime
      *
      * @return string
      */
-    public function getWithdrawaltime()
+    public function getAddtime()
     {
-        return $this->withdrawaltime;
+        return $this->addtime;
+    }
+
+    /**
+     * Returns the value of field finishtime
+     *
+     * @return string
+     */
+    public function getFinishtime()
+    {
+        return $this->finishtime;
     }
 
     /**

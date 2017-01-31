@@ -193,7 +193,7 @@ class Operator extends \Phalcon\Mvc\Model
     {
         $this->setSchema("binopt");
         $this->hasMany('id', 'Robotcode', 'operator', ['alias' => 'Robotcode']);
-        $this->hasMany('id', 'User', 'operator', ['alias' => 'User']);
+        $this->hasMany('id', 'App\Core\Models\User', 'operator', ['alias' => 'User']);
     }
 
     /**

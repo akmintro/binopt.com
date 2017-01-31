@@ -308,6 +308,19 @@ $withdrawals->addDelete('/{id:[0-9]+}', array(
     'action' => 'delete'
 ));
 
+
+// Summary group
+$summary = new \Phalcon\Mvc\Router\Group(array(
+    'module' => 'api',
+    'controller' => 'summary'
+));
+
+$summary->setPrefix($versions['v1'].'/summary');
+
+$summary->addGet('/deposits', array(
+    'action' => 'readDeposits'
+));
+
 $router->mount($operators);
 $router->mount($users);
 $router->mount($countries);
@@ -320,5 +333,6 @@ $router->mount($bets);
 $router->mount($invests);
 $router->mount($deposits);
 $router->mount($withdrawals);
+$router->mount($summary);
 
 ?>
