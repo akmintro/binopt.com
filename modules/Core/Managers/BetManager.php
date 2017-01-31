@@ -120,7 +120,7 @@ class BetManager extends BaseManager
 
         foreach ($new_items as &$item)
         {
-            $item['instrumentname'] = Instrument::findFirstById($item['instrument'])->getName();
+            $item['instrument'] = Instrument::findFirstById($item['instrument']);
         }
 
         return $new_items;

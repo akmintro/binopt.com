@@ -1,6 +1,7 @@
 <?php
 namespace App\Core\Managers;
 
+use App\Core\Models\Operator;
 use App\Core\Models\User;
 
 class UserManager extends BaseManager
@@ -53,8 +54,20 @@ class UserManager extends BaseManager
         ];
 
         $item = $data->toArray();
+        $item['operator'] = Operator::findFirstById($item['operator'])->toArray();
 
         unset($item['password']);
+        unset($item['operator']['password']);
+        unset($item['operator']['ip']);
+        unset($item['operator']['regdate']);
+
+        $account = $this->getRealAccount($item);
+        $item['deposits'] = $this->getDepostits($account);
+        $item['withdrawals'] = $this->getWithdrawals($account);
+        $item['startbalance'] = $account->getAmount();
+        $wins = $loses = 0;
+        $this->getWinsLoses($account, $wins, $loses);
+        $item['currentbalance'] = $item['startbalance'] + $item['deposits'] - $item['withdrawals'] + $wins - $loses;
 
         return ["meta" => $meta, "data" => $item];
     }
