@@ -22,6 +22,9 @@ class UserManager extends BaseManager
         $data = $items->filter(function ($item) {
             return $item->toArray();
         });
+
+        $data = $this->getFilteredData($data, $this->request->getQuery('status'));
+
         $meta = [
             "code" => 200,
             "message" => "OK",
@@ -39,6 +42,57 @@ class UserManager extends BaseManager
         } else {
             throw new \Exception('No Content', 204);
         }
+    }
+
+    private function getFilteredData($data, $status = null)
+    {
+        $result = [];
+        foreach ($data as $user)
+        {
+            if(($status == "active" && $user['lastvisit'] == null)
+                || ($status == "unactive" && $user['lastvisit'] != null))
+                continue;
+
+            $result[] = $user;
+        }
+        return $result;
+    }
+
+    private function getItems($items)
+    {
+        if(is_array($items))
+            $new_items = $items;
+        else
+            $new_items = array($items->toArray());
+
+        foreach ($new_items as &$item)
+        {
+            $user = User::findFirstById($item['id']);
+            $item['username'] = $user->getUsername();
+
+            $account = $user->getRealAccount();
+            if($account == null)
+                $item['startbalance'] = $item['deposits'] = $item['withdrawals'] = $item['wins'] = $item['loses'] = null;
+            else {
+                $item['startbalance'] = $account->getAmount();
+                $item['deposits'] = $account->getDeposits();
+                $item['withdrawals'] = $account->getWithdrawals();
+                $account->getWinsLoses($item['wins'], $item['loses']);
+                $item['currentbalance'] = $item['startbalance'] + $item['deposits'] - $item['withdrawals'] + $wins - $loses;
+            }
+
+            unset($item['firstname']);
+            unset($item['lastname']);
+            unset($item['email']);
+            unset($item['password']);
+            unset($item['country']);
+            unset($item['birthday']);
+            unset($item['lastip']);
+            unset($item['timezoneoffset']);
+            unset($item['operator']);
+        }
+
+        return $new_items;
     }
 
     public function restGetById($id)
@@ -62,12 +116,16 @@ class UserManager extends BaseManager
         unset($item['operator']['regdate']);
 
         $account = $data->getRealAccount();
-        $item['deposits'] = $account->getDeposits();
-        $item['withdrawals'] = $account->getWithdrawals();
-        $item['startbalance'] = $account->getAmount();
-        $wins = $loses = 0;
-        $account->getWinsLoses($wins, $loses);
-        $item['currentbalance'] = $item['startbalance'] + $item['deposits'] - $item['withdrawals'] + $wins - $loses;
+        if($account == null)
+            $item['startbalance'] = $item['deposits'] = $item['withdrawals'] = $item['wins'] = $item['loses'] = null;
+        else {
+            $item['deposits'] = $account->getDeposits();
+            $item['withdrawals'] = $account->getWithdrawals();
+            $item['startbalance'] = $account->getAmount();
+            $wins = $loses = 0;
+            $account->getWinsLoses($wins, $loses);
+            $item['currentbalance'] = $item['startbalance'] + $item['deposits'] - $item['withdrawals'] + $wins - $loses;
+        }
 
         return ["meta" => $meta, "data" => $item];
     }
@@ -127,42 +185,6 @@ class UserManager extends BaseManager
             "code" => 200,
             "message" => "OK"
         ], "data" => $this->getItems($item)];
-    }
-
-    private function getItems($items)
-    {
-        if(is_array($items))
-            $new_items = $items;
-        else
-            $new_items = array($items->toArray());
-
-        foreach ($new_items as &$item)
-        {
-            $user = User::findFirstById($item['id']);
-            $item['username'] = $user->getUsername();
-
-            $account = $user->getRealAccount();
-            if($account == null)
-                $item['deposits'] = $item['withdrawals'] = $item['wins'] = $item['loses'] = 0;
-            else {
-                $item['deposits'] = $account->getDeposits();
-                $item['withdrawals'] = $account->getWithdrawals();
-                $account->getWinsLoses($item['wins'], $item['loses']);
-            }
-
-
-            unset($item['firstname']);
-            unset($item['lastname']);
-            unset($item['email']);
-            unset($item['password']);
-            unset($item['country']);
-            unset($item['birthday']);
-            unset($item['lastip']);
-            unset($item['timezoneoffset']);
-            unset($item['operator']);
-        }
-
-        return $new_items;
     }
 
     private function setFields($item, $data)
