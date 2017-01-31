@@ -59,19 +59,32 @@ function get_last($cur_val, $real_val)
 
 function save_history($history)
 {
-    // TODO: save history to db
+    $myCurl = curl_init();
+    curl_setopt_array($myCurl, array(
+        CURLOPT_URL => 'http://binopt.com/api/v1/currency',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POST => true,
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+        ),
+        CURLOPT_POSTFIELDS => json_encode($history)
+    ));
+    $response = curl_exec($myCurl);
+    curl_close($myCurl);
+
+    //echo "Ответ на Ваш запрос: ".$response;
 }
 
-$filename = "curency_data.txt";
+$filename = "currency_data.txt";
 
 $start = microtime(true);
 set_time_limit(60);
 
 for ($i = 0; $i < 59; ++$i) {
-    echo $i."\n";
+    //echo $i."\n";
 
     if(($i%6)==0) {
-        $real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15&timeframe=60'), true);
+        $real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1,2,3,4,5,6,7,8,9,11,12,15,16,49,50,53,54,57&timeframe=60'), true);
         if(file_exists($filename))
             $current_data = json_decode(file_get_contents($filename), true);
         else
@@ -97,7 +110,7 @@ for ($i = 0; $i < 59; ++$i) {
             $new_value = array("name" => $value['name'], "last" => $last);
         }
         else
-            $new_value = $value = gmdate("Y-m-d H:i:s T");
+            $new_value = $value = gmdate("Y-m-d H:i:s");
 
         $data[$key] = $value;
         $result[$key] = $new_value;

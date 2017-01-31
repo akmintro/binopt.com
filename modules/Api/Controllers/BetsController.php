@@ -176,6 +176,8 @@ class BetsController extends BaseController {
                 $binds['instrument'] = $instrument;
             }
 
+            $conditions[] = "result is NULL";
+
             $parameters = [];
             if(count($conditions) > 0)
             {

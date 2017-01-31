@@ -36,7 +36,8 @@ return new \Phalcon\Config(array(
     ),
 
     'parameters' => array(
-        'winpercent' => 0.76
+        'winpercent' => 0.76,
+        'currencydata' => __DIR__.'/../currency_data.txt'
     )
 ));
 ?>

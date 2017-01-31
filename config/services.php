@@ -153,4 +153,8 @@ $di['core_withdrawal_manager'] = function() {
 $di['core_summary_manager'] = function() {
     return new App\Core\Managers\SummaryManager();
 };
+
+$di['core_currency_manager'] = function() {
+    return new App\Core\Managers\CurrencyManager();
+};
 ?>

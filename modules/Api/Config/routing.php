@@ -321,6 +321,26 @@ $summary->addGet('/deposits', array(
     'action' => 'readDeposits'
 ));
 
+// Currency group
+$currency = new \Phalcon\Mvc\Router\Group(array(
+    'module' => 'api',
+    'controller' => 'currency'
+));
+
+$currency->setPrefix($versions['v1'].'/currency');
+
+$currency->addGet('/history', array(
+    'action' => 'readHistory'
+));
+
+$currency->addGet('/last', array(
+    'action' => 'readLast'
+));
+
+$currency->addPost('', array(
+    'action' => 'create'
+));
+
 $router->mount($operators);
 $router->mount($users);
 $router->mount($countries);
@@ -334,5 +354,6 @@ $router->mount($invests);
 $router->mount($deposits);
 $router->mount($withdrawals);
 $router->mount($summary);
+$router->mount($currency);
 
 ?>

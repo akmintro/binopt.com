@@ -75,10 +75,10 @@ class BetManager extends BaseManager
             ]];
         }
 
-        if(!isset($data[0]['endtime']) || !isset($data[0]['endval']))
-            throw new \Exception('endtime and endval are required', 400);
+        if(!isset($data[0]['endval']))
+            throw new \Exception('endval is required', 400);
 
-        $this->setFields($item, ['endtime' => $data[0]['endtime'], 'endval' => $data[0]['endval']] );
+        $this->setFields($item, ['endtime' => gmdate("Y/m/j H:i:s"), 'endval' => $data[0]['endval']] );
 
         if (false === $item->update()) {
             foreach ($item->getMessages() as $message) {
@@ -92,11 +92,16 @@ class BetManager extends BaseManager
         ], "data" => $this->getItems($item)];
     }
 
-
-
     public function restCreate($data) {
-        $item = new Bet();
 
+        $parameters = ["account = :account: and instrument = :instrument: and endtime is NULL",
+            'bind' => ["account" => $data[0]["account"], "instrument" => $data[0]["instrument"]],
+        ];
+
+        if(count(Bet::find($parameters)) > 0)
+            throw new \Exception("there are active bets on this instrument", 500);
+
+        $item = new Bet();
         $this->setFields($item, $data[0]);
 
         if (false === $item->create()) {
