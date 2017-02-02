@@ -18,43 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SummaryController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/SummaryController.php">
+      <file leaf-file-name="currency_script.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/currency_script.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SummaryManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Core/Managers/SummaryManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="674">
-              <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BetManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Core/Managers/BetManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="165" column="22" lean-forward="false" selection-start-line="165" selection-start-column="22" selection-end-line="165" selection-end-column="60" />
-              <folding>
-                <element signature="e#36#64#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Account.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Core/Models/Account.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="177" column="149" lean-forward="false" selection-start-line="177" selection-start-column="149" selection-end-line="177" selection-end-column="149" />
+            <state relative-caret-position="389">
+              <caret line="158" column="23" lean-forward="false" selection-start-line="158" selection-start-column="23" selection-end-line="158" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -63,50 +31,40 @@
       <file leaf-file-name="CurrencyController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/CurrencyController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="84" column="57" lean-forward="false" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
+            <state relative-caret-position="593">
+              <caret line="41" column="61" lean-forward="false" selection-start-line="41" selection-start-column="61" selection-end-line="41" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CurrencyManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Core/Managers/CurrencyManager.php">
+      <file leaf-file-name="BetManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Core/Managers/BetManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+            <state relative-caret-position="734">
+              <caret line="121" column="52" lean-forward="false" selection-start-line="121" selection-start-column="52" selection-end-line="121" selection-end-column="52" />
               <folding>
-                <element signature="e#36#65#0#PHP" expanded="true" />
+                <element signature="e#36#64#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Currency.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Core/Models/Currency.php">
+      <file leaf-file-name="BetsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/BetsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="26" lean-forward="false" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+            <state relative-caret-position="104">
+              <caret line="149" column="63" lean-forward="false" selection-start-line="149" selection-start-column="63" selection-end-line="149" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config.php">
+      <file leaf-file-name="routing.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Api/Config/routing.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="39" column="56" lean-forward="false" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="currency_script.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/currency_script.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state relative-caret-position="2183">
+              <caret line="344" column="21" lean-forward="false" selection-start-line="344" selection-start-column="21" selection-end-line="344" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -187,14 +145,14 @@
         <option value="$PROJECT_DIR$/modules/Core/Models/Operator.php" />
         <option value="$PROJECT_DIR$/modules/Core/Managers/SummaryManager.php" />
         <option value="$PROJECT_DIR$/modules/Core/Managers/UserManager.php" />
-        <option value="$PROJECT_DIR$/modules/Api/Controllers/BetsController.php" />
-        <option value="$PROJECT_DIR$/modules/Core/Managers/BetManager.php" />
-        <option value="$PROJECT_DIR$/modules/Api/Config/routing.php" />
         <option value="$PROJECT_DIR$/config/services.php" />
         <option value="$PROJECT_DIR$/config/config.php" />
-        <option value="$PROJECT_DIR$/modules/Api/Controllers/CurrencyController.php" />
         <option value="$PROJECT_DIR$/modules/Core/Models/Currency.php" />
+        <option value="$PROJECT_DIR$/modules/Api/Config/routing.php" />
         <option value="$PROJECT_DIR$/modules/Core/Managers/CurrencyManager.php" />
+        <option value="$PROJECT_DIR$/modules/Api/Controllers/CurrencyController.php" />
+        <option value="$PROJECT_DIR$/modules/Api/Controllers/BetsController.php" />
+        <option value="$PROJECT_DIR$/modules/Core/Managers/BetManager.php" />
         <option value="$PROJECT_DIR$/currency_script.php" />
       </list>
     </option>
@@ -211,10 +169,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="992" />
-    <option name="y" value="52" />
-    <option name="width" value="928" />
-    <option name="height" value="1028" />
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1855" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -254,8 +212,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -468,6 +424,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -615,22 +573,23 @@
       <workItem from="1485807413658" duration="6132000" />
       <workItem from="1485871874993" duration="1029000" />
       <workItem from="1485874502707" duration="3163000" />
-      <workItem from="1485883592285" duration="13177000" />
+      <workItem from="1485883592285" duration="13427000" />
+      <workItem from="1485909893356" duration="4873000" />
+      <workItem from="1485969578213" duration="11908000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135905000" />
+    <option name="totallyTimeSpent" value="152936000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="992" y="52" width="928" height="1028" extended-state="4" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34590518" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16873315" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33926702" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -641,6 +600,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33926702" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -654,10 +614,10 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2070081" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16873315" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33926702" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -757,22 +717,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/curancy_script.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/OperatorsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="62" column="28" lean-forward="false" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/curancy_script.php" />
     <entry file="file://$PROJECT_DIR$/modules/Core/Managers/AccountManager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -785,14 +730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="54" column="39" lean-forward="false" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/OperatorManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1830">
-          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="125" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -936,7 +873,7 @@
         <state relative-caret-position="404">
           <caret line="59" column="63" lean-forward="true" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
           <folding>
-            <element signature="e#36#64#0#PHP" expanded="true" />
+            <element signature="e#36#64#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -946,7 +883,7 @@
         <state relative-caret-position="375">
           <caret line="64" column="36" lean-forward="true" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
           <folding>
-            <element signature="e#36#67#0#PHP" expanded="true" />
+            <element signature="e#36#67#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -964,16 +901,8 @@
         <state relative-caret-position="29">
           <caret line="187" column="5" lean-forward="false" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
           <folding>
-            <element signature="e#36#65#0#PHP" expanded="true" />
+            <element signature="e#36#65#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Config/routing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="336" column="25" lean-forward="false" selection-start-line="336" selection-start-column="25" selection-end-line="336" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -993,14 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/BetsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="178" column="45" lean-forward="false" selection-start-line="178" selection-start-column="45" selection-end-line="178" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/DepositsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1011,7 +932,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Core/Models/Account.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
+        <state relative-caret-position="2655">
           <caret line="177" column="149" lean-forward="false" selection-start-line="177" selection-start-column="149" selection-end-line="177" selection-end-column="149" />
           <folding />
         </state>
@@ -1019,8 +940,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Core/Managers/SummaryManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+        <state relative-caret-position="1020">
+          <caret line="68" column="20" lean-forward="false" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -1041,28 +962,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/BetManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="165" column="22" lean-forward="false" selection-start-line="165" selection-start-column="22" selection-end-line="165" selection-end-column="60" />
-          <folding>
-            <element signature="e#36#64#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="585">
           <caret line="39" column="56" lean-forward="false" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/CurrencyController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="84" column="57" lean-forward="false" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
           <folding />
         </state>
       </provider>
@@ -1075,20 +978,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/OperatorManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="83" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/OperatorsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="49" lean-forward="false" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/Core/Managers/CurrencyManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+        <state relative-caret-position="449">
+          <caret line="62" column="5" lean-forward="true" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/CurrencyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="41" column="61" lean-forward="false" selection-start-line="41" selection-start-column="61" selection-end-line="41" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/BetsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="149" column="63" lean-forward="false" selection-start-line="149" selection-start-column="63" selection-end-line="149" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Config/routing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2183">
+          <caret line="344" column="21" lean-forward="false" selection-start-line="344" selection-start-column="21" selection-end-line="344" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/BetManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="734">
+          <caret line="121" column="52" lean-forward="false" selection-start-line="121" selection-start-column="52" selection-end-line="121" selection-end-column="52" />
           <folding>
-            <element signature="e#36#65#0#PHP" expanded="true" />
+            <element signature="e#36#64#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/currency_script.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="389">
+          <caret line="158" column="23" lean-forward="false" selection-start-line="158" selection-start-column="23" selection-end-line="158" selection-end-column="23" />
           <folding />
         </state>
       </provider>

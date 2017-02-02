@@ -341,6 +341,11 @@ $currency->addPost('', array(
     'action' => 'create'
 ));
 
+
+$currency->addDelete('', array(
+    'action' => 'delete'
+));
+
 $router->mount($operators);
 $router->mount($users);
 $router->mount($countries);

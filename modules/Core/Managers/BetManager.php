@@ -66,26 +66,33 @@ class BetManager extends BaseManager
         return $result;
     }
 
-    public function restUpdate($parameters, $data) {
-        $item = $this->findFirst($parameters);
-        if (!$item) {
-            return ["meta" => [
-                "code" => 404,
-                "message" => "Not Found"
-            ]];
+    public function restUpdate($parameters) {
+        $items = $this->find($parameters);
+
+        $filename = $this->config->parameters->currencydata;
+        if(!file_exists($filename))
+            throw new \Exception('Currency file Not Found', 404);
+        $currency_data = json_decode(file_get_contents($filename), true);
+
+        foreach ($items as $item)
+        {
+            $this->setFields($item,  ['endtime' => $currency_data['time'], 'endval' => $currency_data[$item->getInstrument()]['last']]);
+
+            if (false === $item->update()) {
+                return "FALSE";
+                foreach ($item->getMessages() as $message) {
+                    throw new \Exception($message->getMessage(), 500);
+                }
+            }
         }
-
-        if(!isset($data[0]['endval']))
-            throw new \Exception('endval is required', 400);
-
-        $this->setFields($item, ['endtime' => gmdate("Y/m/j H:i:s"), 'endval' => $data[0]['endval']] );
-
-        if (false === $item->update()) {
-            foreach ($item->getMessages() as $message) {
+/*
+        if (false === $items->update()) {
+            return "FALSE";
+            foreach ($items->getMessages() as $message) {
                 throw new \Exception($message->getMessage(), 500);
             }
         }
-
+*/
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
@@ -101,7 +108,19 @@ class BetManager extends BaseManager
         if(count(Bet::find($parameters)) > 0)
             throw new \Exception("there are active bets on this instrument", 500);
 
+        $filename = $this->config->parameters->currencydata;
+        if(!file_exists($filename))
+            throw new \Exception('Currency file Not Found', 404);
+        $currency_data = json_decode(file_get_contents($filename), true);
+
         $item = new Bet();
+        if(!isset($currency_data[$data[0]['instrument']]))
+            throw new \Exception('Instrument Not Found', 404);
+        if(!isset($currency_data['time']))
+            throw new \Exception('Time Not Found', 404);
+
+        $data[0]['startval'] = $currency_data[$data[0]['instrument']]['last'];
+        $data[0]['starttime'] = $currency_data['time'];
         $this->setFields($item, $data[0]);
 
         if (false === $item->create()) {
@@ -118,6 +137,9 @@ class BetManager extends BaseManager
 
     private function getItems($items)
     {
+        if($items == null)
+            return null;
+
         if(is_array($items))
             $new_items = $items;
         else
@@ -148,17 +170,16 @@ class BetManager extends BaseManager
         if(isset($data['startval']))
             $item->setStartval($data['startval']);
 
-        if(isset($data['endval']))
+        if(isset($data['endval'])) {
             $item->setEndval($data['endval']);
+            $item->setResult($this->getResult($item));
+        }
 
         if(isset($data['updown']))
             $item->setUpdown($data['updown']);
 
         if(isset($data['invest']))
             $item->setInvest($data['invest']);
-
-        if($item->getEndtime() > $item->getStarttime())
-            $item->setResult($this->getResult($item));
     }
 
     private function getResult($bet)

@@ -148,33 +148,17 @@ class BetsController extends BaseController {
     public function updateAction() {
         try {
             $manager = $this->getDI()->get('core_bet_manager');
-            /*
-            if ($this->request->getHeader('CONTENT_TYPE') ==
-                'application/json') {
-                $data = $this->request->getJsonRawBody(true);
-            } else {
-                $data = $this->request->getPost();
-            }
-            */
-            $data = $this->request->getJsonRawBody(true);
-            if (count($data[0]) == 0) {
-                throw new \Exception('Please provide data', 400);
-            }
 
             $conditions = array();
             $binds = array();
 
-            $account = $this->request->getQuery('account');
-            if($account != null) {
-                $conditions[] = 'account = :account:';
-                $binds['account'] = $account;
+            $time = $this->request->getQuery('time');
+            if($time != null) {
+                $conditions[] = "starttime <= :time:";
+                $binds['time'] = $time;
             }
-
-            $instrument = $this->request->getQuery('instrument');
-            if($instrument != null) {
-                $conditions[] = 'instrument = :instrument:';
-                $binds['instrument'] = $instrument;
-            }
+            else
+                throw new \Exception('Time is not set', 400);
 
             $conditions[] = "result is NULL";
 
@@ -187,9 +171,7 @@ class BetsController extends BaseController {
                 ];
             }
 
-            $parameters['order'] = 'starttime desc';
-
-            $result = $manager->restUpdate($parameters, $data);
+            $result = $manager->restUpdate($parameters);
 
             return $this->render($result);
         } catch (\Exception $e) {

@@ -39,15 +39,7 @@ class CurrencyController extends BaseController {
 
             $parameters['order'] = "currencytime";
 
-            $offset = $this->request->getQuery('offset');
-            if($offset == null)
-                $offset = 0;
-
-            $limit = $this->request->getQuery('limit');
-            if($limit == null)
-                $limit = 10;
-
-            $st_output = $manager->restGetHistory($parameters, $limit, $offset);
+            $st_output = $manager->restGetHistory($parameters);
 
             return $this->render($st_output);
         } catch (\Exception $e) {
@@ -90,6 +82,26 @@ class CurrencyController extends BaseController {
                 throw new \Exception('Please provide data', 400);
             }
             $st_output = $manager->restCreate($data);
+            return $this->render($st_output);
+        } catch (\Exception $e) {
+            return $this->render(["meta" => [
+                'code' => $e->getCode(),
+                'message' => $e->getMessage()
+            ]]);
+        }
+    }
+
+
+    public function deleteAction() {
+        try {
+            $manager = $this->getDI()->get('core_currency_manager');
+
+            $before = $this->request->getQuery('before');
+            if($before == null) {
+                throw new \Exception('Before is not set', 404);
+            }
+
+            $st_output = $manager->restDelete($before);
             return $this->render($st_output);
         } catch (\Exception $e) {
             return $this->render(["meta" => [

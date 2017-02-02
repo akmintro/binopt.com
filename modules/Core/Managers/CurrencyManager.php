@@ -2,7 +2,6 @@
 namespace App\Core\Managers;
 
 use App\Core\Models\Currency;
-use Phalcon\Mvc\Model;
 
 class CurrencyManager extends BaseManager
 {
@@ -11,22 +10,21 @@ class CurrencyManager extends BaseManager
         return Currency::find($parameters);
     }
 
-    public function restGetHistory(array $parameters = null, $limit = 10, $offset = 0)
+    public function restGetHistory(array $parameters = null)
     {
         $items = $this->find($parameters);
+
         $data = $items->filter(function ($item) {
             return $item->toArray();
         });
         $meta = [
             "code" => 200,
             "message" => "OK",
-            "limit" => (int)$limit,
-            "offset" => (int)$offset,
             "total" => count($data)
         ];
 
         if (count($data) > 0) {
-            return ["meta" => $meta, "data" => array_slice($this->getItems($data), $offset, $limit)];
+            return ["meta" => $meta, "data" => $data];
         }
 
         if (isset($parameters['bind']['id'])) {
@@ -39,6 +37,7 @@ class CurrencyManager extends BaseManager
     public function restCreate($data)
     {
         $time = $data['time'];
+        $items = [];
         foreach($data as $id => $obj)
         {
             if($id == 'time')
@@ -46,20 +45,18 @@ class CurrencyManager extends BaseManager
             $item = new Currency();
             $this->setFields($item, $id, $obj['last'], $time);
 
-
-
-
             if (false === $item->create()) {
                 foreach ($item->getMessages() as $message) {
                     throw new \Exception($message->getMessage(), 500);
                 }
             }
+            $items[] = $item;
         }
 
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => $this->getItems($item)];
+        ], "data" => $items];
     }
 
     private function setFields($item, $instrument, $value, $time)
@@ -74,18 +71,19 @@ class CurrencyManager extends BaseManager
             $item->setCurrencytime($time);
     }
 
-    private function getItems($items)
+    public function restDelete($before)
     {
-        if(is_array($items))
-            $new_items = $items;
-        else
-            $new_items = array($items->toArray());
+        $item = $this->find(["currencytime < :time:", "bind" => ["time" => $before]]);
 
-        foreach ($new_items as &$item)
-        {
-            unset($item['password']);
+        if (false === $item->delete()) {
+            foreach ($item->getMessages() as $message) {
+                throw new \Exception($message->getMessage(), 500);
+            }
         }
 
-        return $new_items;
+        return ["meta" => [
+            "code" => 200,
+            "message" => "OK"
+        ]];
     }
 }
