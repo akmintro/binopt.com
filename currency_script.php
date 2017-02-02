@@ -37,11 +37,11 @@ function get_rand($max, $last)
 
 function get_last($cur_val, $real_val)
 {
-    $full = 20;
+    $full = 10;
     $half = $full/2;
 
     $length = strlen(substr(strrchr($real_val, "."), 1)) + 1;
-    $power = $half ** $length;
+    $power = 10 ** $length;
     $last_shift = abs($cur_val - $real_val) * $power;
 
     $max = max($last_shift, $full);
@@ -123,7 +123,8 @@ function close_bets($time)
 }
 
 $filename = "currency_data.txt";
-$clearinterval = 3600;
+$clearinterval = 60;
+$historyinterval = 3600;
 
 $launchtime = ceil(microtime(true)/6)*6;
 $start = floor($launchtime/60)*60;
@@ -182,7 +183,7 @@ while(true) {
 
     if($start >= $cleartime)
     {
-        clear_history(gmdate("Y-m-d H:i:s", $start-$clearinterval));
+        clear_history(gmdate("Y-m-d H:i:s", $start-$historyinterval));
         $cleartime += $clearinterval;
     }
 }

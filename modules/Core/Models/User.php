@@ -480,14 +480,29 @@ class User extends \Phalcon\Mvc\Model
         }
     }
 
-    public function getBalance()
+    public function getBalance(&$result)
     {
+        $currentbalance = $startbalance = $deposits = $withdrawals = $wins = $loses = $ingame = null;
         $account = $this->getRealAccount();
+        if($account != null) {
+            $startbalance = $account->getAmount();
+            $deposits = $account->getDeposits();
+            $withdrawals = $account->getWithdrawals();
+            $account->getBetStat($wins, $loses, $ingame);
+            $currentbalance = $startbalance + $deposits - $withdrawals + $wins - $loses - $ingame;
+        }
 
-        if($account == 0)
-            return 0;
-        $wins = $loses = 0;
-        $account->getWinsLoses($wins, $loses);
-        return $account->getAmount() + $account->getDeposits() - $account->getWithdrawals() + $wins - $loses;
+        if($result != null)
+        {
+            $result['startbalance'] = $startbalance;
+            $result['deposits'] = $deposits;
+            $result['withdrawals'] = $withdrawals;
+            $result['wins'] = $wins;
+            $result['loses'] = $loses;
+            $result['ingame'] = $ingame;
+            $result['currentbalance'] = $currentbalance;
+        }
+
+        return $currentbalance;
     }
 }

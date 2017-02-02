@@ -193,16 +193,16 @@ class Account extends \Phalcon\Mvc\Model
         return $value;
     }
 
-    public function getWinsLoses(&$wins, &$loses)
+    public function getBetStat(&$wins, &$loses, &$ingame)
     {
-        $wins = $loses = 0;
+        $wins = $loses = $ingame = 0;
         $bets = $this->getRelated('bet');
         foreach ($bets as $bet)
         {
             $result = $bet->getResult();
             if($result == null || $result == 0)
-                continue;
-            if($result > 0)
+                $ingame += $bet->invest->getSize();
+            elseif($result > 0)
                 $wins += $result;
             else
                 $loses += -$result;

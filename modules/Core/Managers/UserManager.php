@@ -69,17 +69,7 @@ class UserManager extends BaseManager
         {
             $user = User::findFirstById($item['id']);
             $item['username'] = $user->getUsername();
-
-            $account = $user->getRealAccount();
-            if($account == null)
-                $item['startbalance'] = $item['deposits'] = $item['withdrawals'] = $item['wins'] = $item['loses'] = null;
-            else {
-                $item['startbalance'] = $account->getAmount();
-                $item['deposits'] = $account->getDeposits();
-                $item['withdrawals'] = $account->getWithdrawals();
-                $account->getWinsLoses($item['wins'], $item['loses']);
-                $item['currentbalance'] = $item['startbalance'] + $item['deposits'] - $item['withdrawals'] + $wins - $loses;
-            }
+            $user->getBalance($item);
 
             unset($item['firstname']);
             unset($item['lastname']);
@@ -109,23 +99,14 @@ class UserManager extends BaseManager
 
         $item = $data->toArray();
         $item['operator'] = Operator::findFirstById($item['operator'])->toArray();
+        $item['accounts'] = $data->account;
 
         unset($item['password']);
         unset($item['operator']['password']);
         unset($item['operator']['ip']);
         unset($item['operator']['regdate']);
 
-        $account = $data->getRealAccount();
-        if($account == null)
-            $item['startbalance'] = $item['deposits'] = $item['withdrawals'] = $item['wins'] = $item['loses'] = null;
-        else {
-            $item['deposits'] = $account->getDeposits();
-            $item['withdrawals'] = $account->getWithdrawals();
-            $item['startbalance'] = $account->getAmount();
-            $wins = $loses = 0;
-            $account->getWinsLoses($wins, $loses);
-            $item['currentbalance'] = $item['startbalance'] + $item['deposits'] - $item['withdrawals'] + $wins - $loses;
-        }
+        $data->getBalance($item);
 
         return ["meta" => $meta, "data" => $item];
     }

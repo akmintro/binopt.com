@@ -4,6 +4,7 @@ namespace App\Core\Managers;
 use App\Core\Models\Account;
 use App\Core\Models\Bet;
 use App\Core\Models\Instrument;
+use App\Core\Models\Invest;
 
 class BetManager extends BaseManager
 {
@@ -79,20 +80,11 @@ class BetManager extends BaseManager
             $this->setFields($item,  ['endtime' => $currency_data['time'], 'endval' => $currency_data[$item->getInstrument()]['last']]);
 
             if (false === $item->update()) {
-                return "FALSE";
                 foreach ($item->getMessages() as $message) {
                     throw new \Exception($message->getMessage(), 500);
                 }
             }
         }
-/*
-        if (false === $items->update()) {
-            return "FALSE";
-            foreach ($items->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
-            }
-        }
-*/
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
@@ -101,12 +93,22 @@ class BetManager extends BaseManager
 
     public function restCreate($data) {
 
-        $parameters = ["account = :account: and instrument = :instrument: and endtime is NULL",
+        $parameters = ["account = :account: and instrument = :instrument: and result is NULL",
             'bind' => ["account" => $data[0]["account"], "instrument" => $data[0]["instrument"]],
         ];
 
         if(count(Bet::find($parameters)) > 0)
-            throw new \Exception("there are active bets on this instrument", 500);
+            throw new \Exception("there are active bets on this instrument from this account", 500);
+
+        $account = Account::findFirstById($data[0]["account"]);
+        if($account == null)
+            throw new \Exception("account not found", 404);
+        $invest = Invest::findFirstById($data[0]["invest"]);
+        if($invest == null)
+            throw new \Exception("invest not found", 404);
+        if($account->user->getBalance() < $invest->getSize())
+            throw new \Exception("balance is too small for this bet", 500);
+
 
         $filename = $this->config->parameters->currencydata;
         if(!file_exists($filename))
@@ -115,9 +117,9 @@ class BetManager extends BaseManager
 
         $item = new Bet();
         if(!isset($currency_data[$data[0]['instrument']]))
-            throw new \Exception('Instrument Not Found', 404);
+            throw new \Exception('instrument not found', 404);
         if(!isset($currency_data['time']))
-            throw new \Exception('Time Not Found', 404);
+            throw new \Exception('time not found', 404);
 
         $data[0]['startval'] = $currency_data[$data[0]['instrument']]['last'];
         $data[0]['starttime'] = $currency_data['time'];
