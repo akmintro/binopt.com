@@ -28,6 +28,13 @@ class Promo extends \Phalcon\Mvc\Model
     protected $active;
 
     /**
+     *
+     * @var double
+     * @Column(type="double", length=4, nullable=false)
+     */
+    protected $bonus;
+
+    /**
      * Method to set the value of field id
      *
      * @param integer $id
@@ -67,6 +74,19 @@ class Promo extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field bonus
+     *
+     * @param double $bonus
+     * @return $this
+     */
+    public function setBonus($bonus)
+    {
+        $this->bonus = $bonus;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field id
      *
      * @return integer
@@ -94,6 +114,16 @@ class Promo extends \Phalcon\Mvc\Model
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+     * Returns the value of field bonus
+     *
+     * @return double
+     */
+    public function getBonus()
+    {
+        return $this->bonus;
     }
 
     /**

@@ -272,8 +272,14 @@ $deposits->addGet('', array(
     'action' => 'read'
 ));
 
-$deposits->addPost('', array(
-    'action' => 'create'
+$deposits->addPost('/admin', array(
+    'action' => 'create',
+    'admin' => 1
+));
+
+$deposits->addPost('/user', array(
+    'action' => 'create',
+    'admin' => 0
 ));
 
 $deposits->addPut('/{id:[0-9]+}', array(

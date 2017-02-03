@@ -3,6 +3,7 @@ namespace App\Core\Managers;
 
 use App\Core\Models\Account;
 use App\Core\Models\Deposit;
+use App\Core\Models\Promo;
 
 class DepositManager extends BaseManager
 {
@@ -123,7 +124,7 @@ class DepositManager extends BaseManager
         ], "data" => $item];
     }
 
-    private function setFields($item, $data)
+    private function setFields($item, &$data)
     {
         if(isset($data['account']))
             $item->setAccount($data['account']);
@@ -137,8 +138,18 @@ class DepositManager extends BaseManager
         if(isset($data['deposittime']))
             $item->setDeposittime($data['deposittime']);
 
-        if(isset($data['promo']))
-            $item->setPromo($data['promo']);
+        if(isset($data['promo'])) {
+            $promo = Promo::findFirst(["code = :code:", "bind" => ["code" => $data['promo']]]);
+
+            if($promo == null)
+                throw new \Exception("promo not found", 404);
+
+            $item->setPromo($promo->getId());
+        }
+
+        $admin = $this->dispatcher->getParam("admin");
+        if($admin)
+            $item->setAdmin($admin);
     }
 }
 ?>

@@ -8,6 +8,7 @@ class Deposit extends \Phalcon\Mvc\Model
      *
      * @var integer
      * @Primary
+     * @Identity
      * @Column(type="integer", length=11, nullable=false)
      */
     protected $id;
@@ -28,8 +29,8 @@ class Deposit extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var integer
-     * @Column(type="integer", length=20, nullable=false)
+     * @var string
+     * @Column(type="string", length=16, nullable=false)
      */
     protected $wallet;
 
@@ -53,6 +54,13 @@ class Deposit extends \Phalcon\Mvc\Model
      * @Column(type="integer", length=6, nullable=false)
      */
     protected $state;
+
+    /**
+     *
+     * @var integer
+     * @Column(type="integer", length=1, nullable=false)
+     */
+    protected $admin;
 
     /**
      * Method to set the value of field id
@@ -96,7 +104,7 @@ class Deposit extends \Phalcon\Mvc\Model
     /**
      * Method to set the value of field wallet
      *
-     * @param integer $wallet
+     * @param string $wallet
      * @return $this
      */
     public function setWallet($wallet)
@@ -146,6 +154,19 @@ class Deposit extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field admin
+     *
+     * @param integer $admin
+     * @return $this
+     */
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field id
      *
      * @return integer
@@ -178,7 +199,7 @@ class Deposit extends \Phalcon\Mvc\Model
     /**
      * Returns the value of field wallet
      *
-     * @return integer
+     * @return string
      */
     public function getWallet()
     {
@@ -216,13 +237,23 @@ class Deposit extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field admin
+     *
+     * @return integer
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
     {
         $this->setSchema("binopt");
-        $this->belongsTo('account', '\Account', 'id', ['alias' => 'Account']);
-        $this->belongsTo('promo', '\Promo', 'id', ['alias' => 'Promo']);
+        $this->belongsTo('account', 'App\Core\Models\Account', 'id', ['alias' => 'Account']);
+        $this->belongsTo('promo', 'App\Core\Models\Promo', 'id', ['alias' => 'Promo']);
     }
 
     /**

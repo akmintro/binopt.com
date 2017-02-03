@@ -27,13 +27,6 @@ class Account extends \Phalcon\Mvc\Model
     protected $realdemo;
 
     /**
-     *
-     * @var integer
-     * @Column(type="integer", length=11, nullable=false)
-     */
-    protected $amount;
-
-    /**
      * Method to set the value of field id
      *
      * @param integer $id
@@ -73,19 +66,6 @@ class Account extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Method to set the value of field amount
-     *
-     * @param integer $amount
-     * @return $this
-     */
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
-
-    /**
      * Returns the value of field id
      *
      * @return integer
@@ -113,16 +93,6 @@ class Account extends \Phalcon\Mvc\Model
     public function getRealdemo()
     {
         return $this->realdemo;
-    }
-
-    /**
-     * Returns the value of field amount
-     *
-     * @return integer
-     */
-    public function getAmount()
-    {
-        return $this->amount;
     }
 
     /**
@@ -175,8 +145,14 @@ class Account extends \Phalcon\Mvc\Model
         $deposits = $this->getRelated('deposit');
         foreach ($deposits as $deposit)
         {
-            if($deposit->getState() == 1 && ($start == null || $deposit->getDeposittime() >= $start) && ($end == null || $deposit->getDeposittime() <= $end))
-                $value += $deposit->getAmount();
+            if($deposit->getState() == 1 && $deposit->getAdmin() == 0 && ($start == null || $deposit->getDeposittime() >= $start) && ($end == null || $deposit->getDeposittime() <= $end)) {
+
+                $bonus = 1;
+                if($deposit->promo != null)
+                    $bonus += $deposit->promo->getBonus();
+
+                $value += $deposit->getAmount() * $bonus;
+            }
         }
         return $value;
     }

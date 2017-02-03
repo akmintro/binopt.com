@@ -177,7 +177,7 @@ class BetManager extends BaseManager
             $item->setResult($this->getResult($item));
         }
 
-        if(isset($data['updown']))
+        if(isset($data['updown']) && ($data['updown'] == 0 || $data['updown'] == 1))
             $item->setUpdown($data['updown']);
 
         if(isset($data['invest']))
