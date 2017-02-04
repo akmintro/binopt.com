@@ -1,4 +1,39 @@
 <?php
+
+
+function get_rand($max, $last)
+{
+    $q = 0.45;
+    $fullsum = (1 - $q**($last+1))/(1 - $q) + (1 - $q**($max-$last+1))/(1 - $q) - 1;
+
+    $array = array();
+    $randval = $fullsum*rand(0,1000)/1000;
+
+    for($i=$last; $i>=0; --$i)
+    {
+        if($i==$last)
+            $array[$i] = 1;
+        else
+            $array[$i] = $array[$i+1] * $q;
+
+        if($randval>$array[$i])
+            $randval-=$array[$i];
+        else
+            return $i;
+    }
+
+    for($i=$last+1; $i<=$max; ++$i)
+    {
+        $array[$i] = $array[$i-1] * $q;
+
+        if($randval>$array[$i])
+            $randval-=$array[$i];
+        else
+            return $i;
+    }
+}
+
+/*
 function get_rand($max, $last)
 {
     $array = array();
@@ -34,10 +69,11 @@ function get_rand($max, $last)
             return $i;
     }
 }
+ */
 
 function get_last($cur_val, $real_val)
 {
-    $full = 10;
+    $full = 14;
     $half = $full/2;
 
     $length = strlen(substr(strrchr($real_val, "."), 1)) + 1;
@@ -50,7 +86,7 @@ function get_last($cur_val, $real_val)
     else
         $start_val = max($real_val-$half/$power, min($real_val, $cur_val-$full/$power));
 
-    $rand = get_rand($max, ($cur_val-$start_val)*$power);
+    $rand = get_rand($max, round(($cur_val-$start_val)*$power));
     $last = $start_val+$rand/$power;
 
     return $last;
@@ -139,7 +175,8 @@ while(true) {
         $current_time = gmdate("Y-m-d H:i:s", $start + $i);
 
         if (($i % 6) == 0) {
-            $real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1,2,3,4,5,6,7,8,9,11,12,15,16,49,50,53,54,57&timeframe=60'), true);
+            //$real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1,2,3,4,5,6,7,8,9,11,12,15,16,49,50,53,54,57&timeframe=60'), true);
+            $real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1&timeframe=60'), true);
             if (file_exists($filename))
                 $current_data = json_decode(file_get_contents($filename), true);
             else

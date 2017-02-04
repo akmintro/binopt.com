@@ -133,7 +133,6 @@ $di['core_instrument_manager'] = function() {
     return new App\Core\Managers\InstrumentManager();
 };
 
-
 $di['core_bet_manager'] = function() {
     return new App\Core\Managers\BetManager();
 };
