@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 
 function get_rand($max, $last)
 {
@@ -175,8 +175,8 @@ while(true) {
         $current_time = gmdate("Y-m-d H:i:s", $start + $i);
 
         if (($i % 6) == 0) {
-            //$real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1,2,3,4,5,6,7,8,9,11,12,15,16,49,50,53,54,57&timeframe=60'), true);
-            $real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1&timeframe=60'), true);
+            $real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1,2,3,4,5,6,7,8,9,11,12,15,16,49,50,53,54,57&timeframe=60'), true);
+            //$real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1&timeframe=60'), true);
             if (file_exists($filename))
                 $current_data = json_decode(file_get_contents($filename), true);
             else

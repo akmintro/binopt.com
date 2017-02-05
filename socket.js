@@ -4,7 +4,7 @@
     // ======== private vars ========
 	var socket;
 	var xhttp;
-	var srvaddress = '~/MYWS/';
+	var srvaddress = '';
 	var startserveraddress = srvaddress+'echowsstart.php';
 
     ////////////////////////////////////////////////////////////////////////////
@@ -12,17 +12,16 @@
 
 		//wsserverrun();
 		
-		socket = new WebSocket(document.getElementById("sock-addr").value);
+		socket = new WebSocket("ws://127.0.0.1:8889");
 
 		socket.onopen = connectionOpen; 
 		socket.onmessage = messageReceived; 
 		//socket.onerror = errorOccurred; 
 		//socket.onopen = connectionClosed;
-
+/*
         document.getElementById("sock-send-butt").onclick = function () {
             socket.send(document.getElementById("sock-msg").value);
         };
-
 
         document.getElementById("sock-disc-butt").onclick = function () {
             connectionClose();
@@ -31,10 +30,10 @@
         document.getElementById("sock-recon-butt").onclick = function () {
 			//wsserverrun();
 
-			socket = new WebSocket(document.getElementById("sock-addr").value);
+			socket = new WebSocket("ws://127.0.0.1:8889");
             socket.onopen = connectionOpen;
             socket.onmessage = messageReceived;
-        };
+        };*/
 
     };
 
@@ -44,9 +43,17 @@
 	}
 
 	function messageReceived(e) {
-	    //console.log("Ответ сервера: " + e.data);
-var result = JSON.parse(e.data);
-        document.getElementById("sock-info").innerHTML = (result["1"]["last"] +"<br />");
+        var result = JSON.parse(e.data);
+
+        var text = "Currencies:";
+
+        for(var key in result){
+            if(result.hasOwnProperty(key) && key != "time"){
+                text += "<br>" + result[key]["name"] + ": " + result[key]["last"];
+            }
+        }
+
+        document.getElementById("sock-info").innerHTML = text;
 	}
 
     function connectionClose() {
@@ -54,7 +61,7 @@ var result = JSON.parse(e.data);
         document.getElementById("sock-info").innerHTML += "Соединение закрыто <br />";
 
     }
-
+/*
     var wsserverrun = function() {
 
         xhttp = new XMLHttpRequest();
@@ -77,7 +84,7 @@ var result = JSON.parse(e.data);
 		ms += new Date().getTime();
 		while (new Date().getTime() < ms){}
 	};
-    
+    */
 	return {
         ////////////////////////////////////////////////////////////////////////////
         // ---- onload event ----
