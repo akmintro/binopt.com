@@ -347,7 +347,6 @@ $currency->addPost('', array(
     'action' => 'create'
 ));
 
-
 $currency->addDelete('', array(
     'action' => 'delete'
 ));

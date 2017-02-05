@@ -15,7 +15,7 @@ $offfile = $baseDir.'/off_file.pid';
 //srdin/stdout 
 //ini_set('error_log',$baseDir.'/echowserrors.txt');
 fclose(STDIN);
-fclose(STDOUT);
+//fclose(STDOUT);
 fclose(STDERR);
 $STDIN = fopen('/dev/null', 'r');
 //$STDOUT = fopen($baseDir.'/echowsconsolelog.txt', 'ab');
@@ -55,6 +55,7 @@ if (!$socket) {
 }
 
 $connects = array();
+$currency = array();
 while (true) {
 	//формируем массив прослушиваемых сокетов:
 	$read = $connects;
@@ -66,9 +67,11 @@ while (true) {
 	if (in_array($socket, $read)) {//есть новое соединение то обязательно делаем handshake
 		//принимаем новое соединение и производим рукопожатие:
 		if (($connect = stream_socket_accept($socket, -1)) && $info = handshake($connect)) {
-				consolemsg("new connection... connect=".$connect.", info=".$info." OK");            
-				$connects[] = $connect;//добавляем его в список необходимых для обработки
-		    onOpen($connect, $info);//вызываем пользовательский сценарий
+			consolemsg("new connection... connect=".$connect.", info=".$info." OK");            
+			$connects[] = $connect;//добавляем его в список необходимых для обработки
+			$currency[] = 1;
+			onOpen($connect, $info);//вызываем пользовательский сценарий
+            fwrite($connect, encode(json_encode(["data" => json_decode(file_get_contents("http://binopt.com/api/v1/currency/history?instrument=1"), true), "type" => "history"])));
 		}
 		unset($read[ array_search($socket, $read) ]);
 	}
@@ -79,17 +82,33 @@ while (true) {
 		if (!$data) { //соединение было закрыто
 				consolemsg("connection closed...");    
 				fclose($connect);
-		    unset($connects[ array_search($connect, $connects) ]);
+			$id = array_search($connect, $connects);
+		    unset($connects[$id]);
+		    unset($currency[$id]);
 		    onClose($connect);//вызываем пользовательский сценарий
 				consolemsg("OK");    
 		    continue;
 		}
+
+		$cur = decode($data)["payload"];
+		$currency[array_search($connect, $connects)] = $cur;
+        fwrite($connect, encode(json_encode(["data" => json_decode(file_get_contents("http://binopt.com/api/v1/currency/history?instrument=".$cur), true), "type" => "history"])));
 	}
 
 	echo count($connects);
 
-	foreach($connects as $connect) {//обрабатываем все соединения
-		fwrite($connect, encode(file_get_contents($filename)));
+    $json_data = json_decode(file_get_contents($filename), true);
+    $package = array();
+    foreach ($json_data as $key => $val)
+    {
+        if($key != "time")
+        {
+            $package[$key] = ["data" => $val, "type" => "current"];
+        }
+    }
+
+	foreach($connects as $key => $connect) {//обрабатываем все соединения
+		fwrite($connect, encode(json_encode($package[$currency[$key]])));
 	}
 
 	//Здесь же можно поставить и лимиты на выжираемую память но пока типа на вермя

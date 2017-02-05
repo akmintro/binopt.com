@@ -24,13 +24,11 @@ class InstrumentManager extends BaseManager
         $meta = [
             "code" => 200,
             "message" => "OK",
-            "limit" => (int)$limit,
-            "offset" => (int)$offset,
             "total" => count($data)
         ];
 
         if (count($data) > 0) {
-            return ["meta" => $meta, "data" => array_slice($data, $offset, $limit)];
+            return ["meta" => $meta, "data" => $data];
         }
 
         if (isset($parameters['bind']['id'])) {

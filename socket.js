@@ -20,7 +20,7 @@
 		//socket.onopen = connectionClosed;
 /*
         document.getElementById("sock-send-butt").onclick = function () {
-            socket.send(document.getElementById("sock-msg").value);
+            socket.send(2);
         };
 
         document.getElementById("sock-disc-butt").onclick = function () {
@@ -34,7 +34,9 @@
             socket.onopen = connectionOpen;
             socket.onmessage = messageReceived;
         };*/
-
+        document.getElementById("currency-select").onchange = function () {
+            socket.send(this.value);
+        };
     };
 
 
@@ -45,15 +47,17 @@
 	function messageReceived(e) {
         var result = JSON.parse(e.data);
 
-        var text = "Currencies:";
-
-        for(var key in result){
-            if(result.hasOwnProperty(key) && key != "time"){
-                text += "<br>" + result[key]["name"] + ": " + result[key]["last"];
+        if(result["type"] == "current")
+        	document.getElementById("sock-current").innerHTML = result["data"]["name"] + ": " + result["data"]["last"];
+        else if(result["type"] == "history") {
+            var text = "";
+            var data = result["data"]["data"];
+            for (var item in data) {
+                text += data[item]["value"] + "<br>";
             }
+            document.getElementById("sock-history").innerHTML = text;
         }
 
-        document.getElementById("sock-info").innerHTML = text;
 	}
 
     function connectionClose() {
