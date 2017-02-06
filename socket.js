@@ -4,7 +4,8 @@
     // ======== private vars ========
 	var socket;
 	var xhttp;
-	var startserveraddress = 'https://binopt.com/api/v1/websocket/check';
+	var startserveraddress = 'http://binopt.com/api/v1/websocket/check';
+    var instrumentsaddress = 'http://binopt.com/api/v1/instruments';
 
     ////////////////////////////////////////////////////////////////////////////
     var init = function () {
@@ -18,6 +19,8 @@
         document.getElementById("currency-select").onchange = function () {
             socket.send(this.value);
         };
+
+        getOptions();
     };
 
 
@@ -51,6 +54,26 @@
         xhttp.open('GET',startserveraddress,false);
         xhttp.send();
     };
+
+	function getOptions(){
+        xhttp = new XMLHttpRequest();
+        xhttp.open('GET',instrumentsaddress,true);
+        xhttp.send();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                var data = JSON.parse(xhttp.responseText)["data"];
+                var select = document.getElementById('currency-select');
+
+                for(var item in data)
+                {
+                    var opt = document.createElement('option');
+                    opt.value = data[item]["id"];
+                    opt.innerHTML = data[item]["name"];
+                    select.appendChild(opt);
+                }
+            }
+        }
+    }
 
 	return {
         ////////////////////////////////////////////////////////////////////////////

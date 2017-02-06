@@ -41,4 +41,12 @@ return new \Phalcon\Config(array(
         'scriptsfolder' => __DIR__ . '/../scripts'
     )
 ));
+
+/*
+<option value="1" selected>EUR/USD</option>
+<option value="2">GPB/USD</option>
+<option value="3">USD/JPY</option>
+<option value="4">USD/CHF</option>
+<option value="5">AUD/USD</option>*/
 ?>
+

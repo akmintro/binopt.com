@@ -1,156 +1,55 @@
 console - start
 echows - try to start...
-OK getmypid = 3549
+OK getmypid = 3160
 socket - try to start...
-new connection... connect=Resource id #10, info=Array OK
-open OK
-connection closed...
-close OK
-OK
-new connection... connect=Resource id #13, info=Array OK
-open OK
-connection closed...
-close OK
-OK
-new connection... connect=Resource id #16, info=Array OK
-open OK
-connection closed...
-close OK
-OK
 new connection... connect=Resource id #20, info=Array OK
 open OK
-connection closed...
-close OK
-OK
-new connection... connect=Resource id #23, info=Array OK
-open OK
-connection closed...
-close OK
-OK
-new connection... connect=Resource id #26, info=Array OK
-open OK
-connection closed...
-close OK
-OK
-new connection... connect=Resource id #29, info=Array OK
-open OK
-connection closed...
-close OK
-OK
-new connection... connect=Resource id #32, info=Array OK
-open OK
-connection closed...
-close OK
-OK
-new connection... connect=Resource id #35, info=Array OK
-open OK
-connection closed...
-close OK
-OK
-new connection... connect=Resource id #38, info=Array OK
-open OK
-connection closed...
-close OK
-OK
-new connection... connect=Resource id #51, info=Array OK
-open OK
 off file found
-time = 87.94000005722
+time = 209.61999988556
 socket - closed
 pidfile /var/www/binopt.com/scripts/pid_file.pid unlinked
 offfile /var/www/binopt.com/scripts/off_file.pid unlinked
 console - end
 console - start
 echows - try to start...
-OK getmypid = 3615
-socket - try to start...
-new connection... connect=Resource id #10, info=Array OK
-open OK
-off file found
-time = 91.509999990463
-socket - closed
-pidfile /var/www/binopt.com/scripts/pid_file.pid unlinked
-offfile /var/www/binopt.com/scripts/off_file.pid unlinked
-console - end
-console - start
-echows - try to start...
-OK getmypid = 3742
-socket - try to start...
-new connection... connect=Resource id #17, info=Array OK
-open OK
-console - start
-echows - try to start...
-daemon already running info=root         1  0.0  0.0 120044  6184 ?        Ss   14:59   0:01 /sbin/init splash
-CANCEL echows - already active
-console - end
-console - start
-echows - try to start...
-daemon already running info=root         1  0.0  0.0 120044  6184 ?        Ss   14:59   0:01 /sbin/init splash
-CANCEL echows - already active
-console - end
-off file found
-time = 521.23000001907
-socket - closed
-pidfile /var/www/binopt.com/scripts/pid_file.pid unlinked
-offfile /var/www/binopt.com/scripts/off_file.pid unlinked
-console - end
-console - start
-echows - try to start...
-OK getmypid = 4000
-socket - try to start...
-new connection... connect=Resource id #21, info=Array OK
-open OK
-off file found
-time = 201.60000014305
-socket - closed
-pidfile /var/www/binopt.com/scripts/pid_file.pid unlinked
-offfile /var/www/binopt.com/scripts/off_file.pid unlinked
-console - end
-console - start
-echows - try to start...
-OK getmypid = 4181
-socket - try to start...
-new connection... connect=Resource id #43, info=Array OK
-open OK
-off file found
-time = 48.94000005722
-socket - closed
-pidfile /var/www/binopt.com/scripts/pid_file.pid unlinked
-offfile /var/www/binopt.com/scripts/off_file.pid unlinked
-console - end
-console - start
-echows - try to start...
-OK getmypid = 4207
-socket - try to start...
-off file found
-time = 61.079999923706
-socket - closed
-pidfile /var/www/binopt.com/scripts/pid_file.pid unlinked
-offfile /var/www/binopt.com/scripts/off_file.pid unlinked
-console - end
-console - start
-echows - try to start...
-OK getmypid = 4245
+OK getmypid = 3391
 socket - try to start...
 new connection... connect=Resource id #10, info=Array OK
 open OK
 connection closed...
 close OK
 OK
-new connection... connect=Resource id #26, info=Array OK
+new connection... connect=Resource id #724, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #780, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #905, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #912, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #972, info=Array OK
 open OK
 off file found
-time = 376.08000016212
+time = 1027.5799999237
 socket - closed
 pidfile /var/www/binopt.com/scripts/pid_file.pid unlinked
 offfile /var/www/binopt.com/scripts/off_file.pid unlinked
 console - end
 console - start
 echows - try to start...
-OK getmypid = 4872
+OK getmypid = 4271
 socket - try to start...
 new connection... connect=Resource id #10, info=Array OK
 open OK
-connection closed...
-close OK
-OK
