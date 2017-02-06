@@ -58,3 +58,258 @@ close OK
 OK
 new connection... connect=Resource id #1367, info=Array OK
 open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1532, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1584, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1675, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2234, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2330, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2382, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2685, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2708, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2832, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #3627, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #3729, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4008, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4016, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4096, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4102, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4111, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4117, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4137, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4143, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4215, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4224, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4281, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4333, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4421, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #4978, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5027, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5053, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5059, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5065, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5071, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5077, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5083, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5116, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5125, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5131, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5150, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5309, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5315, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5321, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5344, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5357, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5363, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5380, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5401, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5407, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5457, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5582, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5628, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #5890, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #6306, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #6407, info=Array OK
+open OK

@@ -501,6 +501,6 @@ class User extends \Phalcon\Mvc\Model
             $result['balance'] = $balance;
         }
 
-        return $currentbalance;
+        return $balance;
     }
 }

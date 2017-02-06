@@ -6,27 +6,31 @@
 	var xhttp;
 	var startserveraddress = 'http://binopt.com/api/v1/websocket/check';
     var instrumentsaddress = 'http://binopt.com/api/v1/instruments';
+    var investsaddress = 'http://binopt.com/api/v1/invests';
+    var bettsaddress = 'http://binopt.com/api/v1/bets';
 
     ////////////////////////////////////////////////////////////////////////////
     var init = function () {
-
 		wsserverrun();
 		
 		socket = new WebSocket("ws://127.0.0.1:8887");
-
-		socket.onopen = connectionOpen; 
 		socket.onmessage = messageReceived;
+
         document.getElementById("currency-select").onchange = function () {
             socket.send(this.value);
         };
 
-        getOptions();
+        setInstruments();
+        setInvests();
+
+        document.getElementById("high-button").onclick = function() {
+            betfunction(1);
+        }
+
+        document.getElementById("low-button").onclick = function() {
+            betfunction(0);
+        }
     };
-
-
-	function connectionOpen() {
-	   socket.send("Connection with \""+document.getElementById("sock-addr").value+"\" Подключение установлено обоюдно, отлично!");
-	}
 
 	function messageReceived(e) {
         var result = JSON.parse(e.data);
@@ -43,29 +47,22 @@
         }
 	}
 
-    function connectionClose() {
-        socket.close();
-        document.getElementById("sock-info").innerHTML += "Соединение закрыто <br />";
-
-    }
-
     var wsserverrun = function() {
         xhttp = new XMLHttpRequest();
         xhttp.open('GET',startserveraddress,false);
         xhttp.send();
     };
 
-	function getOptions(){
-        xhttp = new XMLHttpRequest();
-        xhttp.open('GET',instrumentsaddress,true);
+	function setInstruments() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('GET', instrumentsaddress, true);
         xhttp.send();
         xhttp.onreadystatechange = function () {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
                 var data = JSON.parse(xhttp.responseText)["data"];
                 var select = document.getElementById('currency-select');
 
-                for(var item in data)
-                {
+                for (var item in data) {
                     var opt = document.createElement('option');
                     opt.value = data[item]["id"];
                     opt.innerHTML = data[item]["name"];
@@ -74,6 +71,50 @@
             }
         }
     }
+
+    function setInvests() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('GET', investsaddress, true);
+        xhttp.send();
+
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                var data = JSON.parse(xhttp.responseText)["data"];
+                var select = document.getElementById('invest-select');
+
+                for (var item in data) {
+                    var opt = document.createElement('option');
+                    opt.value = data[item]["id"];
+                    opt.innerHTML = data[item]["size"];
+                    select.appendChild(opt);
+                }
+            }
+        }
+    }
+
+    function betfunction(updown) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", bettsaddress, true);/*
+         xhr.setRequestHeader("Content-type", "application/json");*/
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var json = JSON.parse(xhr.responseText);
+                document.getElementById("bet-result").innerHTML = json["meta"]["message"];
+            }
+        }
+
+        var instrument = document.getElementById("currency-select");
+        var invest = document.getElementById("invest-select");
+        var data = JSON.stringify([
+            {
+                "account": 2,
+                "invest": invest.options[invest.selectedIndex].value,
+                "instrument": instrument.options[instrument.selectedIndex].value,
+                "updown": updown
+            }
+        ]);
+        xhr.send(data);
+    };
 
 	return {
         ////////////////////////////////////////////////////////////////////////////

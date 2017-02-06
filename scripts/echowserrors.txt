@@ -21,3 +21,158 @@
 [06-Feb-2017 20:34:53 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
 [06-Feb-2017 20:34:53 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
 [06-Feb-2017 20:34:53 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 20:37:28 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:37:28 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:37:28 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 20:38:12 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:38:12 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:38:12 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 20:39:37 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:39:37 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:39:37 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 20:48:23 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:48:23 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:48:23 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 20:49:49 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:49:49 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:49:49 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 20:50:35 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:50:35 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:50:35 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 20:55:32 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:55:32 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:55:32 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 20:55:50 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:55:50 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:55:50 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 20:57:49 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:57:49 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:57:49 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:00:34 Europe/Helsinki] PHP Warning:  Invalid argument supplied for foreach() in /var/www/binopt.com/scripts/echows.php on line 98
+[06-Feb-2017 21:00:34 Europe/Helsinki] PHP Notice:  Undefined offset: 6 in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:10:59 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:10:59 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:10:59 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:12:35 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:12:35 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:12:35 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:17:08 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:17:08 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:17:08 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:17:10 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:17:10 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:17:10 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:18:25 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:25 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:25 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:18:25 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:25 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:25 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:18:29 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:29 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:29 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:18:30 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:30 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:30 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:18:45 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:45 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:45 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:18:45 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:45 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:18:45 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:19:52 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:19:52 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:19:52 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:19:56 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:19:56 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:19:56 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:20:48 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:20:48 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:20:48 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:21:34 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:21:34 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:21:34 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:22:57 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:22:57 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:22:57 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:32:09 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:32:09 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:32:09 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:32:53 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:32:53 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:32:53 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:33:13 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:13 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:14 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:33:14 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:14 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:14 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:15 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:33:42 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:42 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:42 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:33:46 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:46 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:46 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:33:46 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:46 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:33:46 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:34:00 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:34:00 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:34:00 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:36:34 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:36:34 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:36:34 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:36:35 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:36:35 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:36:35 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:36:35 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:36:35 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:36:35 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:36:52 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:36:52 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:36:52 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:37:00 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:37:00 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:37:01 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:37:01 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:37:01 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:37:01 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:37:12 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:37:12 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:37:12 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:37:28 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:37:28 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:37:28 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:37:29 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:37:29 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:37:29 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:38:14 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:38:14 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:38:14 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:40:14 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:40:14 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:40:14 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:40:55 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:40:55 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:40:55 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:45:09 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:45:09 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:45:09 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:49:12 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:49:12 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:52:01 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 21:53:35 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:53:35 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 21:53:36 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68

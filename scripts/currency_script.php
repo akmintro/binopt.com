@@ -3,7 +3,7 @@ error_reporting(0);
 
 function get_rand($max, $last)
 {
-    $q = 0.45;
+    $q = 0.5;
     $fullsum = (1 - $q**($last+1))/(1 - $q) + (1 - $q**($max-$last+1))/(1 - $q) - 1;
 
     $array = array();
@@ -185,7 +185,7 @@ while(true) {
             foreach ($real_data as $key => $value) {
                 if ($key != "time") {
                     $name = $value['summaryName'];
-                    $real = floatval(str_replace(',', '.', $value['summaryLast']));
+                    $real = str_replace(',', '.', $value['summaryLast']);
                     $current = ($current_data == null || !isset($current_data[$key])) ? $real : $current_data[$key]['last'];
                     $value = array("name" => $name, "real" => $real, "current" => $current);
                 }

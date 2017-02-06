@@ -15,7 +15,7 @@ class InvestManager extends BaseManager
         return Invest::findFirstById((int)$id);
     }
 
-    public function restGet(array $parameters = null, $limit = 10, $offset = 0)
+    public function restGet(array $parameters = null)
     {
         $items = $this->find($parameters);
         $data = $items->filter(function ($item) {
@@ -24,13 +24,11 @@ class InvestManager extends BaseManager
         $meta = [
             "code" => 200,
             "message" => "OK",
-            "limit" => (int)$limit,
-            "offset" => (int)$offset,
             "total" => count($data)
         ];
 
         if (count($data) > 0) {
-            return ["meta" => $meta, "data" => array_slice($data, $offset, $limit)];
+            return ["meta" => $meta, "data" => $data];
         }
 
         if (isset($parameters['bind']['id'])) {
