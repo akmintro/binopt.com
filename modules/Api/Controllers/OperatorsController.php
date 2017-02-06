@@ -22,10 +22,16 @@ class OperatorsController extends BaseController {
                 $binds['name'] = $name;
             }
 
-            $email = $this->request->getQuery('email');
+            $email = $this->request->getQuery('emailsuffix');
             if($email != null) {
                 $conditions[] = 'emailsuffix = :email:';
                 $binds['email'] = $email;
+            }
+            
+            $ip = $this->request->getQuery('ip');
+            if($ip != null) {
+                $conditions[] = 'ip = :ip:';
+                $binds['ip'] = $ip;
             }
 
             $start = $this->request->getQuery('start');
