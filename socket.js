@@ -32,7 +32,7 @@
         var result = JSON.parse(e.data);
 
         if(result["type"] == "current")
-        	document.getElementById("sock-current").innerHTML = result["data"]["name"] + ": " + result["data"]["last"];
+        	document.getElementById("sock-current").innerHTML = result["data"]["name"] + ": " + result["data"]["last"].toFixed(result["data"]["length"]);
         else if(result["type"] == "history") {
             var text = "";
             var data = result["data"]["data"];

@@ -53,3 +53,8 @@ OK getmypid = 4271
 socket - try to start...
 new connection... connect=Resource id #10, info=Array OK
 open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1367, info=Array OK
+open OK

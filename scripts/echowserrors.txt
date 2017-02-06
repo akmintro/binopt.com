@@ -18,3 +18,6 @@
 [06-Feb-2017 20:10:43 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
 [06-Feb-2017 20:10:43 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
 [06-Feb-2017 20:12:25 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
+[06-Feb-2017 20:34:53 Europe/Helsinki] PHP Notice:  Undefined index: é in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:34:53 Europe/Helsinki] PHP Notice:  fwrite(): send of 6 bytes failed with errno=32 Broken pipe in /var/www/binopt.com/scripts/echows.php on line 107
+[06-Feb-2017 20:34:53 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68

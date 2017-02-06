@@ -71,7 +71,7 @@ function get_rand($max, $last)
 }
  */
 
-function get_last($cur_val, $real_val)
+function get_last($cur_val, $real_val, &$length)
 {
     $full = 14;
     $half = $full/2;
@@ -176,7 +176,7 @@ while(true) {
 
         if (($i % 6) == 0) {
             $real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1,2,3,4,5,6,7,8,9,11,12,15,16,49,50,53,54,57&timeframe=60'), true);
-            //$real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1&timeframe=60'), true);
+
             if (file_exists($filename))
                 $current_data = json_decode(file_get_contents($filename), true);
             else
@@ -195,9 +195,10 @@ while(true) {
 
         foreach ($data as $key => $value) {
             if ($key != "time") {
-                $last = get_last($value['current'], $value['real']);
+                $length = 0;
+                $last = get_last($value['current'], $value['real'], $length);
                 $value['current'] = $last;
-                $new_value = array("name" => $value['name'], "last" => $last);
+                $new_value = array("name" => $value['name'], "last" => $last, "length" => $length);
             } else
                 $new_value = $value = $current_time;
 
