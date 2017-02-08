@@ -4,10 +4,14 @@
     // ======== private vars ========
 	var socket;
 	var xhttp;
-	var startserveraddress = 'http://binopt.com/api/v1/websocket/check';
+	var startserveraddress = 'http://binopt.com/api/v1/websocket/start';
     var instrumentsaddress = 'http://binopt.com/api/v1/instruments';
     var investsaddress = 'http://binopt.com/api/v1/invests';
     var bettsaddress = 'http://binopt.com/api/v1/bets';
+    var chart;
+    var series;
+    var lastpoint = null;
+    var tzoffset = -new Date().getTimezoneOffset()*60000;
 
     ////////////////////////////////////////////////////////////////////////////
     var init = function () {
@@ -18,6 +22,8 @@
 
         document.getElementById("currency-select").onchange = function () {
             socket.send(this.value);
+
+            setChartNames(this);
         };
 
         setInstruments();
@@ -30,20 +36,112 @@
         document.getElementById("low-button").onclick = function() {
             betfunction(0);
         }
+
+        chart = Highcharts.chart('container', {
+            chart: {/*
+                //zoomType: 'x'
+                events: {
+                 load: function () {
+
+                 // set up the updating of the chart each second
+                 var series = this.series[0];
+                 setInterval(function () {
+                 var x = (new Date()).getTime(), // current time
+                 y = Math.random();
+                 series.addPoint([x, y], true, true);
+                 }, 1000);
+                 }
+                 }*/
+            },
+            title: {
+                text: 'USD to EUR exchange rate over time'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Exchange rate'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+            series: [{
+                type: 'area'
+            }]
+        });
+
+        series = chart.series[0];
     };
 
 	function messageReceived(e) {
         var result = JSON.parse(e.data);
 
-        if(result["type"] == "current")
-        	document.getElementById("sock-current").innerHTML = result["data"]["name"] + ": " + result["data"]["last"].toFixed(result["data"]["length"]);
-        else if(result["type"] == "history") {
-            var text = "";
-            var data = result["data"]["data"];
-            for (var item in data) {
-                text += data[item]["value"] + "<br>";
+        if(result["type"] == "current") {
+            document.getElementById("sock-current").innerHTML = result["data"]["name"] + ": " + result["data"]["close"].toFixed(result["data"]["length"]);
+
+            var time = Date.parse(result["time"] + " GMT")+tzoffset;
+
+
+            if((time-1000) % 10000 == 0 || lastpoint == null) {
+                series.addPoint([time, result["data"]["close"]], true, series.data.length > 360);
+                lastpoint = series.data[series.data.length-1];
             }
-            document.getElementById("sock-history").innerHTML = text;
+            lastpoint.x = time;
+            lastpoint.y = result["data"]["close"];
+            lastpoint.update();
+        }
+        else if(result["type"] == "history") {
+
+            var res = result["data"]["data"];
+
+            var text = "[";
+            var i = 0;
+            for (var item in res) {
+                if(i>0)
+                    text += ",";
+                text += "[" + (Date.parse(res[item]["currencytime"] + " GMT")+tzoffset) + "," + res[item]["close"] + "]";
+                i++;
+            }
+            text += "]";
+
+            var data = JSON.parse(text);
+
+            series.setData(data);
+
+            lastpoint = null;
         }
 	}
 
@@ -68,6 +166,7 @@
                     opt.innerHTML = data[item]["name"];
                     select.appendChild(opt);
                 }
+                setChartNames(select);
             }
         }
     }
@@ -115,6 +214,14 @@
         ]);
         xhr.send(data);
     };
+
+	function setChartNames(select)
+    {
+        var name = select.options[select.selectedIndex].text;
+        console.log(name);
+        series.name = name;
+        chart.setTitle({ text: name + ' exchange rate over time'});
+    }
 
 	return {
         ////////////////////////////////////////////////////////////////////////////

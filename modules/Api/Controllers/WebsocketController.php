@@ -2,24 +2,6 @@
 namespace App\Api\Controllers;
 
 class WebsocketController extends BaseController {
-    public function checkAction() {
-        try {
-            $pidfile = $this->config->parameters->scriptsfolder.'/pid_file.pid';
-            if( !file_exists($pidfile) ) {
-                $st_output = $this->perform("start");
-            }
-            else {
-                $st_output = $this->perform("status");
-            }
-
-            return $this->render($st_output);
-        } catch (\Exception $e) {
-            return $this->render(["meta" => [
-                'code' => $e->getCode(),
-                'message' => $e->getMessage()
-            ]]);
-        }
-    }
 
     public function startAction() {
         try {
@@ -115,7 +97,7 @@ class WebsocketController extends BaseController {
 
             //получаем статус процесса
             $output = null;
-            exec("ps -aux -p ".$pid, $output);
+            exec("ps -p ".$pid, $output);
 
             if(count($output)>1){//Если в результате выполнения больше одной строки то процесс есть! т.к. первая строка это заголовок, а вторая уже процесс
                 return "ws echo server is running with PID =".$pid;
@@ -134,7 +116,7 @@ class WebsocketController extends BaseController {
 
             //получаем статус процесса
             $output = null;
-            exec("ps -aux -p ".$pid, $output);
+            exec("ps -p ".$pid, $output);
 
             if(count($output)>1){//Если в результате выполнения больше одной строки то процесс есть! т.к. первая строка это заголовок, а вторая уже процесс
                 return $pid;

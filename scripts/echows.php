@@ -84,7 +84,7 @@ while (true) {
 		    unset($connects[$id]);
 		    unset($currency[$id]);
 		    onClose($connect);//вызываем пользовательский сценарий
-				consolemsg("OK");    
+			consolemsg("OK");
 		    continue;
 		}
 
@@ -99,7 +99,7 @@ while (true) {
     {
         if($key != "time")
         {
-            $package[$key] = ["data" => $val, "type" => "current"];
+            $package[$key] = ["data" => $val, "type" => "current", "time" => $json_data["time"]];
         }
     }
 
@@ -397,7 +397,7 @@ function isDaemonActive($pidfile) {
 function getDaemonStatus($pid) {
 	$result = array ('run'=>false);
 	$output = null;
-	exec("ps -aux -p ".$pid, $output);
+	exec("ps -p ".$pid, $output);
 
 	if(count($output)>1){//Если в результате выполнения больше одной строки то процесс есть! т.к. первая строка это заголовок, а вторая уже процесс
 		$result['run'] = true;
