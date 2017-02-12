@@ -43,7 +43,7 @@ class CurrencyManager extends BaseManager
             if($id == 'time')
                 continue;
             $item = new Currency();
-            $this->setFields($item, $id, $obj['last'], $time);
+            $this->setFields($item, $id, $obj, $time);
 
             if (false === $item->create()) {
                 foreach ($item->getMessages() as $message) {
@@ -59,13 +59,22 @@ class CurrencyManager extends BaseManager
         ], "data" => $items];
     }
 
-    private function setFields($item, $instrument, $value, $time)
+    private function setFields($item, $instrument, $obj, $time)
     {
         if (isset($instrument))
             $item->setInstrument($instrument);
 
-        if ($value)
-            $item->setValue($value);
+        if ($obj['open'])
+            $item->setOpen($obj['open']);
+
+        if ($obj['close'])
+            $item->setClose($obj['close']);
+
+        if ($obj['min'])
+            $item->setMin($obj['min']);
+
+        if ($obj['max'])
+            $item->setMax($obj['max']);
 
         if ($time)
             $item->setCurrencytime($time);

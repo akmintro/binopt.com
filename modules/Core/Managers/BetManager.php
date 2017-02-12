@@ -77,7 +77,7 @@ class BetManager extends BaseManager
 
         foreach ($items as $item)
         {
-            $this->setFields($item,  ['endtime' => $currency_data['time'], 'endval' => $currency_data[$item->getInstrument()]['last']]);
+            $this->setFields($item,  ['endtime' => $currency_data['time'], 'endval' => $currency_data[$item->getInstrument()]['close']]);
 
             if (false === $item->update()) {
                 foreach ($item->getMessages() as $message) {
@@ -121,7 +121,7 @@ class BetManager extends BaseManager
         if(!isset($currency_data['time']))
             throw new \Exception('time not found', 404);
 
-        $data[0]['startval'] = $currency_data[$data[0]['instrument']]['last'];
+        $data[0]['startval'] = $currency_data[$data[0]['instrument']]['close'];
         $data[0]['starttime'] = $currency_data['time'];
         $this->setFields($item, $data[0]);
 

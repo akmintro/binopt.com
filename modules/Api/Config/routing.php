@@ -351,6 +351,30 @@ $currency->addDelete('', array(
     'action' => 'delete'
 ));
 
+// Websocket group
+$ws = new \Phalcon\Mvc\Router\Group(array(
+    'module' => 'api',
+    'controller' => 'websocket'
+));
+
+$ws->setPrefix($versions['v1'].'/websocket');
+
+$ws->addGet('/start', array(
+    'action' => 'start'
+));
+
+$ws->addGet('/stop', array(
+    'action' => 'stop'
+));
+
+$ws->addGet('/status', array(
+    'action' => 'status'
+));
+
+$ws->addGet('/check', array(
+    'action' => 'check'
+));
+
 $router->mount($operators);
 $router->mount($users);
 $router->mount($countries);
@@ -365,5 +389,6 @@ $router->mount($deposits);
 $router->mount($withdrawals);
 $router->mount($summary);
 $router->mount($currency);
+$router->mount($ws);
 
 ?>

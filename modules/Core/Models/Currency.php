@@ -7,23 +7,46 @@ class Currency extends \Phalcon\Mvc\Model
     /**
      *
      * @var string
+     * @Primary
      * @Column(type="string", nullable=false)
      */
     protected $currencytime;
 
     /**
      *
-     * @var double
-     * @Column(type="double", length=7, nullable=false)
-     */
-    protected $value;
-
-    /**
-     *
      * @var integer
+     * @Primary
      * @Column(type="integer", length=11, nullable=false)
      */
     protected $instrument;
+
+    /**
+     *
+     * @var double
+     * @Column(type="double", length=10, nullable=false)
+     */
+    protected $open;
+
+    /**
+     *
+     * @var double
+     * @Column(type="double", length=10, nullable=false)
+     */
+    protected $close;
+
+    /**
+     *
+     * @var double
+     * @Column(type="double", length=10, nullable=false)
+     */
+    protected $min;
+
+    /**
+     *
+     * @var double
+     * @Column(type="double", length=10, nullable=false)
+     */
+    protected $max;
 
     /**
      * Method to set the value of field currencytime
@@ -34,19 +57,6 @@ class Currency extends \Phalcon\Mvc\Model
     public function setCurrencytime($currencytime)
     {
         $this->currencytime = $currencytime;
-
-        return $this;
-    }
-
-    /**
-     * Method to set the value of field value
-     *
-     * @param double $value
-     * @return $this
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
 
         return $this;
     }
@@ -65,6 +75,58 @@ class Currency extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field open
+     *
+     * @param double $open
+     * @return $this
+     */
+    public function setOpen($open)
+    {
+        $this->open = $open;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field close
+     *
+     * @param double $close
+     * @return $this
+     */
+    public function setClose($close)
+    {
+        $this->close = $close;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field min
+     *
+     * @param double $min
+     * @return $this
+     */
+    public function setMin($min)
+    {
+        $this->min = $min;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field max
+     *
+     * @param double $max
+     * @return $this
+     */
+    public function setMax($max)
+    {
+        $this->max = $max;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field currencytime
      *
      * @return string
@@ -72,16 +134,6 @@ class Currency extends \Phalcon\Mvc\Model
     public function getCurrencytime()
     {
         return $this->currencytime;
-    }
-
-    /**
-     * Returns the value of field value
-     *
-     * @return double
-     */
-    public function getValue()
-    {
-        return $this->value;
     }
 
     /**
@@ -95,12 +147,52 @@ class Currency extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field open
+     *
+     * @return double
+     */
+    public function getOpen()
+    {
+        return $this->open;
+    }
+
+    /**
+     * Returns the value of field close
+     *
+     * @return double
+     */
+    public function getClose()
+    {
+        return $this->close;
+    }
+
+    /**
+     * Returns the value of field min
+     *
+     * @return double
+     */
+    public function getMin()
+    {
+        return $this->min;
+    }
+
+    /**
+     * Returns the value of field max
+     *
+     * @return double
+     */
+    public function getMax()
+    {
+        return $this->max;
+    }
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
     {
         $this->setSchema("binopt");
-        $this->belongsTo('instrument', '\Instrument', 'id', ['alias' => 'Instrument']);
+        $this->belongsTo('instrument', 'App\Core\Models\Instrument', 'id', ['alias' => 'Instrument']);
     }
 
     /**

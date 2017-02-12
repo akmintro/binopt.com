@@ -1,6 +1,4 @@
 <?php
-$filename = "currency_data.txt";
-
 //system config
 error_reporting(E_ALL); //Выводим все ошибки и предупреждения
 set_time_limit(0);		//Время выполнения скрипта безгранично
@@ -11,19 +9,19 @@ ignore_user_abort(true);//Выключаем зависимость от пол�
 $baseDir = dirname(__FILE__);
 $pidfile = $baseDir.'/pid_file.pid';
 $offfile = $baseDir.'/off_file.pid';
+$currencyfile = $baseDir.'/currency_data.txt';
 
 //srdin/stdout 
-//ini_set('error_log',$baseDir.'/echowserrors.txt');
+ini_set('error_log',$baseDir.'/echowserrors.txt');
 fclose(STDIN);
-//fclose(STDOUT);
+fclose(STDOUT);
 fclose(STDERR);
 $STDIN = fopen('/dev/null', 'r');
-//$STDOUT = fopen($baseDir.'/echowsconsolelog.txt', 'ab');
-//$STDERR = fopen($baseDir.'/echowsconsoleerr.txt', 'ab');
+$STDOUT = fopen($baseDir.'/echowsconsolelog.txt', 'ab');
+$STDERR = fopen($baseDir.'/echowsconsoleerr.txt', 'ab');
 //srdin/stdout 
 
 //log-file
-$GLOBALS['file'] = $baseDir.'/echowslog.html';
 consolestart();
 consolemsg("echows - try to start..."); 
 //log-file
@@ -36,7 +34,7 @@ if (isDaemonActive($pidfile)) {
 	consoleend();
 	exit();
 }
-////file_put_contents($pidfile, getmypid());//СОХРАНЯЕМ PID в файле
+file_put_contents($pidfile, getmypid());//СОХРАНЯЕМ PID в файле
 consolemsg("OK getmypid = ".getmypid()); 
 //pid-file
 
@@ -44,7 +42,7 @@ $timelimit = 0; // если 0, то тогда безлимитно, тольк�
 $starttime = round(microtime(true),2);
 
 consolemsg("socket - try to start...");
-$socket = stream_socket_server("tcp://127.0.0.1:8889", $errno, $errstr);
+$socket = stream_socket_server("tcp://127.0.0.1:8887", $errno, $errstr);
 
 if (!$socket) {
 	consolemsg("ERROR socket unavailable " .$errstr. "(" .$errno. ")");
@@ -71,7 +69,7 @@ while (true) {
 			$connects[] = $connect;//добавляем его в список необходимых для обработки
 			$currency[] = 1;
 			onOpen($connect, $info);//вызываем пользовательский сценарий
-            fwrite($connect, encode(json_encode(["data" => json_decode(file_get_contents("http://binopt.com/api/v1/currency/history?instrument=1"), true), "type" => "history"])));
+            sendhistory($connect, 1);
 		}
 		unset($read[ array_search($socket, $read) ]);
 	}
@@ -86,24 +84,22 @@ while (true) {
 		    unset($connects[$id]);
 		    unset($currency[$id]);
 		    onClose($connect);//вызываем пользовательский сценарий
-				consolemsg("OK");    
+			consolemsg("OK");
 		    continue;
 		}
 
 		$cur = decode($data)["payload"];
 		$currency[array_search($connect, $connects)] = $cur;
-        fwrite($connect, encode(json_encode(["data" => json_decode(file_get_contents("http://binopt.com/api/v1/currency/history?instrument=".$cur), true), "type" => "history"])));
+        sendhistory($connect, $cur);
 	}
 
-	echo count($connects);
-
-    $json_data = json_decode(file_get_contents($filename), true);
+    $json_data = json_decode(file_get_contents($currencyfile), true);
     $package = array();
     foreach ($json_data as $key => $val)
     {
         if($key != "time")
         {
-            $package[$key] = ["data" => $val, "type" => "current"];
+            $package[$key] = ["data" => $val, "type" => "current", "time" => $json_data["time"]];
         }
     }
 
@@ -152,6 +148,11 @@ consolemsg("pidfile ".$pidfile." unlinked");
 consoleend();
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
+
+function sendhistory($connect, $instrument = 1)
+{
+    fwrite($connect, encode(json_encode(["data" => json_decode(file_get_contents("http://binopt.com/api/v1/currency/history?instrument=".$instrument), true), "type" => "history"])));
+}
 
 function handshake($connect) { //Функция рукопожатия
     $info = array();
@@ -350,9 +351,7 @@ function decode($data){
 //пользовательские сценарии:
 
 function onOpen($connect, $info) {
-	consolemsg("open OK"); 
-
-    //fwrite($connect, encode('Привет, мы соеденены'));
+	consolemsg("open OK");
 }
 
 function onClose($connect) {
@@ -364,15 +363,7 @@ function consolestart(){
 }
 
 function consolemsg($msg){
-	$file = null;/*
-	if(!file_exists($GLOBALS['file'])) {
-	    $file = fopen($GLOBALS['file'],"w");
-	}else
-	    $file = fopen($GLOBALS['file'],"a");
-	
 	echo $msg."\r\n";
-	fputs ($file, "[<b>".date("Y.m.d-H:i:s")."</b>]". $msg ."<br />\r\n"); 
-	fclose($file); */
 }
 
 function consoleend(){
@@ -406,7 +397,7 @@ function isDaemonActive($pidfile) {
 function getDaemonStatus($pid) {
 	$result = array ('run'=>false);
 	$output = null;
-	exec("ps -aux -p ".$pid, $output);
+	exec("ps -p ".$pid, $output);
 
 	if(count($output)>1){//Если в результате выполнения больше одной строки то процесс есть! т.к. первая строка это заголовок, а вторая уже процесс
 		$result['run'] = true;

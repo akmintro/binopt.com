@@ -3,7 +3,7 @@ error_reporting(0);
 
 function get_rand($max, $last)
 {
-    $q = 0.45;
+    $q = 0.4;
     $fullsum = (1 - $q**($last+1))/(1 - $q) + (1 - $q**($max-$last+1))/(1 - $q) - 1;
 
     $array = array();
@@ -71,7 +71,7 @@ function get_rand($max, $last)
 }
  */
 
-function get_last($cur_val, $real_val)
+function get_last($cur_val, $real_val, &$length)
 {
     $full = 14;
     $half = $full/2;
@@ -169,6 +169,8 @@ $cleartime = ceil($launchtime/$clearinterval)*$clearinterval;
 
 time_sleep_until($launchtime + 1);
 
+$full_data = null;
+
 while(true) {
     for ($i = $offset; $i < 60; ++$i) {
         //echo $i."\n";
@@ -177,38 +179,57 @@ while(true) {
         if (($i % 6) == 0) {
             $real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1,2,3,4,5,6,7,8,9,11,12,15,16,49,50,53,54,57&timeframe=60'), true);
             //$real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1&timeframe=60'), true);
-            if (file_exists($filename))
-                $current_data = json_decode(file_get_contents($filename), true);
-            else
-                $current_data = null;
 
+            $new_full_data = array("time" => $current_time);
             foreach ($real_data as $key => $value) {
                 if ($key != "time") {
-                    $name = $value['summaryName'];
-                    $real = floatval(str_replace(',', '.', $value['summaryLast']));
-                    $current = ($current_data == null || !isset($current_data[$key])) ? $real : $current_data[$key]['last'];
-                    $value = array("name" => $name, "real" => $real, "current" => $current);
+                    $real = str_replace(',', '.', $value['summaryLast']);
+                    if($full_data != null && isset($full_data[$key]))
+                    {
+                        $new_full_data[$key] = $full_data[$key];
+                        $new_full_data[$key]['real'] = $real;
+                    }
+                    else
+                        $new_full_data[$key] = array("name" => $value['summaryName'], "real" => $real, "open" => $real, "close" => $real, "min" => $real, "max" => $real);
                 }
-                $data[$key] = $value;
             }
+            $full_data = $new_full_data;
         }
 
-        foreach ($data as $key => $value) {
+        $result = array();
+        foreach ($full_data as $key => $value) {
             if ($key != "time") {
-                $last = get_last($value['current'], $value['real']);
-                $value['current'] = $last;
-                $new_value = array("name" => $value['name'], "last" => $last);
+                $length = 0;
+                $newclose = get_last($value['close'], $value['real'], $length);
+                if($newclose < $value['min'])
+                    $value['min'] = $newclose;
+                if($newclose > $value['max'])
+                    $value['max'] = $newclose;
+                $value['close'] = $newclose;
+                $value['length'] = $length;
+                $new_value = $value;
+                unset($new_value['real']);
             } else
                 $new_value = $value = $current_time;
 
-            $data[$key] = $value;
+            $full_data[$key] = $value;
             $result[$key] = $new_value;
         }
-        //var_dump($data);
+
+        //var_dump($full_data);
+
         file_put_contents($filename, json_encode($result));
 
         if (($i % 10) == 0) {
+            //echo $current_time."\n";
             save_history($result);
+
+            foreach ($full_data as $key => $value) {
+                if ($key != "time") {
+                    $value['open'] = $value['min'] = $value['max'] = $value['close'];
+                    $full_data[$key] = $value;
+                }
+            }
         }
 
         time_sleep_until($start + $i + 2);
