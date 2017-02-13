@@ -375,6 +375,37 @@ $ws->addGet('/check', array(
     'action' => 'check'
 ));
 
+
+
+// Sessions group
+$session = new \Phalcon\Mvc\Router\Group(array(
+    'module' => 'api',
+    'controller' => 'session'
+));
+
+$session->setPrefix($versions['v1'].'/session');
+
+$session->addGet('', array(
+    'action' => 'read'
+));
+
+$session->addPost('', array(
+    'action' => 'create'
+));
+
+$session->addPost('/login', array(
+    'action' => 'login'
+));
+
+$session->addPut('', array(
+    'action' => 'update'
+));
+
+$session->addDelete('', array(
+    'action' => 'delete'
+));
+
+
 $router->mount($operators);
 $router->mount($users);
 $router->mount($countries);
@@ -390,5 +421,6 @@ $router->mount($withdrawals);
 $router->mount($summary);
 $router->mount($currency);
 $router->mount($ws);
+$router->mount($session);
 
 ?>

@@ -1,4 +1,11 @@
 <?php
+
+use App\Api\Managers\JWTTokenParser;
+use App\Api\Managers\SessionManager;
+use Phalcon\Cache\Backend\Redis;
+use Phalcon\Cache\Frontend\None as FrontendNone;
+
+
 $di['dispatcher'] = function () use ($di) {
     $eventsManager = $di->getShared('eventsManager');
 /*
@@ -23,4 +30,17 @@ $di['view'] = function () {
 
     return $view;
 };
+
+$di['tokenParser'] = function () {
+    return new JWTTokenParser('borch_z_pampuchkami');
+};
+
+$di['rest_session'] = function () {
+    $redis = new Redis(
+        new FrontendNone(["lifetime" => 36000])
+    );
+//    $redis = new Redis();
+    return new SessionManager(86400, $redis);
+};
+
 ?>
