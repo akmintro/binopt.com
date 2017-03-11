@@ -47,8 +47,8 @@ class CountriesController extends BaseController {
                 $offset = 0;
 
             $limit = $this->request->getQuery('limit');
-            if($limit == null)
-                $limit = 10;
+//            if($limit == null)
+//                $limit = 10;
 
             $st_output = $manager->restGet($parameters, $limit, $offset);
 
