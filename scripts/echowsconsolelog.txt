@@ -1,0 +1,1945 @@
+console - start
+echows - try to start...
+OK getmypid = 3893
+socket - try to start...
+new connection... connect=Resource id #10, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #41, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #386, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #700, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2643, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2755, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2770, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3047, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3061, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3119, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3130, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3140, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3149, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3157, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3177, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3206, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:02 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3218, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:02 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3230, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:02 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #3251, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:02 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #4822, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #5233, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #5252, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #5274, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #5302, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #5320, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #5376, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #5785, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #5801, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6046, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6063, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6115, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6392, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:03 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6411, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:04 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6488, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:04 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6563, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:04 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6609, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:04 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6704, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:04 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6767, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:04 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6904, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:04 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #6931, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:04 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #7126, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:05 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #9503, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:05 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #9556, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:05 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #9578, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:05 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #9618, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:05 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #9688, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:05 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #9731, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:05 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #9763, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:05 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #9890, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:05 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #9929, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:05 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #9959, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #10537, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #10566, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #10589, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #10618, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #10661, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #10852, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #10923, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #10992, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11001, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11084, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11114, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11173, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11191, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11210, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11337, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11418, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11450, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11504, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11546, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11672, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11691, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:06 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11708, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11821, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11857, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #11878, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12058, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12090, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12106, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12174, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12212, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12234, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12252, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12690, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12815, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12921, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #12960, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13001, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13106, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:07 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13130, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13218, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13275, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13344, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13407, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13521, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13569, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13948, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #13987, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14427, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14438, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14480, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14505, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:08 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14539, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14805, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14829, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14845, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14931, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14964, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #14992, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #15069, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #15246, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #15399, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #15410, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #15630, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #15717, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:09 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #15843, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #15908, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #15984, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #16026, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #16219, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #16234, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #16304, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #16339, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #16504, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #16524, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #16547, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #16627, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #16696, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17016, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17084, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17119, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17139, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17164, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:10 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17185, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:11 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17198, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:11 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17214, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:11 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17232, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:11 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17335, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:11 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17542, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 3893 ?        00:00:11 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #17563, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+there is no process with PID = 3893, last termination was abnormal...
+try to unlink PID file...
+OK
+OK getmypid = 5570
+socket - try to start...
+new connection... connect=Resource id #12, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #71, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #99, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #146, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #294, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #320, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #362, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #460, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #470, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #491, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #498, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #707, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #799, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #922, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #1123, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #1399, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #1418, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #1483, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #1514, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #1532, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #1594, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #1786, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2154, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2216, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2236, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2333, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2363, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2396, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2436, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2461, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2578, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2594, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2826, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:02 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2843, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 5570 ?        00:00:02 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2893, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+there is no process with PID = 5570, last termination was abnormal...
+try to unlink PID file...
+OK
+OK getmypid = 14545
+socket - try to start...
+new connection... connect=Resource id #12, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info=14545 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2009, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info=14545 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2158, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info=14545 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2311, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info=14545 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2471, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info=14545 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2605, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info=14545 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2734, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info=14545 ?        00:00:01 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #2775, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+there is no process with PID = 14545, last termination was abnormal...
+try to unlink PID file...
+OK
+OK getmypid = 7373
+socket - try to start...
+new connection... connect=Resource id #12, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 7373 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #41, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 7373 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #123, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 7373 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #162, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 7373 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #254, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 7373 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #317, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 7373 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #343, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 7373 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #385, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 7373 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #418, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 7373 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #539, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+daemon already running info= 7373 ?        00:00:00 php
+CANCEL echows - already active
+console - end
+new connection... connect=Resource id #573, info=Array OK
+open OK
+connection closed...
+close OK
+OK

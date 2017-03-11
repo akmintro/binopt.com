@@ -18,13 +18,13 @@ class WithdrawalsController extends BaseController {
 
             $start = $this->request->getQuery('start');
             if($start != null) {
-                $conditions[] = 'withdrawaltime >= date(:start:)';
+                $conditions[] = 'addtime >= date(:start:)';
                 $binds['start'] = $start;
             }
 
             $end = $this->request->getQuery('end');
             if($end != null) {
-                $conditions[] = 'deposittime <= date(:end:)';
+                $conditions[] = 'finishtime <= date(:end:)';
                 $binds['end'] = $end;
             }
 

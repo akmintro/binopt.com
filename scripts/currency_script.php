@@ -223,18 +223,23 @@ while(true) {
         if (($i % 10) == 0) {
             //echo $current_time."\n";
             save_history($result);
-
-            foreach ($full_data as $key => $value) {
-                if ($key != "time") {
-                    $value['open'] = $value['min'] = $value['max'] = $value['close'];
-                    $full_data[$key] = $value;
+            if($i == 0)
+            {
+                foreach ($full_data as $key => $value) {
+                    if ($key != "time") {
+                        $value['open'] = $value['min'] = $value['max'] = $value['close'];
+                        $full_data[$key] = $value;
+                    }
                 }
+                echo $current_time."\n";
             }
         }
 
         time_sleep_until($start + $i + 2);
     }
     close_bets(gmdate("Y-m-d H:i:s", $start));
+
+
 
     $start += 60;
     $offset = 0;
