@@ -89,7 +89,7 @@ class User extends \Phalcon\Mvc\Model
     /**
      *
      * @var integer
-     * @Column(type="integer", length=11, nullable=false)
+     * @Column(type="integer", length=11, nullable=true)
      */
     protected $operator;
 
@@ -99,6 +99,13 @@ class User extends \Phalcon\Mvc\Model
      * @Column(type="integer", length=11, nullable=true)
      */
     protected $timezoneoffset;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", length=40, nullable=true)
+     */
+    protected $activation;
 
     /**
      * Method to set the value of field id
@@ -270,6 +277,19 @@ class User extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field activation
+     *
+     * @param string $activation
+     * @return $this
+     */
+    public function setActivation($activation)
+    {
+        $this->activation = $activation;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field id
      *
      * @return integer
@@ -400,6 +420,16 @@ class User extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field activation
+     *
+     * @return string
+     */
+    public function getActivation()
+    {
+        return $this->activation;
+    }
+
+    /**
      * Validations and business logic
      *
      * @return boolean
@@ -481,6 +511,30 @@ class User extends \Phalcon\Mvc\Model
     }
 
     public function getBalance(&$result)
+    {
+        $balance = $deposits = $withdrawals = $wins = $loses = $ingame = null;
+        $account = $this->getRealAccount();
+        if($account != null) {
+            $deposits = $account->getDeposits();
+            $withdrawals = $account->getWithdrawals();
+            $account->getBetStat($wins, $loses, $ingame);
+            $balance = $deposits - $withdrawals + $wins - $loses - $ingame;
+        }
+
+        if($result != null)
+        {
+            $result['deposits'] = $deposits;
+            $result['withdrawals'] = $withdrawals;
+            $result['wins'] = $wins;
+            $result['loses'] = $loses;
+            $result['ingame'] = $ingame;
+            $result['balance'] = $balance;
+        }
+
+        return $balance;
+    }
+
+    public function getBalanceAmount($isreal = true)
     {
         $balance = $deposits = $withdrawals = $wins = $loses = $ingame = null;
         $account = $this->getRealAccount();

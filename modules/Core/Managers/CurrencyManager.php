@@ -15,8 +15,9 @@ class CurrencyManager extends BaseManager
         $items = $this->find($parameters);
 
         $data = $items->filter(function ($item) {
-            return $item->toArray();
+            return ["open" => $item->getOpen(), "max" => $item->getMax(), "min" => $item->getMin(), "close" => $item->getClose(), "currencytime" => $item->getCurrencytime()];
         });
+
         $meta = [
             "code" => 200,
             "message" => "OK",
@@ -36,14 +37,14 @@ class CurrencyManager extends BaseManager
 
     public function restCreate($data)
     {
-        $time = $data['time'];
+        //$time = $data['time'];
         $items = [];
         foreach($data as $id => $obj)
         {
-            if($id == 'time')
-                continue;
+            //if($id == 'time')
+            //    continue;
             $item = new Currency();
-            $this->setFields($item, $id, $obj, $time);
+            $this->setFields($item, $id, $obj);
 
             if (false === $item->create()) {
                 foreach ($item->getMessages() as $message) {
@@ -59,7 +60,7 @@ class CurrencyManager extends BaseManager
         ], "data" => $items];
     }
 
-    private function setFields($item, $instrument, $obj, $time)
+    private function setFields($item, $instrument, $obj)
     {
         if (isset($instrument))
             $item->setInstrument($instrument);
@@ -76,8 +77,8 @@ class CurrencyManager extends BaseManager
         if ($obj['max'])
             $item->setMax($obj['max']);
 
-        if ($time)
-            $item->setCurrencytime($time);
+        if ($obj['currencytime'])
+            $item->setCurrencytime($obj['currencytime']);
     }
 
     public function restDelete($before)

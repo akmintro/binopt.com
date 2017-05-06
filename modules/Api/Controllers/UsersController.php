@@ -1,6 +1,7 @@
 <?php
 namespace App\Api\Controllers;
 
+
 class UsersController extends BaseController {
 
     public function readAction() {
@@ -162,25 +163,6 @@ class UsersController extends BaseController {
                 throw new \Exception('Please provide data', 400);
             }
             $st_output = $manager->restCreate($data);
-            return $this->render($st_output);
-        } catch (\Exception $e) {
-            return $this->render(["meta" => [
-                'code' => $e->getCode(),
-                'message' => $e->getMessage()
-            ]]);
-        }
-    }
-
-    public function loginAction() {
-
-        try {
-            $manager = $this->getDI()->get('core_user_manager');
-            $data = $this->request->getJsonRawBody(true);
-
-            if (count($data) == 0) {
-                throw new \Exception('Please provide data', 400);
-            }
-            $st_output = $manager->restLogin($data);
             return $this->render($st_output);
         } catch (\Exception $e) {
             return $this->render(["meta" => [

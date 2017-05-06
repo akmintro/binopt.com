@@ -225,10 +225,83 @@ class UserManager extends BaseManager
             throw new \Exception('incorrect password', 500);
         }
 
+        return $data[0];
+    }
+
+    public function regiterUser($data) {
+
+        if (User::findFirst(["email = :email:", 'bind' => ['email' => $data[0]['email']]])) {
+            return ["meta" => [
+                "code" => 500,
+                "message" => "email is taken"
+            ]];
+        }
+
+        $code = "";
+        $code .= substr(md5((microtime() - rand(3,1000000)) * rand(1,1000)),rand(0,20),10);
+        $code .= substr(md5((microtime() - rand(3,1000000)) * rand(1,1000)),rand(0,20),10);
+        $code .= substr(md5((microtime() - rand(3,1000000)) * rand(1,1000)),rand(0,20),10);
+        $code .= substr(md5((microtime() - rand(3,1000000)) * rand(1,1000)),rand(0,20),10);
+
+        $item = new User();
+        $this->setFields($item, $data[0]);
+
+        $item->setActivation($code);
+
+        if (false === $item->create()) {
+            foreach ($item->getMessages() as $message) {
+                throw new \Exception($message->getMessage(), 500);
+            }
+        }
+
+        $to = $item->getEmail();
+
+        $mailer = new \Phalcon\Ext\Mailer\Manager([
+
+            'driver' 	 => 'smtp',
+            'host'	 	 => 'smtp.gmail.com',
+            'port'	 	 => 465,
+            'encryption' => 'ssl',
+            'username'   => $this->config->parameters->gmailusername,
+            'password'	 => $this->config->parameters->gmailpassword,
+            'from'		 => [
+                'email' => 'example@gmail.com',
+                'name'	=> 'YOUR FROM NAME'
+            ]
+        ]);
+
+        $message = $mailer->createMessage()
+            ->to($to)
+            ->subject('Hello world!')
+            ->content('<a href="https://binopt.com/api/v1/users/activate?email='.$to.'&code='.$code.'">Activate account</a>');
+
+        // Set the Cc addresses of this message.
+                //$message->cc('example_cc@gmail.com');
+
+        // Set the Bcc addresses of this message.
+                //$message->bcc('example_bcc@gmail.com');
+
+        // Send message
+        $message->send();
+
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => []];
+        ]];
+    }
+
+    public function activateUser(array $parameters) {
+        $user = User::findFirst($parameters);
+
+        if($user == null)
+            throw new \Exception('account not found', 404);
+
+        $user->setActivation(null);
+        if (false === $user->update()) {
+            foreach ($user->getMessages() as $message) {
+                throw new \Exception($message->getMessage(), 500);
+            }
+        }
     }
 }
 ?>

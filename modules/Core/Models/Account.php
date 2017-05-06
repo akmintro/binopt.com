@@ -139,6 +139,13 @@ class Account extends \Phalcon\Mvc\Model
         return parent::findFirst($parameters);
     }
 
+
+
+    public static function findAccount($user, $isreal)
+    {
+        return parent::findFirst(["user = :user: and realdemo = :rd:", 'bind' => ["user" => $user, "rd" => ($isreal ? 1 : 0)]]);
+    }
+
     public function getDeposits($start = null, $end = null)
     {
         $value = 0;
@@ -177,11 +184,21 @@ class Account extends \Phalcon\Mvc\Model
         {
             $result = $bet->getResult();
             if($result == null || $result == 0)
-                $ingame += $bet->invest->getSize();
+                $ingame += $bet->getInvest();
+                //$ingame += $bet->invest->getSize();
             elseif($result > 0)
                 $wins += $result;
             else
                 $loses += -$result;
         }
+    }
+
+    public function getBalance()
+    {
+        $wins = 0;
+        $loses = 0;
+        $ingame = 0;
+        $this->getBetStat($wins, $loses, $ingame);
+        return $this->getDeposits() - $this->getWithdrawals() + $wins - $loses - $ingame;
     }
 }

@@ -97,7 +97,10 @@ while (true) {
     $package = array();
     foreach ($json_data as $key => $val)
     {
-        $package[$key] = ["data" => $val, "type" => "current"];
+        if($key != "time")
+        {
+            $package[$key] = ["data" => $val, "type" => "current", "time" => $json_data["time"]];
+        }
     }
 
 	foreach($connects as $key => $connect) {//обрабатываем все соединения

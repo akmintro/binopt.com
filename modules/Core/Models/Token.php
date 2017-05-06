@@ -1,31 +1,49 @@
 <?php
 namespace App\Core\Models;
 
-class Instrument extends \Phalcon\Mvc\Model
+class Token extends \Phalcon\Mvc\Model
 {
 
     /**
      *
      * @var integer
-     * @Primary
-     * @Identity
+     * @Column(type="integer", length=11, nullable=false)
+     */
+    protected $role;
+
+    /**
+     *
+     * @var integer
      * @Column(type="integer", length=11, nullable=false)
      */
     protected $id;
 
     /**
      *
-     * @var integer
-     * @Column(type="integer", length=11, nullable=false)
+     * @var string
+     * @Column(type="string", length=512, nullable=false)
      */
-    protected $length;
+    protected $token_val;
 
     /**
      *
      * @var string
-     * @Column(type="string", length=20, nullable=false)
+     * @Column(type="string", length=128, nullable=false)
      */
-    protected $name;
+    protected $secret;
+
+    /**
+     * Method to set the value of field role
+     *
+     * @param integer $role
+     * @return $this
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
 
     /**
      * Method to set the value of field id
@@ -41,29 +59,39 @@ class Instrument extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Method to set the value of field length
+     * Method to set the value of field token_val
      *
-     * @param integer $length
+     * @param string $token_val
      * @return $this
      */
-    public function setLength($length)
+    public function setTokenVal($token_val)
     {
-        $this->length = $length;
+        $this->token_val = $token_val;
 
         return $this;
     }
 
     /**
-     * Method to set the value of field name
+     * Method to set the value of field secret
      *
-     * @param string $name
+     * @param string $secret
      * @return $this
      */
-    public function setName($name)
+    public function setSecret($secret)
     {
-        $this->name = $name;
+        $this->secret = $secret;
 
         return $this;
+    }
+
+    /**
+     * Returns the value of field role
+     *
+     * @return integer
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 
     /**
@@ -77,23 +105,23 @@ class Instrument extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Returns the value of field length
-     *
-     * @return integer
-     */
-    public function getLength()
-    {
-        return $this->length;
-    }
-
-    /**
-     * Returns the value of field name
+     * Returns the value of field token_val
      *
      * @return string
      */
-    public function getName()
+    public function getTokenVal()
     {
-        return $this->name;
+        return $this->token_val;
+    }
+
+    /**
+     * Returns the value of field secret
+     *
+     * @return string
+     */
+    public function getSecret()
+    {
+        return $this->secret;
     }
 
     /**
@@ -102,7 +130,6 @@ class Instrument extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("binopt");
-        $this->hasMany('id', 'Bet', 'instrument', ['alias' => 'Bet']);
     }
 
     /**
@@ -112,14 +139,14 @@ class Instrument extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'instrument';
+        return 'token';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return Instrument[]|Instrument
+     * @return Token[]|Token
      */
     public static function find($parameters = null)
     {
@@ -130,7 +157,7 @@ class Instrument extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return Instrument
+     * @return Token
      */
     public static function findFirst($parameters = null)
     {
