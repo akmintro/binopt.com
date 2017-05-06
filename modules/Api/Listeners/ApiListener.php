@@ -92,7 +92,7 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
             }
 
 
-/*
+
             if($clientTime > time() || time() - $clientTime > 20){
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
@@ -100,15 +100,15 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
                     'params'     => [403, 'Too old request or wrong time'.time()]
                 ]);
                 return false;
-            }*/
+            }
 
 
             $data = $clientTime . $clientToken . $clientTime;
             $serverSign = hash_hmac('sha256', $data, $token->getSecret());
 
-            //if($clientSign !== $serverSign){
+            if($clientSign !== $serverSign){
             //if($clientSign !== $token->getSecret() . "123"){
-            if(!$clientSign){
+            //if(!$clientSign){
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
                     'action'     => 'show',
