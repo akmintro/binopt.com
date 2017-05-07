@@ -114,6 +114,7 @@ function curl_post_async($url, $data)
 function save_history($history)
 {
     curl_post_async('http://binopt.com/api/v1/currency', json_encode($history));
+    //echo json_encode($history);
 }
 
 function curl_delete_async($url)
@@ -135,6 +136,11 @@ function curl_delete_async($url)
 function clear_history($time)
 {
     curl_delete_async('http://binopt.com/api/v1/currency?before='.$time);
+}
+
+function clear_tokens()
+{
+    curl_delete_async('http://binopt.com/api/v1/login');
 }
 
 function curl_put_async($url)
@@ -160,12 +166,14 @@ function close_bets($time)
 
 $filename = "currency_data.txt";
 $clearinterval = 60;
+$tokeninterval = 86400;
 $historyinterval = 3600;
 
 $launchtime = ceil(microtime(true)/6)*6;
 $start = floor($launchtime/60)*60;
 $offset = (int)($launchtime - $start);
 $cleartime = ceil($launchtime/$clearinterval)*$clearinterval;
+$tokentime = ceil($launchtime/$tokeninterval)*$tokeninterval;
 
 time_sleep_until($launchtime + 1);
 
@@ -180,7 +188,7 @@ while(true) {
             $real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1,2,3,4,5,6,7,8,9,11,12,15,16,49,50,53,54,57&timeframe=60'), true);
             //$real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1&timeframe=60'), true);
 
-            $new_full_data = array("time" => $current_time);
+            //$new_full_data = array("time" => $current_time);
             foreach ($real_data as $key => $value) {
                 if ($key != "time") {
                     $real = str_replace(',', '.', $value['summaryLast']);
@@ -190,7 +198,7 @@ while(true) {
                         $new_full_data[$key]['real'] = $real;
                     }
                     else
-                        $new_full_data[$key] = array("name" => $value['summaryName'], "real" => $real, "open" => $real, "close" => $real, "min" => $real, "max" => $real);
+                        $new_full_data[$key] = array("real" => $real, "open" => (double)$real, "close" => $real, "min" => $real, "max" => $real);
                 }
             }
             $full_data = $new_full_data;
@@ -198,7 +206,7 @@ while(true) {
 
         $result = array();
         foreach ($full_data as $key => $value) {
-            if ($key != "time") {
+            //if ($key != "time") {
                 $length = 0;
                 $newclose = get_last($value['close'], $value['real'], $length);
                 if($newclose < $value['min'])
@@ -206,11 +214,12 @@ while(true) {
                 if($newclose > $value['max'])
                     $value['max'] = $newclose;
                 $value['close'] = $newclose;
-                $value['length'] = $length;
+                //$value['length'] = $length;
                 $new_value = $value;
                 unset($new_value['real']);
-            } else
-                $new_value = $value = $current_time;
+                $new_value['currencytime'] = $current_time;
+            //} else
+            //    $new_value = $value = $current_time;
 
             $full_data[$key] = $value;
             $result[$key] = $new_value;
@@ -226,18 +235,18 @@ while(true) {
             if($i == 0)
             {
                 foreach ($full_data as $key => $value) {
-                    if ($key != "time") {
+                    //if ($key != "time") {
                         $value['open'] = $value['min'] = $value['max'] = $value['close'];
                         $full_data[$key] = $value;
-                    }
+                    //}
                 }
-                echo $current_time."\n";
+                close_bets(gmdate("Y-m-d H:i:s", $start-60));
             }
+            echo $current_time."\n";
         }
 
         time_sleep_until($start + $i + 2);
     }
-    close_bets(gmdate("Y-m-d H:i:s", $start));
 
 
 
@@ -248,6 +257,12 @@ while(true) {
     {
         clear_history(gmdate("Y-m-d H:i:s", $start-$historyinterval));
         $cleartime += $clearinterval;
+    }
+
+    if($start >= $tokentime)
+    {
+        clear_tokens();
+        $tokentime += $tokeninterval;
     }
 }
 ?>

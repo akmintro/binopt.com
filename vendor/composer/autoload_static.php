@@ -13,14 +13,27 @@ class ComposerStaticInit9cd70c48d8fa30eb64b40157a5d329a3
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
+            'Phalcon\\Ext\\Mailer\\' => 19,
             'Phalcon\\' => 8,
+        ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Phalcon\\Ext\\Mailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phalcon-ext/mailer/src',
+        ),
         'Phalcon\\' => 
         array (
             0 => __DIR__ . '/..' . '/phalcon/incubator/Library/Phalcon',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
     );
 

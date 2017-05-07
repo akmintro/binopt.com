@@ -24,7 +24,7 @@ class DepositManager extends BaseManager
             return $item->toArray();
         });
 
-        $data = $this->getFilteredData($data, $this->request->getQuery('username'), $this->request->getQuery('operator'), $this->request->getQuery('status'));
+        $data = $this->getFilteredData($data, $this->request->getQuery('email'), $this->request->getQuery('operator'), $this->request->getQuery('status'));
 
         $meta = [
             "code" => 200,
@@ -45,13 +45,13 @@ class DepositManager extends BaseManager
         }
     }
 
-    private function getFilteredData($data, $username = null, $operator = null, $status = null)
+    private function getFilteredData($data, $email = null, $operator = null, $status = null)
     {
         $result = [];
         foreach ($data as $deposit)
         {
             $account = Account::findFirstById($deposit['account']);
-            if(($account->getRealdemo() != 1) || ($username != null && $account->user->getUsername() != $username) || ($operator != null && $account->user->getOperator() != $operator))
+            if(($account->getRealdemo() != 1) || ($email != null && $account->user->getEmail() != $email) || ($operator != null && $account->user->getOperator() != $operator))
                 continue;
 
             if(($status == "try" && $deposit['state'] != 0)
@@ -59,8 +59,9 @@ class DepositManager extends BaseManager
                 continue;
 
             $deposit['balance'] = $account->user->getBalance();
-            $deposit['username'] = $account->user->getUsername();
+            $deposit['email'] = $account->user->getEmail();
             $deposit['registration'] = $account->user->getRegistration();
+            unset($deposit['account']);
 
             $result[] = $deposit;
         }

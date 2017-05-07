@@ -15,6 +15,13 @@ class Instrument extends \Phalcon\Mvc\Model
 
     /**
      *
+     * @var integer
+     * @Column(type="integer", length=11, nullable=false)
+     */
+    protected $length;
+
+    /**
+     *
      * @var string
      * @Column(type="string", length=20, nullable=false)
      */
@@ -29,6 +36,19 @@ class Instrument extends \Phalcon\Mvc\Model
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field length
+     *
+     * @param integer $length
+     * @return $this
+     */
+    public function setLength($length)
+    {
+        $this->length = $length;
 
         return $this;
     }
@@ -54,6 +74,16 @@ class Instrument extends \Phalcon\Mvc\Model
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Returns the value of field length
+     *
+     * @return integer
+     */
+    public function getLength()
+    {
+        return $this->length;
     }
 
     /**

@@ -6,5 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Phalcon\\Ext\\Mailer\\' => array($vendorDir . '/phalcon-ext/mailer/src'),
     'Phalcon\\' => array($vendorDir . '/phalcon/incubator/Library/Phalcon'),
+    'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
 );

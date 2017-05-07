@@ -15,12 +15,12 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="PHP" type="php">
+      <library name="PHARS">
         <CLASSES>
-          <root url="file://$USER_HOME$/phalcon-devtools/ide/stubs/Phalcon" />
+          <root url="phar://$MODULE_DIR$/composer.phar/" />
         </CLASSES>
         <SOURCES>
-          <root url="file://$USER_HOME$/phalcon-devtools/ide/stubs/Phalcon" />
+          <root url="phar://$MODULE_DIR$/composer.phar/" />
         </SOURCES>
       </library>
     </orderEntry>

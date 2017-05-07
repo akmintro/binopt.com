@@ -68,12 +68,12 @@ class UserManager extends BaseManager
         foreach ($new_items as &$item)
         {
             $user = User::findFirstById($item['id']);
-            $item['username'] = $user->getUsername();
+            //$item['username'] = $user->getUsername();
             $user->getBalance($item);
 
             unset($item['firstname']);
             unset($item['lastname']);
-            unset($item['email']);
+            //unset($item['email']);
             unset($item['password']);
             unset($item['country']);
             unset($item['birthday']);
@@ -206,7 +206,7 @@ class UserManager extends BaseManager
             throw new \Exception('password is required', 500);
 
         $parameters = [
-            "CONCAT(lastname,'.',firstname) = :name:",
+            "email = :name:",
             'bind' => ['name' => $opdata['name']],
         ];
 
@@ -225,10 +225,120 @@ class UserManager extends BaseManager
             throw new \Exception('incorrect password', 500);
         }
 
+        return $data[0];
+    }
+
+    public function regiterUser($data) {
+
+        if (User::findFirst(["email = :email:", 'bind' => ['email' => $data[0]['email']]])) {
+            return ["meta" => [
+                "code" => 500,
+                "message" => "email is taken"
+            ]];
+        }
+
+        $code = "";
+        $code .= substr(md5((microtime() - rand(3,1000000)) * rand(1,1000)),rand(0,20),10);
+        $code .= substr(md5((microtime() - rand(3,1000000)) * rand(1,1000)),rand(0,20),10);
+        $code .= substr(md5((microtime() - rand(3,1000000)) * rand(1,1000)),rand(0,20),10);
+        $code .= substr(md5((microtime() - rand(3,1000000)) * rand(1,1000)),rand(0,20),10);
+
+        $item = new User();
+        $this->setFields($item, $data[0]);
+
+        $item->setActivation($code);
+
+        if (false === $item->create()) {
+            foreach ($item->getMessages() as $message) {
+                throw new \Exception($message->getMessage(), 500);
+            }
+        }
+
+        $to = $item->getEmail();
+
+        $mailer = new \Phalcon\Ext\Mailer\Manager([
+
+            'driver' 	 => 'smtp',
+            'host'	 	 => 'smtp.gmail.com',
+            'port'	 	 => 465,
+            'encryption' => 'ssl',
+            'username'   => $this->config->parameters->gmailusername,
+            'password'	 => $this->config->parameters->gmailpassword,
+            'from'		 => [
+                'email' => 'example@gmail.com',
+                'name'	=> 'YOUR FROM NAME'
+            ]
+        ]);
+
+        $message = $mailer->createMessage()
+            ->to($to)
+            ->subject('Hello world!')
+            ->content('<a href="https://binopt.com/api/v1/users/activate?email='.$to.'&code='.$code.'">Activate account</a>');
+
+        // Set the Cc addresses of this message.
+                //$message->cc('example_cc@gmail.com');
+
+        // Set the Bcc addresses of this message.
+                //$message->bcc('example_bcc@gmail.com');
+
+        // Send message
+        $message->send();
+
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => []];
+        ]];
+    }
+
+    public function activateUser(array $parameters) {
+        $user = User::findFirst($parameters);
+
+        if($user == null)
+            throw new \Exception('account not found', 404);
+
+        $user->setActivation(null);
+        if (false === $user->update()) {
+            foreach ($user->getMessages() as $message) {
+                throw new \Exception($message->getMessage(), 500);
+            }
+        }
+    }
+
+    public function changePassword($data)
+    {
+        $user = $this->findFirstById($this->tokenParser->getUserid());
+
+        if ($user == null)
+            throw new \Exception('no user found', 500);
+
+        if(!isset($data[0]['oldpassword']))
+            throw new \Exception('old password is required', 500);
+
+        if (!($this->security->checkHash($data[0]['oldpassword'], $user->getPassword()))) {
+            throw new \Exception('incorrect old password', 500);
+        }
+
+        if(!isset($data[0]['newpassword']))
+            throw new \Exception('new password is required', 500);
+        if(!isset($data[0]['newpassword2']))
+            throw new \Exception('confirm password is required', 500);
+
+        if($data[0]['newpassword'] != $data[0]['newpassword2'])
+            throw new \Exception("passwords don't match", 500);
+
+
+        $user->setPassword($this->getDI()->get('security')->hash($data[0]['newpassword']));
+
+        if (false === $user->update()) {
+            foreach ($user->getMessages() as $message) {
+                throw new \Exception($message->getMessage(), 500);
+            }
+        }
+
+        return ["meta" => [
+            "code" => 200,
+            "message" => "OK"
+        ]];
     }
 }
 ?>

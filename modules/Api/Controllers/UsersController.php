@@ -1,6 +1,7 @@
 <?php
 namespace App\Api\Controllers;
 
+
 class UsersController extends BaseController {
 
     public function readAction() {
@@ -171,17 +172,17 @@ class UsersController extends BaseController {
         }
     }
 
-    public function loginAction() {
-
+    public function changePasswordAction() {
         try {
             $manager = $this->getDI()->get('core_user_manager');
-            $data = $this->request->getJsonRawBody(true);
 
-            if (count($data) == 0) {
+            $data = $this->request->getJsonRawBody(true);
+            if (count($data[0]) == 0) {
                 throw new \Exception('Please provide data', 400);
             }
-            $st_output = $manager->restLogin($data);
-            return $this->render($st_output);
+            $result = $manager->changePassword($data);
+
+            return $this->render($result);
         } catch (\Exception $e) {
             return $this->render(["meta" => [
                 'code' => $e->getCode(),

@@ -22,10 +22,6 @@ $operators->addPost('', array(
     'action' => 'create'
 ));
 
-$operators->addPost('/login', array(
-    'action' => 'login'
-));
-
 $operators->addPut('/{id:[0-9]+}', array(
     'action' => 'update'
 ));
@@ -54,16 +50,16 @@ $users->addPost('', array(
     'action' => 'create'
 ));
 
-$users->addPost('/login', array(
-    'action' => 'login'
-));
-
 $users->addPut('/{id:[0-9]+}', array(
     'action' => 'update'
 ));
 
 $users->addDelete('/{id:[0-9]+}', array(
     'action' => 'delete'
+));
+
+$users->addPost('/password', array(
+    'action' => 'changePassword'
 ));
 
 // Countries group
@@ -217,6 +213,10 @@ $bets = new \Phalcon\Mvc\Router\Group(array(
 ));
 
 $bets->setPrefix($versions['v1'].'/bets');
+
+$bets->addGet('', array(
+    'action' => 'readUser'
+));
 
 $bets->addGet('/real', array(
     'action' => 'read',
@@ -375,6 +375,87 @@ $ws->addGet('/check', array(
     'action' => 'check'
 ));
 
+// Login group
+$login = new \Phalcon\Mvc\Router\Group(array(
+    'module' => 'api',
+    'controller' => 'login'
+));
+
+$login->setPrefix($versions['v1']);
+
+$login->addGet('/users/isauth', array(
+    'action' => 'isauthUser'
+));
+
+$login->addPost('/users/auth', array(
+    'action' => 'authUser'
+));
+
+$login->addPost('/users/unauth', array(
+    'action' => 'unauthUser'
+));
+
+$login->addGet('/operators/isauth', array(
+    'action' => 'isauthOper'
+));
+
+$login->addPost('/operators/auth', array(
+    'action' => 'authOper'
+));
+
+$login->addPost('/operators/unauth', array(
+    'action' => 'unauthOper'
+));
+
+$login->addDelete('/login', array(
+    'action' => 'delete'
+));
+
+// Registration group
+$registration = new \Phalcon\Mvc\Router\Group(array(
+    'module' => 'api',
+    'controller' => 'registration'
+));
+
+$registration->setPrefix($versions['v1']);
+
+$registration->addPost('/users/register', array(
+    'action' => 'registerUser'
+));
+$registration->addGet('/users/activate', array(
+    'action' => 'activateUser'
+));
+
+// Sessions group
+/*
+$session = new \Phalcon\Mvc\Router\Group(array(
+    'module' => 'api',
+    'controller' => 'session'
+));
+
+$session->setPrefix($versions['v1'].'/session');
+
+$session->addGet('', array(
+    'action' => 'read'
+));
+
+$session->addPost('', array(
+    'action' => 'create'
+));
+
+$session->addPost('/login', array(
+    'action' => 'login'
+));
+
+$session->addPut('', array(
+    'action' => 'update'
+));
+
+$session->addDelete('', array(
+    'action' => 'delete'
+));
+*/
+
 $router->mount($operators);
 $router->mount($users);
 $router->mount($countries);
@@ -390,5 +471,7 @@ $router->mount($withdrawals);
 $router->mount($summary);
 $router->mount($currency);
 $router->mount($ws);
+$router->mount($login);
+$router->mount($registration);
 
 ?>

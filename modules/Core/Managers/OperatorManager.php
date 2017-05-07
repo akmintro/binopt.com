@@ -137,10 +137,10 @@ class OperatorManager extends BaseManager
     {
         $opdata = $data[0];
 
-        if (!isset($opdata['name']))
+        if(!isset($opdata['name']))
             throw new \Exception('name is required', 500);
 
-        if (!isset($opdata['password']))
+        if(!isset($opdata['password']))
             throw new \Exception('password is required', 500);
 
         $parameters = [
@@ -149,7 +149,7 @@ class OperatorManager extends BaseManager
         ];
 
         $items = $this->find($parameters);
-        $data = $items->filter(function ($item) {
+        $data = $items->filter(function($item){
             return $item->toArray();
         });
 
@@ -163,10 +163,6 @@ class OperatorManager extends BaseManager
             throw new \Exception('incorrect password', 500);
         }
 
-        return ["meta" => [
-            "code" => 200,
-            "message" => "OK"
-        ]
-        ];
+        return $data[0];
     }
 }

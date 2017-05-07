@@ -4,19 +4,13 @@ namespace App\Api\Controllers;
 use Phalcon\Cli\Console;
 
 class BetsController extends BaseController {
-/*
+
     public function readAction() {
         try {
             $manager = $this->getDI()->get('core_bet_manager');
 
             $conditions = array();
             $binds = array();
-
-            $account = $this->request->getQuery('account');
-            if($account != null) {
-                $conditions[] = 'account = :account:';
-                $binds['account'] = $account;
-            }
 
             $instrument = $this->request->getQuery('instrument');
             if($instrument != null) {
@@ -28,12 +22,6 @@ class BetsController extends BaseController {
             if($updown != null) {
                 $conditions[] = 'updown = :updown:';
                 $binds['updown'] = $updown;
-            }
-
-            $invest = $this->request->getQuery('invest');
-            if($invest != null) {
-                $conditions[] = 'invest = :invest:';
-                $binds['invest'] = $invest;
             }
 
             $start = $this->request->getQuery('start');
@@ -80,61 +68,19 @@ class BetsController extends BaseController {
             ]]);
         }
     }
-*/
-    public function readAction() {
+
+    public function readUserAction() {
         try {
             $manager = $this->getDI()->get('core_bet_manager');
 
-            $conditions = array();
-            $binds = array();
-
-            $instrument = $this->request->getQuery('instrument');
-            if($instrument != null) {
-                $conditions[] = 'instrument = :instrument:';
-                $binds['instrument'] = $instrument;
-            }
-
-            $updown = $this->request->getQuery('updown');
-            if($updown != null) {
-                $conditions[] = 'updown = :updown:';
-                $binds['updown'] = $updown;
-            }
-
-            $start = $this->request->getQuery('start');
-            if($start != null) {
-                $conditions[] = 'starttime >= STR_TO_DATE(:start:, \'%Y-%m-%d %h:%i:%s\')';
-                $binds['start'] = $start;
-            }
-
-            $end = $this->request->getQuery('end');
-            if($end != null) {
-                $conditions[] = 'starttime <= STR_TO_DATE(:end:, \'%Y-%m-%d %h:%i:%s\')';
-                $binds['end'] = $end;
-            }
-
-            $parameters = [];
-            if(count($conditions) > 0)
-            {
-                $parameters = [
-                    implode(" and ", $conditions),
-                    'bind' => $binds,
-                ];
-            }
-
+            $parameters = ['order' => 'starttime desc'];
+/*
             $sort = $this->request->getQuery('sort');
             if($sort != null) {
                 $parameters['order'] = $sort;
-            }
+            }*/
 
-            $offset = $this->request->getQuery('offset');
-            if($offset == null)
-                $offset = 0;
-
-            $limit = $this->request->getQuery('limit');
-            if($limit == null)
-                $limit = 10;
-
-            $st_output = $manager->restGet($parameters, $limit, $offset);
+            $st_output = $manager->restGetUser($parameters);
 
             return $this->render($st_output);
         } catch (\Exception $e) {
@@ -153,6 +99,8 @@ class BetsController extends BaseController {
             $binds = array();
 
             $time = $this->request->getQuery('time');
+
+
             if($time != null) {
                 $conditions[] = "starttime <= :time:";
                 $binds['time'] = $time;

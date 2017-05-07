@@ -4,9 +4,96 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "30f9b050f9e30ed005aba272e5b75ca3",
-    "content-hash": "a9b8e30138a05a1a8570326f6b879cf4",
+    "hash": "b6b378e8de278bb9e7016c0c429b36ee",
+    "content-hash": "4f71aacd58e931bad2d858602db7472f",
     "packages": [
+        {
+            "name": "firebase/php-jwt",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "time": "2016-07-18 04:51:16"
+        },
+        {
+            "name": "phalcon-ext/mailer",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon-ext/mailer.git",
+                "reference": "9e8a21a499e11a513fbb929734224ca2976d7605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon-ext/mailer/zipball/9e8a21a499e11a513fbb929734224ca2976d7605",
+                "reference": "9e8a21a499e11a513fbb929734224ca2976d7605",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "swiftmailer/swiftmailer": "~5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phalcon\\Ext\\Mailer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Stanislav Kiryukhin",
+                    "email": "korsar.zn@gmail.com",
+                    "role": "Founder and project lead"
+                }
+            ],
+            "description": "Mailer component as wrapper over SwiftMailer for Phalcon.",
+            "keywords": [
+                "mailer",
+                "phalcon",
+                "phalcon-ext",
+                "phalcon-mailer"
+            ],
+            "time": "2015-12-18 08:36:58"
+        },
         {
             "name": "phalcon/incubator",
             "version": "dev-master",

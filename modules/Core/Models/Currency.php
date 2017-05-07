@@ -153,7 +153,7 @@ class Currency extends \Phalcon\Mvc\Model
      */
     public function getOpen()
     {
-        return $this->open;
+        return (double)$this->open;
     }
 
     /**
@@ -163,7 +163,7 @@ class Currency extends \Phalcon\Mvc\Model
      */
     public function getClose()
     {
-        return $this->close;
+        return (double)$this->close;
     }
 
     /**
@@ -173,7 +173,7 @@ class Currency extends \Phalcon\Mvc\Model
      */
     public function getMin()
     {
-        return $this->min;
+        return (double)$this->min;
     }
 
     /**
@@ -183,7 +183,7 @@ class Currency extends \Phalcon\Mvc\Model
      */
     public function getMax()
     {
-        return $this->max;
+        return (double)$this->max;
     }
 
     /**
