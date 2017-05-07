@@ -138,6 +138,11 @@ function clear_history($time)
     curl_delete_async('http://binopt.com/api/v1/currency?before='.$time);
 }
 
+function clear_tokens()
+{
+    curl_delete_async('http://binopt.com/api/v1/login');
+}
+
 function curl_put_async($url)
 {
     $parts=parse_url($url);
@@ -161,12 +166,14 @@ function close_bets($time)
 
 $filename = "currency_data.txt";
 $clearinterval = 60;
+$tokeninterval = 86400;
 $historyinterval = 3600;
 
 $launchtime = ceil(microtime(true)/6)*6;
 $start = floor($launchtime/60)*60;
 $offset = (int)($launchtime - $start);
 $cleartime = ceil($launchtime/$clearinterval)*$clearinterval;
+$tokentime = ceil($launchtime/$tokeninterval)*$tokeninterval;
 
 time_sleep_until($launchtime + 1);
 
@@ -250,6 +257,12 @@ while(true) {
     {
         clear_history(gmdate("Y-m-d H:i:s", $start-$historyinterval));
         $cleartime += $clearinterval;
+    }
+
+    if($start >= $tokentime)
+    {
+        clear_tokens();
+        $tokentime += $tokeninterval;
     }
 }
 ?>

@@ -18,21 +18,81 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routing.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Api/Config/routing.php">
+      <file leaf-file-name="OperatorsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/OperatorsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="396" column="0" lean-forward="true" selection-start-line="396" selection-start-column="0" selection-end-line="396" selection-end-column="0" />
+            <state relative-caret-position="119">
+              <caret line="120" column="22" lean-forward="true" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OperatorsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/OperatorsController.php">
+      <file leaf-file-name="PromoManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Core/Managers/PromoManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="120" column="22" lean-forward="true" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
+            <state relative-caret-position="-315">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RobotcodesController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/RobotcodesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1305">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/UsersController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="111" column="53" lean-forward="false" selection-start-line="111" selection-start-column="53" selection-end-line="111" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WithdrawalsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/WithdrawalsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WithdrawalManager.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/Core/Managers/WithdrawalManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SummaryController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/SummaryController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SummaryManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Core/Managers/SummaryManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="735">
+              <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -41,28 +101,8 @@
       <file leaf-file-name="UserManager.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/Core/Managers/UserManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="197" column="4" lean-forward="false" selection-start-line="197" selection-start-column="4" selection-end-line="228" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/LoginController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="114" column="40" lean-forward="true" selection-start-line="114" selection-start-column="40" selection-end-line="114" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TokenManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Core/Managers/TokenManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="66" column="26" lean-forward="false" selection-start-line="66" selection-start-column="26" selection-end-line="66" selection-end-column="26" />
+            <state relative-caret-position="254">
+              <caret line="264" column="68" lean-forward="false" selection-start-line="264" selection-start-column="60" selection-end-line="264" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -73,36 +113,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1094">
               <caret line="157" column="0" lean-forward="true" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApiListener.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/Api/Listeners/ApiListener.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Operator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Core/Models/Operator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2626">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Api/Config/services.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="87" column="34" lean-forward="false" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -132,12 +142,21 @@
       <find>chart</find>
       <find>buildcha</find>
       <find>$key</find>
-      <find>login</find>
       <find>curre</find>
-      <find>bets</find>
       <find>auth</find>
       <find>respo</find>
       <find>para</find>
+      <find>Users</find>
+      <find>login</find>
+      <find>Hist</find>
+      <find>bets</find>
+      <find>gmdate</find>
+      <find>o</find>
+      <find>operator</find>
+      <find>invest</find>
+      <find>username</find>
+      <find>userna</find>
+      <find>opera</find>
     </findStrings>
     <replaceStrings>
       <replace>limit</replace>
@@ -153,9 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/modules/Core/Managers/DepositManager.php" />
-        <option value="$PROJECT_DIR$/public/sockettest.php" />
-        <option value="$PROJECT_DIR$/ws/echowsadmin.js" />
         <option value="$PROJECT_DIR$/ws/socket.js" />
         <option value="$PROJECT_DIR$/currency_script.php" />
         <option value="$PROJECT_DIR$/currency_data.txt" />
@@ -176,34 +192,37 @@
         <option value="$PROJECT_DIR$/modules/Api/Controllers/ErrorsController.php" />
         <option value="$PROJECT_DIR$/modules/Core/Managers/JWTTokenParser.php" />
         <option value="$PROJECT_DIR$/modules/Api/Managers/JWTTokenParser.php" />
-        <option value="$PROJECT_DIR$/modules/Core/Models/Token.php" />
         <option value="$PROJECT_DIR$/modules/Core/Listeners/ApiListener.php" />
-        <option value="$PROJECT_DIR$/modules/Core/Managers/TokenManager.php" />
         <option value="$PROJECT_DIR$/scripts/echows.php" />
         <option value="$PROJECT_DIR$/socket.js" />
         <option value="$PROJECT_DIR$/modules/Core/Managers/CurrencyManager.php" />
         <option value="$PROJECT_DIR$/modules/Core/Models/Currency.php" />
         <option value="$PROJECT_DIR$/modules/Core/Models/Instrument.php" />
         <option value="$PROJECT_DIR$/scripts/currency_data.txt" />
-        <option value="$PROJECT_DIR$/modules/Api/Managers/JWTTokenManager.php" />
         <option value="$PROJECT_DIR$/modules/Core/Models/Bet.php" />
         <option value="$PROJECT_DIR$/modules/Core/Managers/AccountManager.php" />
-        <option value="$PROJECT_DIR$/scripts/currency_script.php" />
         <option value="$PROJECT_DIR$/modules/Core/Models/Account.php" />
-        <option value="$PROJECT_DIR$/modules/Core/Managers/BetManager.php" />
         <option value="$PROJECT_DIR$/modules/Api/Controllers/BetsController.php" />
         <option value="$PROJECT_DIR$/modules/Core/Models/User.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/config/services.php" />
-        <option value="$PROJECT_DIR$/modules/Api/Controllers/UsersController.php" />
         <option value="$PROJECT_DIR$/modules/Api/Controllers/RegistrationController.php" />
-        <option value="$PROJECT_DIR$/modules/Core/Managers/UserManager.php" />
         <option value="$PROJECT_DIR$/config/config.php" />
         <option value="$PROJECT_DIR$/modules/Core/Managers/OperatorManager.php" />
-        <option value="$PROJECT_DIR$/modules/Api/Config/routing.php" />
-        <option value="$PROJECT_DIR$/modules/Api/Controllers/LoginController.php" />
-        <option value="$PROJECT_DIR$/modules/Api/Config/services.php" />
+        <option value="$PROJECT_DIR$/modules/Api/Controllers/UsersController.php" />
         <option value="$PROJECT_DIR$/modules/Api/Listeners/ApiListener.php" />
+        <option value="$PROJECT_DIR$/modules/Api/Managers/JWTTokenManager.php" />
+        <option value="$PROJECT_DIR$/modules/Api/Config/routing.php" />
+        <option value="$PROJECT_DIR$/modules/Core/Models/Token.php" />
+        <option value="$PROJECT_DIR$/modules/Core/Managers/TokenManager.php" />
+        <option value="$PROJECT_DIR$/modules/Api/Controllers/LoginController.php" />
+        <option value="$PROJECT_DIR$/scripts/currency_script.php" />
+        <option value="$PROJECT_DIR$/modules/Api/Config/services.php" />
+        <option value="$PROJECT_DIR$/modules/Api/Controllers/DepositsController.php" />
+        <option value="$PROJECT_DIR$/modules/Core/Managers/DepositManager.php" />
+        <option value="$PROJECT_DIR$/modules/Core/Managers/BetManager.php" />
+        <option value="$PROJECT_DIR$/modules/Core/Managers/UserManager.php" />
+        <option value="$PROJECT_DIR$/modules/Core/Managers/WithdrawalManager.php" />
       </list>
     </option>
   </component>
@@ -262,6 +281,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -522,7 +542,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -733,12 +752,16 @@
       <workItem from="1493755345672" duration="2412000" />
       <workItem from="1493840133416" duration="10211000" />
       <workItem from="1493852471494" duration="219000" />
-      <workItem from="1494079445304" duration="2630000" />
+      <workItem from="1494079445304" duration="4098000" />
+      <workItem from="1494093348614" duration="4425000" />
+      <workItem from="1494098547757" duration="3365000" />
+      <workItem from="1494103267815" duration="1944000" />
+      <workItem from="1494113432117" duration="2195000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="322194000" />
+    <option name="totallyTimeSpent" value="335591000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -795,85 +818,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/Core/Models/Robotcodetype.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/ErrorsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Models/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/RobotcodeManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Models/Robotcode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2401">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/WebsocketController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1770">
-          <caret line="118" column="41" lean-forward="false" selection-start-line="118" selection-start-column="41" selection-end-line="118" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/RestTokenParserInterface.php" />
-    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/JWTTokenParser.php" />
-    <entry file="file://$PROJECT_DIR$/modules/Api/Managers/AccountType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/SessionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Managers/RestTokenParserInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="phar://$PROJECT_DIR$/composer.phar/src/Composer/Factory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/Api/Managers/SessionManager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -896,14 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/InstrumentsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/currency_data.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -918,32 +854,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/CurrencyController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="40" lean-forward="false" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/Core/Models/Currency.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2460">
           <caret line="164" column="5" lean-forward="false" selection-start-line="164" selection-start-column="5" selection-end-line="164" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/CurrencyManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="17" column="126" lean-forward="false" selection-start-line="17" selection-start-column="126" selection-end-line="17" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Models/Token.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="66" column="31" lean-forward="false" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -962,27 +876,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Managers/JWTTokenManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="112" column="40" lean-forward="false" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
-          <folding>
-            <element signature="e#36#65#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/socket.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="60" column="51" lean-forward="false" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/currency_script.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="129" column="39" lean-forward="false" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -1014,10 +911,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/BetsController.php">
+    <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="923">
-          <caret line="80" column="15" lean-forward="false" selection-start-line="80" selection-start-column="15" selection-end-line="80" selection-end-column="15" />
+        <state relative-caret-position="75">
+          <caret line="5" column="5" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="78" lean-forward="false" selection-start-line="47" selection-start-column="78" selection-end-line="47" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Models/Operator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2626">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1030,33 +942,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
+    <entry file="file://$PROJECT_DIR$/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="5" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/BetManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2265">
-          <caret line="156" column="2" lean-forward="false" selection-start-line="156" selection-start-column="2" selection-end-line="156" selection-end-column="2" />
+        <state relative-caret-position="630">
+          <caret line="42" column="50" lean-forward="true" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/RegistrationController.php">
+    <entry file="file://$PROJECT_DIR$/config/routing.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="78" lean-forward="false" selection-start-line="47" selection-start-column="78" selection-end-line="47" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/UsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1069,49 +966,169 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5175">
-          <caret line="346" column="34" lean-forward="false" selection-start-line="346" selection-start-column="34" selection-end-line="346" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="50" lean-forward="true" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/UserManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="197" column="4" lean-forward="false" selection-start-line="197" selection-start-column="4" selection-end-line="228" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/services.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1141">
+        <state relative-caret-position="-716">
           <caret line="30" column="2" lean-forward="true" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/OperatorsController.php">
+    <entry file="file://$PROJECT_DIR$/modules/Api/Managers/JWTTokenManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="120" column="22" lean-forward="true" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
+        <state relative-caret-position="2025">
+          <caret line="137" column="29" lean-forward="false" selection-start-line="137" selection-start-column="29" selection-end-line="137" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Models/Operator.php">
+    <entry file="file://$PROJECT_DIR$/modules/Api/Listeners/ApiListener.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2626">
+        <state relative-caret-position="1425">
+          <caret line="96" column="44" lean-forward="false" selection-start-line="96" selection-start-column="44" selection-end-line="96" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Models/Token.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/CurrencyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1515">
+          <caret line="101" column="13" lean-forward="false" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/CurrencyManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="97" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/TokenManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="93" column="90" lean-forward="false" selection-start-line="93" selection-start-column="90" selection-end-line="93" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Config/routing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3120">
+          <caret line="208" column="7" lean-forward="false" selection-start-line="208" selection-start-column="3" selection-end-line="208" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="102" lean-forward="false" selection-start-line="29" selection-start-column="102" selection-end-line="29" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/currency_script.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3210">
+          <caret line="214" column="46" lean-forward="true" selection-start-line="214" selection-start-column="46" selection-end-line="214" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/AccountsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/BaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Config/services.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-900">
+          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="1" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/DepositsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="20" column="47" lean-forward="false" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/DepositManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="63" column="39" lean-forward="false" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/InstrumentsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-765">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/BetsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="126" column="19" lean-forward="false" selection-start-line="126" selection-start-column="19" selection-end-line="126" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/BetManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="150" column="15" lean-forward="false" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/InvestsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-540">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/PromosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1081">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1125,42 +1142,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/TokenManager.php">
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/OperatorsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="66" column="26" lean-forward="false" selection-start-line="66" selection-start-column="26" selection-end-line="66" selection-end-column="26" />
+        <state relative-caret-position="119">
+          <caret line="120" column="22" lean-forward="true" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/LoginController.php">
+    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/PromoManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="114" column="40" lean-forward="true" selection-start-line="114" selection-start-column="40" selection-end-line="114" selection-end-column="40" />
+        <state relative-caret-position="-315">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Config/services.php">
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/RobotcodesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="87" column="34" lean-forward="false" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
+        <state relative-caret-position="-1305">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Config/routing.php">
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/SummaryController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="396" column="0" lean-forward="true" selection-start-line="396" selection-start-column="0" selection-end-line="396" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Api/Listeners/ApiListener.php">
+    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/SummaryManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state relative-caret-position="735">
+          <caret line="49" column="9" lean-forward="true" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/UserManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="264" column="68" lean-forward="false" selection-start-line="264" selection-start-column="60" selection-end-line="264" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/UsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="111" column="53" lean-forward="false" selection-start-line="111" selection-start-column="53" selection-end-line="111" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Api/Controllers/WithdrawalsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Core/Managers/WithdrawalManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
           <folding />
         </state>
       </provider>

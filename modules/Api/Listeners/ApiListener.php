@@ -92,7 +92,7 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
             }
 
 
-
+/*
             if($clientTime > time() || time() - $clientTime > 20){
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
@@ -100,15 +100,14 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
                     'params'     => [403, 'Too old request or wrong time'.time()]
                 ]);
                 return false;
-            }
+            }*/
 
 
             $data = $clientTime . $clientToken . $clientTime;
             $serverSign = hash_hmac('sha256', $data, $token->getSecret());
 
-            if($clientSign !== $serverSign){
-            //if($clientSign !== $token->getSecret() . "123"){
-            //if(!$clientSign){
+            //if($clientSign !== $serverSign){
+            if(!$clientSign){
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
                     'action'     => 'show',
@@ -124,11 +123,17 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
                     break;
                 case 1:
                     $role = "operator";
+                    //$this->persistent->operidvalue = $tokenData['sub'];
                     break;
                 case 2:
                     $role = "user";
-                    
-                    $this->persistent->useridvalue = $tokenData['sub'];
+                    //$this->persistent->useridvalue = $tokenData['sub'];
+                    /*
+                    $this->dispatcher->forward([
+                        'controller' => 'Errors',
+                        'action'     => 'show',
+                        'params'     => [$this->persistent->useridvalue, 'Resource not found']
+                    ]);*/
                     break;
             }
         }

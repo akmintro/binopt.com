@@ -23,7 +23,7 @@ class WithdrawalManager extends BaseManager
             return $item->toArray();
         });
 
-        $data = $this->getFilteredData($data, $this->request->getQuery('username'), $this->request->getQuery('operator'), $this->request->getQuery('status'));
+        $data = $this->getFilteredData($data, $this->request->getQuery('email'), $this->request->getQuery('operator'), $this->request->getQuery('status'));
 
         $meta = [
             "code" => 200,
@@ -44,13 +44,13 @@ class WithdrawalManager extends BaseManager
         }
     }
 
-    private function getFilteredData($data, $username = null, $operator = null, $status = null)
+    private function getFilteredData($data, $email = null, $operator = null, $status = null)
     {
         $result = [];
         foreach ($data as $withdrawal)
         {
             $account = Account::findFirstById($withdrawal['account']);
-            if(($account->getRealdemo() != 1) || ($username != null && $account->user->getUsername() != $username) || ($operator != null && $account->user->getOperator() != $operator))
+            if(($account->getRealdemo() != 1) || ($email != null && $account->user->getEmail() != $email) || ($operator != null && $account->user->getOperator() != $operator))
                 continue;
 
             if(($status == "canceled" && $withdrawal['state'] != 0)
@@ -59,7 +59,7 @@ class WithdrawalManager extends BaseManager
                 continue;
 
             $withdrawal['balance'] = $account->user->getBalance();
-            $withdrawal['username'] = $account->user->getUsername();
+            $withdrawal['email'] = $account->user->getEmail();
             $withdrawal['registration'] = $account->user->getRegistration();
 
             $result[] = $withdrawal;

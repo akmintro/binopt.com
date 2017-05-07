@@ -16,8 +16,8 @@ $di['dispatcher'] = function () use ($di) {
     $dispatcher->setDefaultNamespace("App\Api\Controllers");
 
     $eventsManager = $di->getShared('eventsManager');
-    $apiListener = new \App\Api\Listeners\ApiListener();
-    $eventsManager->attach('dispatch', $apiListener);
+    //$apiListener = new \App\Api\Listeners\ApiListener();
+    //$eventsManager->attach('dispatch', $apiListener);
 
     $dispatcher->setEventsManager($eventsManager);
 
@@ -78,14 +78,16 @@ $di['acl'] = function() {
     //User area resources
     $userResources = array(
         'bets'    => array('create', 'readUser'),
-        'login'   => array('unauthUser', 'isauthUser')
+        'login'   => array('unauthUser', 'isauthUser'),
+        'users'   => array('changePassword')
     );
     foreach ($userResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }
     //Operator area resources
     $operResources = array(
-        'login'   => array('unauthOper', 'isauthOper')
+        'login'   => array('unauthOper', 'isauthOper'),
+        'promos'  => array('read')
     );
     foreach ($operResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
@@ -104,7 +106,8 @@ $di['acl'] = function() {
     //Server area resources
     $serverResources = array(
         'currency'   => array('create', 'delete'),    // server
-        'bets'       => array('read', 'update')
+        'bets'       => array('read', 'update'),
+        'login'      => array('delete')
     );
     foreach ($serverResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);

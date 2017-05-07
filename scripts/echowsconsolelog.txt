@@ -2647,3 +2647,106 @@ open OK
 connection closed...
 close OK
 OK
+console - start
+echows - try to start...
+there is no process with PID = 3742, last termination was abnormal...
+try to unlink PID file...
+OK
+OK getmypid = 4629
+socket - try to start...
+new connection... connect=Resource id #311, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #360, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #439, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #454, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #650, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #693, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #728, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #770, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #787, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1085, info=Array OK
+open OK
+console - start
+echows - try to start...
+there is no process with PID = 4629, last termination was abnormal...
+try to unlink PID file...
+OK
+OK getmypid = 2262
+socket - try to start...
+new connection... connect=Resource id #81, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #555, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #725, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1036, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1070, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1127, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1637, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1816, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2277, info=Array OK
+open OK

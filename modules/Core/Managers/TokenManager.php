@@ -7,12 +7,12 @@ use App\Core\Models\User;
 class TokenManager extends BaseManager
 {
     protected $roles = ["admin" => 0, "operator" => 1, "user" => 2];
-/*
+
     public function find($parameters = null)
     {
         return Token::find($parameters);
     }
-
+/*
     public function restGet(array $parameters = null, $limit = 10, $offset = 0)
     {
         $items = $this->find($parameters);
@@ -61,12 +61,13 @@ class TokenManager extends BaseManager
         ]];
     }*/
 
-    public function restCreate($role, $id, $token, $secret) {
+    public function restCreate($role, $id, $token, $secret, $exptime) {
         $item = new Token();
         $item->setRole($this->roles[$role]);
         $item->setId($id);
         $item->setTokenVal($token);
         $item->setSecret($secret);
+        $item->setExptime($exptime);
 
         if (false === $item->create()) {
             foreach ($item->getMessages() as $message) {
@@ -86,6 +87,22 @@ class TokenManager extends BaseManager
         $item = Token::findFirst($parameters);
 
         return $item;
+    }
+
+    public function restDelete()
+    {
+        $item = $this->find(["exptime < :time:", "bind" => ["time" => gmdate("Y-m-d H:i:s")]]);
+
+        if (false === $item->delete()) {
+            foreach ($item->getMessages() as $message) {
+                throw new \Exception($message->getMessage(), 500);
+            }
+        }
+
+        return ["meta" => [
+            "code" => 200,
+            "message" => "OK"
+        ]];
     }
 }
 ?>

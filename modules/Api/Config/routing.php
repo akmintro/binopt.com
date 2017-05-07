@@ -58,6 +58,10 @@ $users->addDelete('/{id:[0-9]+}', array(
     'action' => 'delete'
 ));
 
+$users->addPost('/password', array(
+    'action' => 'changePassword'
+));
+
 // Countries group
 $countries = new \Phalcon\Mvc\Router\Group(array(
     'module' => 'api',
@@ -401,6 +405,10 @@ $login->addPost('/operators/auth', array(
 
 $login->addPost('/operators/unauth', array(
     'action' => 'unauthOper'
+));
+
+$login->addDelete('/login', array(
+    'action' => 'delete'
 ));
 
 // Registration group

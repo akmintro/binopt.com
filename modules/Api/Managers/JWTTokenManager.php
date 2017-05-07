@@ -16,7 +16,7 @@ class JWTTokenManager
     protected $algorithm;
     protected $secret;
 
-    protected $userid;
+    protected $actorid;
 
 
     public function __construct($secret, $algorithm = self::ALGORITHM_HS256)
@@ -110,7 +110,7 @@ class JWTTokenManager
     {
         $tokenData = $this->decode($token);
 
-        $this->userid = $tokenData->sub;
+        $this->actorid = $tokenData->sub;
 
         /*@TODO iss from login password authZ and authN*/
 //        return new Session($tokenData->iss, $tokenData->sub, $tokenData->iat, $tokenData->exp, $token);
@@ -129,6 +129,12 @@ class JWTTokenManager
 
     public function getUserid()
     {
-        return $this->userid;
+        return $this->actorid;
+    }
+
+
+    public function getOperid()
+    {
+        return $this->actorid;
     }
 }

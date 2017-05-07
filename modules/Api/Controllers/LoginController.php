@@ -24,10 +24,10 @@ class LoginController extends BaseController {
 
             $token = $this->tokenParser->getToken("user", $user["id"], $startTime, $endTime);
 
-            $secret = hash("sha512", $user["username"].$token.$startTime.$user["id"].$user["phone"]);
+            $secret = hash("sha512", $user["username"].$token.$startTime.$user["id"]);
 
             $manager = $this->getDI()->get('core_token_manager');
-            $manager->restCreate("user", $user["id"], $token, $secret);
+            $manager->restCreate("user", $user["id"], $token, $secret, gmdate("Y-m-d H:i:s", $endTime));
 
             return $this->render(["token" => $token, "secret" => $secret]);
         } catch (\Exception $e) {
@@ -94,7 +94,7 @@ class LoginController extends BaseController {
             $secret = hash("sha512", $oper["name"].$token.$startTime.$oper["id"]);
 
             $manager = $this->getDI()->get('core_token_manager');
-            $manager->restCreate("operator", $oper["id"], $token, $secret);
+            $manager->restCreate("operator", $oper["id"], $token, $secret, gmdate("Y-m-d H:i:s", $endTime));
 
             return $this->render(["token" => $token, "secret" => $secret]);
         } catch (\Exception $e) {
@@ -131,6 +131,20 @@ class LoginController extends BaseController {
                 "code" => 200,
                 "message" => "OK"
             ]]);
+        } catch (\Exception $e) {
+            return $this->render(["meta" => [
+                'code' => $e->getCode(),
+                'message' => $e->getMessage()
+            ]]);
+        }
+    }
+
+    public function deleteAction() {
+        try {
+            $manager = $this->getDI()->get('core_token_manager');
+
+            $st_output = $manager->restDelete();
+            return $this->render($st_output);
         } catch (\Exception $e) {
             return $this->render(["meta" => [
                 'code' => $e->getCode(),

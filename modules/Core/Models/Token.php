@@ -21,6 +21,7 @@ class Token extends \Phalcon\Mvc\Model
     /**
      *
      * @var string
+     * @Primary
      * @Column(type="string", length=512, nullable=false)
      */
     protected $token_val;
@@ -31,6 +32,13 @@ class Token extends \Phalcon\Mvc\Model
      * @Column(type="string", length=128, nullable=false)
      */
     protected $secret;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", nullable=false)
+     */
+    protected $exptime;
 
     /**
      * Method to set the value of field role
@@ -85,6 +93,19 @@ class Token extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field exptime
+     *
+     * @param string $exptime
+     * @return $this
+     */
+    public function setExptime($exptime)
+    {
+        $this->exptime = $exptime;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field role
      *
      * @return integer
@@ -122,6 +143,16 @@ class Token extends \Phalcon\Mvc\Model
     public function getSecret()
     {
         return $this->secret;
+    }
+
+    /**
+     * Returns the value of field exptime
+     *
+     * @return string
+     */
+    public function getExptime()
+    {
+        return $this->exptime;
     }
 
     /**

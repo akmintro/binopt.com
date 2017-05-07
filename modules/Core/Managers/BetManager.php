@@ -27,7 +27,7 @@ class BetManager extends BaseManager
             return $item->toArray();
         });
 
-        $data = $this->getFilteredData($data, $this->dispatcher->getParam("realdemo"), $this->request->getQuery('username'), $this->request->getQuery('status'));
+        $data = $this->getFilteredData($data, $this->dispatcher->getParam("realdemo"), $this->request->getQuery('email'), $this->request->getQuery('status'));
 
         $meta = [
             "code" => 200,
@@ -78,13 +78,13 @@ class BetManager extends BaseManager
         return ["meta" => $meta, "data" => ["balance" => $account->getBalance(), "history" => $data]];
     }
 
-    private function getFilteredData($data, $realdemo, $username = null, $status = null)
+    private function getFilteredData($data, $realdemo, $email = null, $status = null)
     {
         $result = [];
         foreach ($data as $bet)
         {
             $account = Account::findFirstById($bet['account']);
-            if(($account->getRealdemo() != $realdemo) || ($username != null && $account->user->getUsername() != $username))
+            if(($account->getRealdemo() != $realdemo) || ($email != null && $account->user->getEmail() != $email))
                 continue;
 
             if(($status == "active" && $bet['result'] != null)
@@ -94,6 +94,7 @@ class BetManager extends BaseManager
                 || ($status == "draw" && $bet['result'] != 0))
                 continue;
 
+            unset($bet['account']);
             $result[] = $bet;
         }
         return $result;
@@ -105,7 +106,6 @@ class BetManager extends BaseManager
         foreach ($data as $bet)
         {
             if($bet['account'] == $accountId) {
-                unset($bet['account']);
                 $result[] = $bet;
             }
         }
@@ -122,7 +122,7 @@ class BetManager extends BaseManager
 
         foreach ($items as $item)
         {
-            $this->setFields($item,  ['endtime' => $currency_data[$item->getInstrument()]['currencytime'], 'endval' => $currency_data[$item->getInstrument()]['close']]);
+            $this->setFields($item,  ['endval' => $currency_data[$item->getInstrument()]['close']]);
 
             if (false === $item->update()) {
                 foreach ($item->getMessages() as $message) {
@@ -204,6 +204,7 @@ class BetManager extends BaseManager
         foreach ($new_items as &$item)
         {
             $item['instrument'] = Instrument::findFirstById($item['instrument']);
+            unset($item['account']);
         }
 
         return $new_items;
@@ -217,11 +218,13 @@ class BetManager extends BaseManager
         if(isset($data['instrument']))
             $item->setInstrument($data['instrument']);
 
-        if(isset($data['starttime']))
+        if(isset($data['starttime'])) {
             $item->setStarttime($data['starttime']);
 
-        if(isset($data['endtime']))
-            $item->setEndtime($data['endtime']);
+            $endtime = strtotime($data['starttime']);
+            $endtime = ceil(($endtime + 60) / 60) * 60;
+            $item->setEndtime(date("Y-m-d H:i:s", $endtime));
+        }
 
         if(isset($data['startval']))
             $item->setStartval($data['startval']);
@@ -243,14 +246,12 @@ class BetManager extends BaseManager
         $winpercent = $this->config->parameters->winpercent;
         //$invest = $bet->invest->getSize();
         $invest = $bet->getInvest();
-
         if($bet->getEndval() == $bet->getStartval())
             $result = 0;
         elseif(($bet->getUpdown() == 1 && $bet->getEndval() > $bet->getStartval()) || ($bet->getUpdown() == 0 && $bet->getEndval() < $bet->getStartval()))
             $result = $invest * $winpercent;
         else
             $result = -$invest;
-
         return $result;
     }
 }
