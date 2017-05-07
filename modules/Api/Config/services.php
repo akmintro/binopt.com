@@ -16,8 +16,8 @@ $di['dispatcher'] = function () use ($di) {
     $dispatcher->setDefaultNamespace("App\Api\Controllers");
 
     $eventsManager = $di->getShared('eventsManager');
-    //$apiListener = new \App\Api\Listeners\ApiListener();
-    //$eventsManager->attach('dispatch', $apiListener);
+    $apiListener = new \App\Api\Listeners\ApiListener();
+    $eventsManager->attach('dispatch', $apiListener);
 
     $dispatcher->setEventsManager($eventsManager);
 
@@ -107,7 +107,8 @@ $di['acl'] = function() {
     $serverResources = array(
         'currency'   => array('create', 'delete'),    // server
         'bets'       => array('read', 'update'),
-        'login'      => array('delete')
+        'login'      => array('delete'),
+        'settings'   => array('read', 'update')
     );
     foreach ($serverResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);

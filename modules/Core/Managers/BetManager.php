@@ -5,6 +5,7 @@ use App\Core\Models\Account;
 use App\Core\Models\Bet;
 use App\Core\Models\Instrument;
 use App\Core\Models\Invest;
+use App\Core\Models\Settings;
 use App\Core\Models\Token;
 use App\Core\Models\User;
 
@@ -244,7 +245,7 @@ class BetManager extends BaseManager
 
     private function getResult($bet)
     {
-        $winpercent = $this->config->parameters->winpercent;
+        $winpercent = (float)(Settings::findFirstById(1)->getValue());
         //$invest = $bet->invest->getSize();
         $invest = $bet->getInvest();
         if($bet->getEndval() == $bet->getStartval())

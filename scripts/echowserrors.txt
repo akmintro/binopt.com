@@ -1829,3 +1829,4 @@
 [07-May-2017 00:15:48 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68
 [07-May-2017 00:32:05 Europe/Helsinki] PHP Warning:  Invalid argument supplied for foreach() in /var/www/binopt.com/scripts/echows.php on line 98
 [07-May-2017 00:32:05 Europe/Helsinki] PHP Notice:  Undefined offset: 1 in /var/www/binopt.com/scripts/echows.php on line 104
+[07-May-2017 15:08:21 Europe/Helsinki] PHP Notice:  Array to string conversion in /var/www/binopt.com/scripts/echows.php on line 68

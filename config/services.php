@@ -157,7 +157,10 @@ $di['core_currency_manager'] = function() {
     return new App\Core\Managers\CurrencyManager();
 };
 
-
 $di['core_token_manager'] = function() {
     return new App\Core\Managers\TokenManager();
+};
+
+$di['core_settings_manager'] = function() {
+    return new App\Core\Managers\SettingsManager();
 };

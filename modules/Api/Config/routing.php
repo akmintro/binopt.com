@@ -426,6 +426,22 @@ $registration->addGet('/users/activate', array(
     'action' => 'activateUser'
 ));
 
+// Settings group
+$settings = new \Phalcon\Mvc\Router\Group(array(
+    'module' => 'api',
+    'controller' => 'settings'
+));
+
+$settings->setPrefix($versions['v1'].'/settings');
+
+$settings->addGet('', array(
+    'action' => 'read'
+));
+
+$settings->addPut('', array(
+    'action' => 'update'
+));
+
 // Sessions group
 /*
 $session = new \Phalcon\Mvc\Router\Group(array(
@@ -473,5 +489,6 @@ $router->mount($currency);
 $router->mount($ws);
 $router->mount($login);
 $router->mount($registration);
+$router->mount($settings);
 
 ?>
