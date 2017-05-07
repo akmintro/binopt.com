@@ -94,6 +94,7 @@ class BetManager extends BaseManager
                 || ($status == "draw" && $bet['result'] != 0))
                 continue;
 
+            $bet['email'] = $account->user->getEmail();
             unset($bet['account']);
             $result[] = $bet;
         }
