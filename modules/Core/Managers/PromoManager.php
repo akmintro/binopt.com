@@ -104,6 +104,9 @@ class PromoManager extends BaseManager
 
         if(isset($data['active']))
             $item->setActive($data['active']);
+
+        if(isset($data['bonus']))
+            $item->setBonus($data['bonus']);
     }
 }
 ?>
