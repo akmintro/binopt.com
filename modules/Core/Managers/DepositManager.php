@@ -148,9 +148,18 @@ class DepositManager extends BaseManager
             $item->setPromo($promo->getId());
         }
 
+
+/*
         $admin = $this->dispatcher->getParam("admin");
         if($admin)
-            $item->setAdmin($admin);
+            $item->setAdmin($admin);*/
+
+        if(isset($data['admin']))
+            $item->setAdmin($data['admin']);
+
+
+        if(isset($data['state']))
+            $item->setState($data['state']);
     }
 }
 ?>

@@ -74,7 +74,7 @@ class UserManager extends BaseManager
 
             unset($item['firstname']);
             unset($item['lastname']);
-            //unset($item['email']);
+            unset($item['activation']);
             unset($item['password']);
             unset($item['country']);
             unset($item['birthday']);
@@ -120,6 +120,15 @@ class UserManager extends BaseManager
                 "message" => "Not Found"
             ]];
         }
+
+        if (User::findFirst(["id <> :id: AND email = :email:", 'bind' => ['id' => $id, 'email' => $data[0]['email']]])) {
+            return ["meta" => [
+                "code" => 407,
+                "message" => "Email Duplicate"
+            ]];
+        }
+
+
         $this->setFields($item, $data[0]);
 
         if (false === $item->update()) {
@@ -155,6 +164,9 @@ class UserManager extends BaseManager
 
     private function createUser($item, $amount = 0)
     {
+        if (strlen($item->getFirstname()) == 0 || strlen($item->getLastname()) == 0 || strlen($item->getPassword()) == 0 || strlen($item->getEmail()) == 0)
+            throw new \Exception("Incomplete Data", 406);
+
         if (false === $item->create()) {
             foreach ($item->getMessages() as $message) {
                 throw new \Exception($message->getMessage(), 500);
@@ -166,12 +178,31 @@ class UserManager extends BaseManager
 
         $accmanager->restCreate([["user" => $item->getId(), "realdemo" => 0]]);
         $account = Account::findFirst(["user = :user: and realdemo = 0", "bind" => ["user" => $item->getId()]]);
-
         $depmanager->restCreate([["account" => $account->getId(), "amount" => 1000, "wallet" => $this->config->parameters->adminwallet]]);
+
         $accmanager->restCreate([["user" => $item->getId(), "realdemo" => 1]]);
+        if($amount > 0)
+        {
+            $account = Account::findFirst(["user = :user: and realdemo = 1", "bind" => ["user" => $item->getId()]]);
+            $depmanager->restCreate([["account" => $account->getId(), "amount" => $amount, "wallet" => $this->config->parameters->adminwallet, "admin" => 1, "state" => 1]]);
+        }
     }
 
     public function restCreate($data) {
+
+        if (User::findFirst(["email = :email:", 'bind' => ['email' => $data[0]['email']]])) {
+            return ["meta" => [
+                "code" => 407,
+                "message" => "Email Duplicate"
+            ]];
+        }
+
+        if(!isset($data[0]['operator']))
+            $data[0]['operator'] = $this->tokenParser->getOperid();
+
+        if(!isset($data[0]['email']))
+            $data[0]['email'] = $data[0]['lastname'] . "." . $data[0]['firstname'] . Operator::findFirstById($data[0]['operator'])->getEmailsuffix();
+
         $item = new User();
         $this->setFields($item, $data[0]);
 
@@ -224,12 +255,9 @@ class UserManager extends BaseManager
         if(!isset($opdata['password']))
             throw new \Exception('password is required', 500);
 
-        $parameters = [
-            "email = :name:",
-            'bind' => ['name' => $opdata['name']],
-        ];
 
-        $items = $this->find($parameters);
+        $items = $this->find([ "email = :name:", 'bind' => ['name' => $opdata['name']]]);
+
         $data = $items->filter(function($item){
             return $item->toArray();
         });
@@ -251,8 +279,8 @@ class UserManager extends BaseManager
 
         if (User::findFirst(["email = :email:", 'bind' => ['email' => $data[0]['email']]])) {
             return ["meta" => [
-                "code" => 500,
-                "message" => "email is taken"
+                "code" => 407,
+                "message" => "Email Duplicate"
             ]];
         }
 
@@ -263,6 +291,7 @@ class UserManager extends BaseManager
         $code .= substr(md5((microtime() - rand(3,1000000)) * rand(1,1000)),rand(0,20),10);
 
         $item = new User();
+        unset($data[0]['operator']);
         $this->setFields($item, $data[0]);
 
         $item->setActivation($code);

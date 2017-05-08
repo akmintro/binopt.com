@@ -93,8 +93,9 @@ $di['acl'] = function() {
     }
     //Admin area resources
     $adminResources = array(
-        'users'      => array('read', 'get', 'update', 'create'),
-        'operators'  => array('read', 'update', 'create'),
+        'users'      => array('read', 'get', 'update', 'create', 'delete'),
+        'operators'  => array('read', 'update', 'create'/*, 'delete'*/),
+        'bets'       => array('read'),
         'deposits'   => array('read'),
         'withdrawals'=> array('read'),
         'summary'    => array('readDeposits'),
@@ -108,6 +109,7 @@ $di['acl'] = function() {
     //Operator area resources
     $operResources = array(
         'users'      => array('read', 'create'),
+        'bets'       => array('read'),
         'deposits'   => array('read'),
         'withdrawals'=> array('read'),
         'summary'    => array('readDeposits'),
@@ -132,7 +134,8 @@ $di['acl'] = function() {
         'registration' => array('registerUser', 'activateUser'),
         'login'      => array('authUser', 'authOper'),
         'currency'   => array('readHistory', 'readLast'),
-        'instruments'=> array('read')
+        'instruments'=> array('read'),
+        'countries'  => array('read')
     );
     foreach ($publicResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);

@@ -271,7 +271,7 @@ $deposits->setPrefix($versions['v1'].'/deposits');
 $deposits->addGet('', array(
     'action' => 'read'
 ));
-
+/*
 $deposits->addPost('/admin', array(
     'action' => 'create',
     'admin' => 1
@@ -285,7 +285,7 @@ $deposits->addPost('/user', array(
 $deposits->addPut('/{id:[0-9]+}', array(
     'action' => 'update'
 ));
-
+*/
 $deposits->addDelete('/{id:[0-9]+}', array(
     'action' => 'delete'
 ));

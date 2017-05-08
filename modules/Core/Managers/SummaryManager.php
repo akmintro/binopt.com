@@ -54,7 +54,7 @@ class SummaryManager extends BaseManager
                 $account = $user->getRealAccount();
                 if($account == null)
                     continue;
-                $deposits += $account->getDeposits($start, $end);
+                $deposits += $account->getDeposits($start, $end, true);
             }
             $operator['deposits'] = $deposits;
             $result[] = $operator;

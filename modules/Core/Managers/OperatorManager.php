@@ -44,11 +44,20 @@ class OperatorManager extends BaseManager
     {
         $item = $this->findFirstById($id);
         if (!$item) {
-            return ["meta" => [
-                "code" => 404,
-                "message" => "Not Found"
-            ]];
+            throw new \Exception('Not found', 404);
         }
+
+        if ((isset($data[0]['name']) && strlen($data[0]['name']) == 0) || (isset($data[0]['password']) && strlen($data[0]['password']) == 0) || (isset($data[0]['emailsuffix']) && strlen($data[0]['emailsuffix']) == 0))
+            throw new \Exception("Incomplete Data", 406);
+
+        $item2 = Operator::findFirst(["id <> :id: AND (name = :name: OR emailsuffix = :emailsuffix:)", "bind" => ["id" => $id, "name" => $data[0]['name'], "emailsuffix" => $data[0]['emailsuffix']]]);
+        if($item2 != null)
+        {
+            if($item2->getName() == $data[0]['name'])
+                throw new \Exception("Name Duplicate", 409);
+            throw new \Exception("Emailsuffix Duplicate", 408);
+        }
+
         $this->setFields($item, $data[0]);
 
         if (false === $item->update()) {
@@ -60,7 +69,7 @@ class OperatorManager extends BaseManager
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => $this->getItems($item)];
+        ]/*, "data" => $this->getItems($item)*/];
     }
 
     public function restDelete($id)
@@ -85,6 +94,18 @@ class OperatorManager extends BaseManager
 
     public function restCreate($data)
     {
+
+        if (strlen($data[0]['name']) == 0 || strlen($data[0]['password']) == 0 || strlen($data[0]['emailsuffix']) == 0)
+            throw new \Exception("Incomplete Data", 406);
+
+        $item = Operator::findFirst(["name = :name: OR emailsuffix = :emailsuffix:", "bind" => ["name" => $data[0]['name'], "emailsuffix" => $data[0]['emailsuffix']]]);
+        if($item != null)
+        {
+            if($item->getName() == $data[0]['name'])
+                throw new \Exception("Name Duplicate", 409);
+            throw new \Exception("Emailsuffix Duplicate", 408);
+        }
+
         $item = new Operator();
         $this->setFields($item, $data[0]);
 
@@ -97,7 +118,7 @@ class OperatorManager extends BaseManager
         return ["meta" => [
             "code" => 200,
             "message" => "OK"
-        ], "data" => $this->getItems($item)];
+        ]/*, "data" => $this->getItems($item)*/];
     }
 
     private function setFields($item, $data)
