@@ -86,8 +86,16 @@ $di['acl'] = function() {
     }
     //Operator area resources
     $operResources = array(
-        'login'   => array('unauthOper', 'isauthOper'),
-        'promos'  => array('read')
+        'login' => array('unauthOper', 'isauthOper'),
+        'users' => array('read', 'create', 'update', 'delete', 'get'),
+        'promos' => array('read', 'create', 'update', 'delete'),
+        'operators' => array('read', 'create', 'update', 'delete'),
+        'bets' => array('read', 'create', 'update', 'delete'),
+        'robotcodes' => array('read', 'create', 'update', 'delete'),
+        'robotcodetypes' => array('read', 'create', 'update', 'delete'),
+        'deposits' => array('read', 'create', 'update', 'delete'),
+        'withdrawals' => array('read', 'create', 'update', 'delete'),
+        'settings' => array('read', 'create', 'update', 'delete'),
     );
     foreach ($operResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
