@@ -90,6 +90,7 @@ $di['acl'] = function() {
         'users' => array('read', 'create', 'update', 'delete', 'get'),
         'promos' => array('read', 'create', 'update', 'delete'),
         'operators' => array('read', 'create', 'update', 'delete'),
+        'countries' => array('read'),
         'bets' => array('read', 'create', 'update', 'delete'),
         'robotcodes' => array('read', 'create', 'update', 'delete'),
         'robotcodetypes' => array('read', 'create', 'update', 'delete'),
