@@ -104,6 +104,7 @@ function curl_post_async($url, $data)
     $out.= "Host: ".$parts['host']."\r\n";
     $out.= "Content-Type: application/json\r\n";
     $out.= "Content-Length: ".strlen($data)."\r\n";
+    $out.= "APITOKEN: ".file_get_contents('servertoken.txt')."\r\n";
     $out.= "Connection: Close\r\n\r\n";
     if (isset($data)) $out.= $data;
 
@@ -114,7 +115,6 @@ function curl_post_async($url, $data)
 function save_history($history)
 {
     curl_post_async('http://binopt.com/api/v1/currency', json_encode($history));
-    //echo json_encode($history);
 }
 
 function curl_delete_async($url)
@@ -127,6 +127,7 @@ function curl_delete_async($url)
 
     $out = "DELETE ".$parts['path'].'?'.$parts['query']." HTTP/1.1\r\n";
     $out.= "Host: ".$parts['host']."\r\n";
+    $out.= "APITOKEN: ".file_get_contents('servertoken.txt')."\r\n";
     $out.= "Connection: Close\r\n\r\n";
 
     fwrite($fp, $out);
@@ -153,6 +154,7 @@ function curl_put_async($url)
 
     $out = "PUT ".$parts['path'].'?'.$parts['query']." HTTP/1.1\r\n";
     $out.= "Host: ".$parts['host']."\r\n";
+    $out.= "APITOKEN: ".file_get_contents('servertoken.txt')."\r\n";
     $out.= "Connection: Close\r\n\r\n";
 
     fwrite($fp, $out);
@@ -166,7 +168,7 @@ function close_bets($time)
 
 $filename = "currency_data.txt";
 $clearinterval = 60;
-$tokeninterval = 86400;
+$tokeninterval = 10;//86400;
 $historyinterval = 3600;
 
 $launchtime = ceil(microtime(true)/6)*6;

@@ -76,7 +76,9 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
         $clientSign = $this->request->getHeader('APISIGN');
         $clientTime = $this->request->getHeader('APITIME');
 
-        if($clientToken && $clientSign && $clientTime) {
+        if(file_get_contents($this->config->parameters->servertoken) == $clientToken)
+            $role = "server";
+        else if($clientToken && $clientSign && $clientTime) {
             $tokenData = $this->tokenParser->getData($clientToken);
 
             $manager = $this->getDI()->get('core_token_manager');

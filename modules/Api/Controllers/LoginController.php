@@ -89,12 +89,21 @@ class LoginController extends BaseController {
             if($data[0]["remember"])
                 $endTime = $startTime + $this->sessionDuration * 30;
 
-            $token = $this->tokenParser->getToken("operator", $oper["id"], $startTime, $endTime);
 
-            $secret = hash("sha512", $oper["name"].$token.$startTime.$oper["id"]);
 
             $manager = $this->getDI()->get('core_token_manager');
-            $manager->restCreate("operator", $oper["id"], $token, $secret, gmdate("Y-m-d H:i:s", $endTime));
+            if($oper["id"] == 0) {
+                $token = $this->tokenParser->getToken("admin", $oper["id"], $startTime, $endTime);
+                $secret = hash("sha512", $oper["name"].$token.$startTime.$oper["id"]);
+                $manager->restCreate("admin", $oper["id"], $token, $secret, gmdate("Y-m-d H:i:s", $endTime));
+            }
+            else {
+                $token = $this->tokenParser->getToken("operator", $oper["id"], $startTime, $endTime);
+                $secret = hash("sha512", $oper["name"].$token.$startTime.$oper["id"]);
+                $manager->restCreate("operator", $oper["id"], $token, $secret, gmdate("Y-m-d H:i:s", $endTime));
+            }
+
+
 
             return $this->render(["token" => $token, "secret" => $secret]);
         } catch (\Exception $e) {

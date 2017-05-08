@@ -69,11 +69,54 @@ $di['acl'] = function() {
         'admins'  => new Role(
             'admin',
             'Admin privileges, granted after sign in.'
+        ),
+        'server'  => new Role(
+            'server',
+            'Server privileges, granted after sign in.'
         )
 
     ];
     foreach ($roles as $role) {
         $acl->addRole($role);
+    }
+
+
+    //Server area resources
+    $serverResources = array(
+        'currency'   => array('create', 'delete'),
+        'bets'       => array('read', 'update'),
+        'login'      => array('delete'),
+        'settings'   => array('read', 'update')
+    );
+    foreach ($serverResources as $resource => $actions) {
+        $acl->addResource(new Resource($resource), $actions);
+    }
+    //Admin area resources
+    $adminResources = array(
+        'users'      => array('read', 'get', 'update', 'create'),
+        'operators'  => array('read', 'update', 'create'),
+        'deposits'   => array('read'),
+        'withdrawals'=> array('read'),
+        'summary'    => array('readDeposits'),
+        'robotcodes' => array('read', 'update', 'create'),
+        'login'      => array('unauthOper', 'isauthOper'),
+        'promos'     => array('read', 'create')
+    );
+    foreach ($adminResources as $resource => $actions) {
+        $acl->addResource(new Resource($resource), $actions);
+    }
+    //Operator area resources
+    $operResources = array(
+        'users'      => array('read', 'create'),
+        'deposits'   => array('read'),
+        'withdrawals'=> array('read'),
+        'summary'    => array('readDeposits'),
+        'login'      => array('unauthOper', 'isauthOper'),
+        'promos'     => array('read'),
+        'robotcodes' => array('read')
+    );
+    foreach ($operResources as $resource => $actions) {
+        $acl->addResource(new Resource($resource), $actions);
     }
     //User area resources
     $userResources = array(
@@ -84,49 +127,28 @@ $di['acl'] = function() {
     foreach ($userResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }
-    //Operator area resources
-    $operResources = array(
-        'login'   => array('unauthOper', 'isauthOper'),
-        'promos'  => array('read')
-    );
-    foreach ($operResources as $resource => $actions) {
-        $acl->addResource(new Resource($resource), $actions);
-    }
     //Public area resources
     $publicResources = array(
         'registration' => array('registerUser', 'activateUser'),
         'login'      => array('authUser', 'authOper'),
         'currency'   => array('readHistory', 'readLast'),
-        'instruments'=> array('read'),
-        'operators'  => array('create')
+        'instruments'=> array('read')
     );
     foreach ($publicResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
     }
-    //Server area resources
-    $serverResources = array(
-        'currency'   => array('create', 'delete'),    // server
-        'bets'       => array('read', 'update'),
-        'login'      => array('delete'),
-        'settings'   => array('read', 'update')
-    );
-    foreach ($serverResources as $resource => $actions) {
-        $acl->addResource(new Resource($resource), $actions);
-    }
+
+
     //Grant access to server areas
-    foreach ($roles as $role) {
-        foreach ($serverResources as $resource => $actions) {
-            foreach ($actions as $action){
-                $acl->allow($role->getName(), $resource, $action);
-            }
+    foreach ($serverResources as $resource => $actions) {
+        foreach ($actions as $action){
+            $acl->allow('server', $resource, $action);
         }
     }
-    //Grant access to public areas to both users and guests
-    foreach ($roles as $role) {
-        foreach ($publicResources as $resource => $actions) {
-            foreach ($actions as $action){
-                $acl->allow($role->getName(), $resource, $action);
-            }
+    //Grant access to private area to role Admin
+    foreach ($adminResources as $resource => $actions) {
+        foreach ($actions as $action){
+            $acl->allow('admin', $resource, $action);
         }
     }
     //Grant access to private area to role Users
@@ -139,6 +161,14 @@ $di['acl'] = function() {
     foreach ($operResources as $resource => $actions) {
         foreach ($actions as $action){
             $acl->allow('operator', $resource, $action);
+        }
+    }
+    //Grant access to public areas to both users and guests
+    foreach ($roles as $role) {
+        foreach ($publicResources as $resource => $actions) {
+            foreach ($actions as $action){
+                $acl->allow($role->getName(), $resource, $action);
+            }
         }
     }
 

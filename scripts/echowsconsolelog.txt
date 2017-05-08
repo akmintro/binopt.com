@@ -2759,3 +2759,83 @@ OK getmypid = 5857
 socket - try to start...
 new connection... connect=Resource id #110, info=Array OK
 open OK
+connection closed...
+close OK
+OK
+console - start
+echows - try to start...
+there is no process with PID = 5857, last termination was abnormal...
+try to unlink PID file...
+OK
+OK getmypid = 4907
+socket - try to start...
+new connection... connect=Resource id #41, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #127, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #176, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #425, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #527, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1406, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1444, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1474, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #1552, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2103, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2248, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2293, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2401, info=Array OK
+open OK
+connection closed...
+close OK
+OK
+new connection... connect=Resource id #2519, info=Array OK
+open OK
+connection closed...
+close OK
+OK

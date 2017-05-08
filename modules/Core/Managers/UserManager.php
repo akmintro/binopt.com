@@ -1,6 +1,7 @@
 <?php
 namespace App\Core\Managers;
 
+use App\Core\Models\Account;
 use App\Core\Models\Operator;
 use App\Core\Models\User;
 
@@ -152,15 +153,33 @@ class UserManager extends BaseManager
         ]];
     }
 
-    public function restCreate($data) {
-        $item = new User();
-        $this->setFields($item, $data[0]);
-
+    private function createUser($item, $amount = 0)
+    {
         if (false === $item->create()) {
             foreach ($item->getMessages() as $message) {
                 throw new \Exception($message->getMessage(), 500);
             }
         }
+
+        $accmanager = $this->getDI()->get('core_account_manager');
+        $depmanager = $this->getDI()->get('core_deposit_manager');
+
+        $accmanager->restCreate([["user" => $item->getId(), "realdemo" => 0]]);
+        $account = Account::findFirst(["user = :user: and realdemo = 0", "bind" => ["user" => $item->getId()]]);
+
+        $depmanager->restCreate([["account" => $account->getId(), "amount" => 1000, "wallet" => $this->config->parameters->adminwallet]]);
+        $accmanager->restCreate([["user" => $item->getId(), "realdemo" => 1]]);
+    }
+
+    public function restCreate($data) {
+        $item = new User();
+        $this->setFields($item, $data[0]);
+
+        $amount = (int)$data[0]["amount"];
+        if($amount < 0)
+            $amount = 0;
+
+        $this->createUser($item, $amount);
 
         return ["meta" => [
             "code" => 200,
@@ -248,11 +267,8 @@ class UserManager extends BaseManager
 
         $item->setActivation($code);
 
-        if (false === $item->create()) {
-            foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
-            }
-        }
+
+        $this->createUser($item);
 
         $to = $item->getEmail();
 

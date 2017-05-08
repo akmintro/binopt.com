@@ -40,7 +40,9 @@ return new \Phalcon\Config(array(
         'gmailpassword' => 'fybotyr0',
         'winpercent' => 0.86,
         'currencydata' => __DIR__ . '/../scripts/currency_data.txt',
-        'scriptsfolder' => __DIR__ . '/../scripts'
+        'scriptsfolder' => __DIR__ . '/../scripts',
+        'adminwallet' => "walletwallet",
+        'servertoken' => __DIR__ .'/../scripts/servertoken.txt'
     )
 ));
 ?>

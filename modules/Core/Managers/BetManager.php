@@ -161,7 +161,7 @@ class BetManager extends BaseManager
         $invest = (int)$data[0]['invest'];
         if($invest < 1)
             throw new \Exception("incorrect invest", 500);
-        if($account->user->getBalance() < $invest)
+        if($account->getBalance() < $invest)
             throw new \Exception("balance is too small for this bet", 500);
 
 
