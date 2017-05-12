@@ -44,11 +44,12 @@ class BetsController extends BaseController {
                     'bind' => $binds,
                 ];
             }
-
+/*
             $sort = $this->request->getQuery('sort');
             if($sort != null) {
                 $parameters['order'] = $sort;
-            }
+            }*/
+            $parameters['order'] = 'starttime desc';
 
             $offset = $this->request->getQuery('offset');
             if($offset == null)

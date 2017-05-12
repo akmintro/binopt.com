@@ -99,9 +99,11 @@ $di['acl'] = function() {
         'deposits'   => array('read'),
         'withdrawals'=> array('read'),
         'summary'    => array('readDeposits'),
-        'robotcodes' => array('read', 'update', 'create'),
+        'robotcodes' => array('read', 'update', 'create', 'delete'),
+        'robotcodetypes' => array('read'),
         'login'      => array('unauthOper', 'isauthOper'),
-        'promos'     => array('read', 'create')
+        'promos'     => array('read', 'create', 'delete', 'update'),
+        'settings'   => array('read', 'update')
     );
     foreach ($adminResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
@@ -115,7 +117,8 @@ $di['acl'] = function() {
         'summary'    => array('readDeposits'),
         'login'      => array('unauthOper', 'isauthOper'),
         'promos'     => array('read'),
-        'robotcodes' => array('read')
+        'robotcodes' => array('read'),
+        'robotcodetypes' => array('read')
     );
     foreach ($operResources as $resource => $actions) {
         $acl->addResource(new Resource($resource), $actions);
