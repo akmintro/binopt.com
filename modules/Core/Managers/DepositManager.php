@@ -24,7 +24,13 @@ class DepositManager extends BaseManager
             return $item->toArray();
         });
 
-        $data = $this->getFilteredData($data, $this->request->getQuery('email'), $this->request->getQuery('operator'), $this->request->getQuery('status'));
+        if($this->tokenParser->getOperid() == 0)
+            $operator = $this->request->getQuery('operator');
+        else
+            $operator = $this->tokenParser->getOperid();
+
+
+        $data = $this->getFilteredData($data, $this->request->getQuery('email'), $operator, $this->request->getQuery('status'));
 
         $meta = [
             "code" => 200,

@@ -53,11 +53,18 @@ class UsersController extends BaseController {
                 $binds['phone'] = $phone;
             }
 
-            $operator = $this->request->getQuery('operator');
-            if($operator != null) {
-                $conditions[] = 'operator = :operator:';
-                $binds['operator'] = $operator;
+            if($this->tokenParser->getOperid() == 0) {
+                $operator = $this->request->getQuery('operator');
+                if ($operator != null) {
+                    $conditions[] = 'operator = :operator:';
+                    $binds['operator'] = $operator;
+                }
             }
+            else{
+                $conditions[] = 'operator = :operator:';
+                $binds['operator'] = $this->tokenParser->getOperid();
+            }
+
 
             $parameters = [];
             if(count($conditions) > 0)

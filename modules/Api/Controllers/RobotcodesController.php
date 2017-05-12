@@ -40,10 +40,17 @@ class RobotcodesController extends BaseController {
                 $binds['end'] = $end;
             }
 
-            $operator = $this->request->getQuery('operator');
-            if($operator != null) {
+
+            if($this->tokenParser->getOperid() == 0) {
+                $operator = $this->request->getQuery('operator');
+                if ($operator != null) {
+                    $conditions[] = 'operator = :operator:';
+                    $binds['operator'] = $operator;
+                }
+            }
+            else{
                 $conditions[] = 'operator = :operator:';
-                $binds['operator'] = $operator;
+                $binds['operator'] = $this->tokenParser->getOperid();
             }
 
             $parameters = [];
