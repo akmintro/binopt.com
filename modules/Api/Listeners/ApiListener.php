@@ -157,7 +157,7 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
                 'action'     => 'show',
                 'params'     => [401, 'Access denied']
             ));
-            $this->session->destroy();
+            //$this->session->destroy();
             return false;
         }
 
