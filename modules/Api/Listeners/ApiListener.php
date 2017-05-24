@@ -125,17 +125,9 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
                     break;
                 case 1:
                     $role = "operator";
-                    //$this->persistent->operidvalue = $tokenData['sub'];
                     break;
                 case 2:
                     $role = "user";
-                    //$this->persistent->useridvalue = $tokenData['sub'];
-                    /*
-                    $this->dispatcher->forward([
-                        'controller' => 'Errors',
-                        'action'     => 'show',
-                        'params'     => [$this->persistent->useridvalue, 'Resource not found']
-                    ]);*/
                     break;
             }
         }
