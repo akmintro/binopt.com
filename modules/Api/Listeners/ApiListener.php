@@ -4,8 +4,6 @@ namespace App\Api\Listeners;
 use App\Api\Controllers\ErrorsController;
 use App\Core\Models\User;
 
-//use App\Api\Managers\JWTTokenManager;
-//use App\Core\Models\Token;
 
 class ApiListener extends \Phalcon\Mvc\User\Plugin{
     public function beforeExecuteRoute($event, $dispatcher) {
