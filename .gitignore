@@ -2,3 +2,7 @@
 .gitignore
 #.idea/vcs.xml
 vendor/firebase/
+# User-specific stuff:
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
