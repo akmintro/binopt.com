@@ -5,8 +5,6 @@ use Phalcon\Http\Response;
 
 class RegistrationController extends BaseController {
 
-    protected $sessionDuration = 86400;
-
     public function registerUserAction() {
 
         try {
@@ -32,10 +30,10 @@ class RegistrationController extends BaseController {
         try {
             $manager = $this->getDI()->get('core_user_manager');
 
-            $email = $this->request->getQuery('email');
+            $id = $this->request->getQuery('user');
             $code = $this->request->getQuery('code');
 
-            $parameters = ["email = :email: and activation = :code:", "bind" => ['email' => $email, 'code' => $code]];
+            $parameters = ["id = :id: and activation = :code:", "bind" => ['id' => $id, 'code' => $code]];
 
             $st_output = $manager->activateUser($parameters);
 

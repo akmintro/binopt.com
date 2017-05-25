@@ -15,7 +15,7 @@
 
     var chartdata;
     var googlechart;
-    var chartoptions;zz
+    var chartoptions;
 
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -56,9 +56,9 @@
 
     ////////////////////////////////////////////////////////////////////////////
     var init = function () {
-		wsserverrun();
+		//wsserverrun();
 		
-		socket = new WebSocket("ws://127.0.0.1:8887");
+		socket = new WebSocket('ws://binopt.com/ws/');
 		socket.onmessage = messageReceived;
 
         document.getElementById("currency-select").onchange = function () {
@@ -68,7 +68,7 @@
         };
 
         setInstruments();
-        setInvests();
+        //setInvests();
 
         document.getElementById("high-button").onclick = function() {
             betfunction(1);
@@ -137,8 +137,10 @@
 	function messageReceived(e) {
         var result = JSON.parse(e.data);
 
+        console.log(result);
+
         if(result["type"] == "current") {
-            document.getElementById("sock-current").innerHTML = result["data"]["name"] + ": " + result["data"]["close"].toFixed(result["data"]["length"]);
+            document.getElementById("sock-current").innerHTML = result["data"]["close"].toFixed(5);
 
             var time = Date.parse(result["time"] + " GMT")+tzoffset;
 
@@ -217,7 +219,8 @@
         xhttp.send();
         xhttp.onreadystatechange = function () {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
-                var data = JSON.parse(xhttp.responseText)["data"];
+                var data = JSON.parse(xhttp.responseText).data;
+
                 var select = document.getElementById('currency-select');
 
                 for (var item in data) {
@@ -226,7 +229,7 @@
                     opt.innerHTML = data[item]["name"];
                     select.appendChild(opt);
                 }
-                setChartNames(select);
+                //setChartNames(select);
             }
         }
     }

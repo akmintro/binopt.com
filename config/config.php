@@ -26,7 +26,7 @@ return new \Phalcon\Config(array(
     'database' => array(
         'adapter' => 'Mysql',
         'host' => 'localhost',
-        'username' => 'kirill',
+        'username' => 'binoptuser',
         'password' => 'ufhhbgjnnthlcX2',
         'dbname' => 'binopt',
     ),

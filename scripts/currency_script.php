@@ -94,6 +94,7 @@ function get_last($cur_val, $real_val, &$length)
 
 function curl_post_async($url, $data)
 {
+    global $baseDir;
     $parts=parse_url($url);
 
     $fp = fsockopen($parts['host'],
@@ -104,7 +105,7 @@ function curl_post_async($url, $data)
     $out.= "Host: ".$parts['host']."\r\n";
     $out.= "Content-Type: application/json\r\n";
     $out.= "Content-Length: ".strlen($data)."\r\n";
-    $out.= "APITOKEN: ".file_get_contents('servertoken.txt')."\r\n";
+    $out.= "APITOKEN: ".file_get_contents($baseDir.'/servertoken.txt')."\r\n";
     $out.= "Connection: Close\r\n\r\n";
     if (isset($data)) $out.= $data;
 
@@ -119,6 +120,7 @@ function save_history($history)
 
 function curl_delete_async($url)
 {
+    global $baseDir;
     $parts=parse_url($url);
 
     $fp = fsockopen($parts['host'],
@@ -127,7 +129,7 @@ function curl_delete_async($url)
 
     $out = "DELETE ".$parts['path'].'?'.$parts['query']." HTTP/1.1\r\n";
     $out.= "Host: ".$parts['host']."\r\n";
-    $out.= "APITOKEN: ".file_get_contents('servertoken.txt')."\r\n";
+    $out.= "APITOKEN: ".file_get_contents($baseDir.'/servertoken.txt')."\r\n";
     $out.= "Connection: Close\r\n\r\n";
 
     fwrite($fp, $out);
@@ -146,6 +148,7 @@ function clear_tokens()
 
 function curl_put_async($url)
 {
+    global $baseDir;
     $parts=parse_url($url);
 
     $fp = fsockopen($parts['host'],
@@ -154,7 +157,7 @@ function curl_put_async($url)
 
     $out = "PUT ".$parts['path'].'?'.$parts['query']." HTTP/1.1\r\n";
     $out.= "Host: ".$parts['host']."\r\n";
-    $out.= "APITOKEN: ".file_get_contents('servertoken.txt')."\r\n";
+    $out.= "APITOKEN: ".file_get_contents($baseDir.'/servertoken.txt')."\r\n";
     $out.= "Connection: Close\r\n\r\n";
 
     fwrite($fp, $out);
@@ -166,7 +169,7 @@ function close_bets($time)
     curl_put_async('http://binopt.com/api/v1/bets?time='.$time);
 }
 
-$filename = "currency_data.txt";
+$filename = $baseDir."/currency_data.txt";
 $clearinterval = 60;
 $tokeninterval = 10;//86400;
 $historyinterval = 3600;
@@ -244,7 +247,7 @@ while(true) {
                 }
                 close_bets(gmdate("Y-m-d H:i:s", $start-60));
             }
-            echo $current_time."\n";
+            //echo $current_time."\n";
         }
 
         time_sleep_until($start + $i + 2);

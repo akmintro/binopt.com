@@ -58,7 +58,7 @@ $di['logger'] = function () {
 
     return $logger;
 };
-
+/*
 $di['cache'] = function () use ($di, $config) {
     $frontend = new \Phalcon\Cache\Frontend\Igbinary(array(
         'lifetime' => 3600 * 24
@@ -71,7 +71,7 @@ $di['cache'] = function () use ($di, $config) {
 
     return $cache;
 };
-
+*/
 $di['db'] = function () use ($config) {
 
     return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
@@ -97,7 +97,7 @@ $di['collectionManager'] = function(){
     return new Phalcon\Mvc\Collection\Manager();
 };
 
-$di['modelsCache'] = $di['cache'];
+//$di['modelsCache'] = $di['cache'];
 
 // Core managers
 

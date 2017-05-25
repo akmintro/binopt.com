@@ -10,7 +10,7 @@ $baseDir = dirname(__FILE__);
 $pidfile = $baseDir.'/pid_file.pid';
 $offfile = $baseDir.'/off_file.pid';
 $currencyfile = $baseDir.'/currency_data.txt';
-
+/*
 //srdin/stdout 
 ini_set('error_log',$baseDir.'/echowserrors.txt');
 fclose(STDIN);
@@ -20,7 +20,7 @@ $STDIN = fopen('/dev/null', 'r');
 $STDOUT = fopen($baseDir.'/echowsconsolelog.txt', 'ab');
 $STDERR = fopen($baseDir.'/echowsconsoleerr.txt', 'ab');
 //srdin/stdout 
-
+*/
 //log-file
 consolestart();
 consolemsg("echows - try to start..."); 
@@ -29,28 +29,34 @@ consolemsg("echows - try to start...");
 
 //pid-file
 //Если в PID файле хранится PID процесса и он активен, то не запускаем копию
+/*
 if (isDaemonActive($pidfile)) {
 	consolemsg("CANCEL echows - already active"); 
 	consoleend();
 	exit();
 }
+
 file_put_contents($pidfile, getmypid());//СОХРАНЯЕМ PID в файле
-consolemsg("OK getmypid = ".getmypid()); 
+consolemsg("OK getmypid = ".getmypid());
+*/
 //pid-file
 
 $timelimit = 0; // если 0, то тогда безлимитно, только на сообщение, иначе кол-во секунд
 $starttime = round(microtime(true),2);
 
 consolemsg("socket - try to start...");
-$socket = stream_socket_server("tcp://127.0.0.1:8887", $errno, $errstr);
+$socket = stream_socket_server("tcp://127.0.0.1:8888", $errno, $errstr);
 
 if (!$socket) {
 	consolemsg("ERROR socket unavailable " .$errstr. "(" .$errno. ")");
-	unlink($pidfile);
-	consolemsg("pidfile ".$pidfile." ulinked");
+	//unlink($pidfile);
+	//consolemsg("pidfile ".$pidfile." ulinked");
 	consoleend();
     die($errstr. "(" .$errno. ")\n");
 }
+
+consolemsg("socket - started...");
+
 
 $connects = array();
 $currency = array();
@@ -116,7 +122,7 @@ while (true) {
 			exit();		
 	}
 
-
+/*
 	if(file_exists($offfile)){   //Если встретили offile то завершаем процесс
 		consolemsg("off file found"); 
 		consolemsg("time = ".(round(microtime(true),2) - $starttime)); 
@@ -134,27 +140,30 @@ while (true) {
 		consolemsg("offfile ".$offfile." unlinked");
 		consoleend();
 		exit();		
-	}
+	}*/
 }
 
 //unreachble code
 fclose($socket);
 consolemsg("socket - closed");	
-unlink($pidfile);
-consolemsg("pidfile ".$pidfile." unlinked");
+//unlink($pidfile);
+//consolemsg("pidfile ".$pidfile." unlinked");
 consoleend();
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 
 function sendhistory($connect, $instrument = 1)
 {
-    fwrite($connect, encode(json_encode(["data" => json_decode(file_get_contents("http://binopt.com/api/v1/currency/history?instrument=".$instrument), true), "type" => "history"])));
+    $content = file_get_contents("http://binopt.com/api/v1/currency/history?instrument=".$instrument);
+    fwrite($connect, encode(json_encode(["data" => json_decode($content, true), "type" => "history"])));
 }
 
 function handshake($connect) { //Функция рукопожатия
+
     $info = array();
 
     $line = fgets($connect);
+
     $header = explode(' ', $line);
     $info['method'] = $header[0];
     $info['uri'] = $header[1];
@@ -367,6 +376,7 @@ function consoleend(){
 	consolemsg("console - end");
 }
 
+/*
 function isDaemonActive($pidfile) {
   if( file_exists($pidfile) ) {
     $pid = file_get_contents($pidfile);
@@ -401,4 +411,4 @@ function getDaemonStatus($pid) {
 		$result['info'] = $output[1];//строка с информацией о процессе
 	}
 	return $result;
-}
+}*/

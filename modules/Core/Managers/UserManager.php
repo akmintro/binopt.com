@@ -318,7 +318,7 @@ class UserManager extends BaseManager
         $message = $mailer->createMessage()
             ->to($to)
             ->subject('Hello world!')
-            ->content('<a href="https://binopt.com/api/v1/users/activate?email='.$to.'&code='.$code.'">Activate account</a>');
+            ->content('<a href="http://binopt.com/api/v1/users/activate?user='.$item->getId().'&code='.$code.'">Activate account</a>');
 
         // Set the Cc addresses of this message.
                 //$message->cc('example_cc@gmail.com');
