@@ -146,16 +146,16 @@ class Account extends \Phalcon\Mvc\Model
         return parent::findFirst(["user = :user: and realdemo = :rd:", 'bind' => ["user" => $user, "rd" => ($isreal ? 1 : 0)]]);
     }
 
-    public function getDeposits($start = null, $end = null, $notadmin = false)
+    public function getDeposits($start = null, $end = null, $full = true)
     {
         $value = 0;
         $deposits = $this->getRelated('deposit');
         foreach ($deposits as $deposit)
         {
-            if($deposit->getState() == 1 && (!$notadmin || $deposit->getAdmin() == 0) && ($start == null || $deposit->getDeposittime() >= $start) && ($end == null || $deposit->getDeposittime() <= $end)) {
+            if($deposit->getState() == 1 && ($full || $deposit->getAdmin() == 0) && ($start == null || $deposit->getDeposittime() >= $start) && ($end == null || $deposit->getDeposittime() <= $end)) {
 
                 $bonus = 1;
-                if($deposit->promo != null)
+                if($full && $deposit->promo != null)
                     $bonus += $deposit->promo->getBonus();
 
                 $value += $deposit->getAmount() * $bonus;

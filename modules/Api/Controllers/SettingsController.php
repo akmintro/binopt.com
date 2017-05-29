@@ -27,7 +27,7 @@ class SettingsController extends BaseController {
 
             $data = $this->request->getJsonRawBody(true);
             if (count($data[0]) == 0) {
-                throw new \Exception('Please provide data', 400);
+                throw new \Exception('Please provide data', 401);
             }
             $result = $manager->restUpdate($data);
 

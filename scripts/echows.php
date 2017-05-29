@@ -6,9 +6,9 @@ ob_implicit_flush();	//Включаем вывод без буферизации
 ignore_user_abort(true);//Выключаем зависимость от пользователя
 //system config
 
-$baseDir = dirname(__FILE__);
-$pidfile = $baseDir.'/pid_file.pid';
-$offfile = $baseDir.'/off_file.pid';
+//$baseDir = dirname(__FILE__);
+//$pidfile = $baseDir.'/pid_file.pid';
+//$offfile = $baseDir.'/off_file.pid';
 $currencyfile = $baseDir.'/currency_data.txt';
 /*
 //srdin/stdout 
@@ -61,6 +61,17 @@ consolemsg("socket - started...");
 $connects = array();
 $currency = array();
 while (true) {
+    $trading = true;
+//    $day = gmdate("w", $start+1);
+//    if($day == 0 || $day == 6 ) {
+//        $trading = false;
+//        $offset = 0;
+//        $start = ceil($start / 86400) * 86400;
+//        time_sleep_until($start + 1);
+//        $full_data = null;
+//        continue;
+//    }
+
 	//формируем массив прослушиваемых сокетов:
 	$read = $connects;
 	$read []= $socket;
@@ -90,25 +101,25 @@ while (true) {
 		    unset($connects[$id]);
 		    unset($currency[$id]);
 		    onClose($connect);//вызываем пользовательский сценарий
-			consolemsg("OK");
 		    continue;
 		}
 
 		$cur = decode($data)["payload"];
 		$currency[array_search($connect, $connects)] = $cur;
-        sendhistory($connect, $cur);
+        sendhistory($connect, $cur, $trading);
 	}
 
-    $json_data = json_decode(file_get_contents($currencyfile), true);
-    $package = array();
-    foreach ($json_data as $key => $val)
-    {
-        $package[$key] = ["data" => $val, "type" => "current"];
+	if($trading) {
+        $json_data = json_decode(file_get_contents($currencyfile), true);
+        $package = array();
+        foreach ($json_data as $key => $val) {
+            $package[$key] = ["data" => $val, "type" => "current"];
+        }
+
+        foreach ($connects as $key => $connect) {//обрабатываем все соединения
+            fwrite($connect, encode(json_encode($package[$currency[$key]])));
+        }
     }
-
-	foreach($connects as $key => $connect) {//обрабатываем все соединения
-		fwrite($connect, encode(json_encode($package[$currency[$key]])));
-	}
 
 	//Здесь же можно поставить и лимиты на выжираемую память но пока типа на вермя
 	if($timelimit!=0 && ( round(microtime(true),2) - $starttime) > $timelimit) { //Если за пределами timelimit - вырубаем процесс
@@ -152,10 +163,15 @@ consoleend();
 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 
-function sendhistory($connect, $instrument = 1)
+function sendhistory($connect, $instrument = 1, $trading = true)
 {
-    $content = file_get_contents("http://binopt.com/api/v1/currency/history?instrument=".$instrument);
-    fwrite($connect, encode(json_encode(["data" => json_decode($content, true), "type" => "history"])));
+    if($trading) {
+        $content = file_get_contents("http://localhost:890/api/v1/currency/history?instrument=" . $instrument);
+        fwrite($connect, encode(json_encode(["data" => json_decode($content, true), "type" => "history"])));
+    }
+    else{
+        fwrite($connect, encode(json_encode(["data" => null, "type" => "denied"])));
+    }
 }
 
 function handshake($connect) { //Функция рукопожатия

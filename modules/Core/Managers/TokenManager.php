@@ -12,66 +12,19 @@ class TokenManager extends BaseManager
     {
         return Token::find($parameters);
     }
-/*
-    public function restGet(array $parameters = null, $limit = 10, $offset = 0)
-    {
-        $items = $this->find($parameters);
-        $data = $items->filter(function ($item) {
-            return $item->toArray();
-        });
 
-        $data = $this->getFilteredData($data, $this->request->getQuery('status'));
-
-        $meta = [
-            "code" => 200,
-            "message" => "OK",
-            "limit" => (int)$limit,
-            "offset" => (int)$offset,
-            "total" => count($data)
-        ];
-
-        if (count($data) > 0) {
-            return ["meta" => $meta, "data" => array_slice($this->getItems($data), $offset, $limit)];
-        }
-
-        if (isset($parameters['bind']['id'])) {
-            throw new \Exception('Not Found', 404);
-        } else {
-            throw new \Exception('No Content', 204);
-        }
-    }
-
-
-    public function restDelete($id) {
-        $item = $this->findFirstById($id);
-
-        if (!$item) {
-            throw new \Exception('Not found', 404);
-        }
-
-        if (false === $item->delete()) {
-            foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
-            }
-        }
-
-        return ["meta" => [
-            "code" => 200,
-            "message" => "OK"
-        ]];
-    }*/
-
-    public function restCreate($role, $id, $token, $secret, $exptime) {
+    public function restCreate($role, $id, $token, $secret, $exptime, $ip) {
         $item = new Token();
         $item->setRole($this->roles[$role]);
         $item->setId($id);
         $item->setTokenVal($token);
         $item->setSecret($secret);
         $item->setExptime($exptime);
+        $item->setIp($ip);
 
         if (false === $item->create()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -95,7 +48,7 @@ class TokenManager extends BaseManager
 
         if (false === $item->delete()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 

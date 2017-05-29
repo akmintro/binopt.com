@@ -41,6 +41,13 @@ class Token extends \Phalcon\Mvc\Model
     protected $exptime;
 
     /**
+     *
+     * @var integer
+     * @Column(type="integer", length=11, nullable=true)
+     */
+    protected $ip;
+
+    /**
      * Method to set the value of field role
      *
      * @param integer $role
@@ -106,6 +113,19 @@ class Token extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field ip
+     *
+     * @param integer $ip
+     * @return $this
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field role
      *
      * @return integer
@@ -153,6 +173,16 @@ class Token extends \Phalcon\Mvc\Model
     public function getExptime()
     {
         return $this->exptime;
+    }
+
+    /**
+     * Returns the value of field ip
+     *
+     * @return integer
+     */
+    public function getIp()
+    {
+        return $this->ip;
     }
 
     /**

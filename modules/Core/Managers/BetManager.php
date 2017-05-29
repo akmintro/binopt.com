@@ -128,7 +128,7 @@ class BetManager extends BaseManager
 
             if (false === $item->update()) {
                 foreach ($item->getMessages() as $message) {
-                    throw new \Exception($message->getMessage(), 500);
+                    throw new \Exception($message->getMessage(), 400);
                 }
             }
         }
@@ -139,31 +139,19 @@ class BetManager extends BaseManager
     }
 
     public function restCreate($data) {
-        $account =  Account::findAccount($this->tokenParser->getUserid(), $data[0]["isreal"]);/*
-        $parameters = ["account = :account: and instrument = :instrument: and result is NULL",
-            'bind' => ["account" => $account->getId(), "instrument" => $data[0]["instrument"]],
-        ];*/
+        $account =  Account::findAccount($this->tokenParser->getUserid(), $data[0]["isreal"]);
 
         $parameters = ["account = :account: and result is NULL",
             'bind' => ["account" => $account->getId()],
         ];
-        if(count(Bet::find($parameters)) > 5)
-            throw new \Exception("you can't have more than 5 bets at the same moment from this account", 500);
-/*
-        $invest = Invest::findFirstById($data[0]["invest"]);
-        if($invest == null)
-            throw new \Exception("invest not found", 404);
-
-        if($account->user->getBalance() < $invest->getSize())
-            throw new \Exception("balance is too small for this bet", 500);
-*/
+        if(count(Bet::find($parameters)) >= 5)
+            throw new \Exception("you can't have more than 5 bets at the same moment from this account", 410);
 
         $invest = (int)$data[0]['invest'];
         if($invest < 1)
-            throw new \Exception("incorrect invest", 500);
+            throw new \Exception("incorrect invest", 409);
         if($account->getBalance() < $invest)
-            throw new \Exception("balance is too small for this bet", 500);
-
+            throw new \Exception("balance is too small for this bet", 408);
 
         $filename = $this->config->parameters->currencydata;
         if(!file_exists($filename))
@@ -183,7 +171,7 @@ class BetManager extends BaseManager
 
         if (false === $item->create()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 

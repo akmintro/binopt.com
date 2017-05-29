@@ -493,12 +493,12 @@ class User extends \Phalcon\Mvc\Model
     {
         return parent::findFirst($parameters);
     }
-
+/*
     public function getUsername()
     {
         return $this->lastname.'.'.$this->firstname.$this->getRelated('operator')->getEmailsuffix();
     }
-
+*/
     public function getRealAccount()
     {
         $accounts = $this->getRelated('account');
@@ -516,6 +516,7 @@ class User extends \Phalcon\Mvc\Model
         $account = $this->getRealAccount();
         if($account != null) {
             $deposits = $account->getDeposits();
+            $realdeposits = $account->getDeposits(null, null, false);
             $withdrawals = $account->getWithdrawals();
             $account->getBetStat($wins, $loses, $ingame);
             $balance = $deposits - $withdrawals + $wins - $loses - $ingame;
@@ -523,7 +524,7 @@ class User extends \Phalcon\Mvc\Model
 
         if($result != null)
         {
-            $result['deposits'] = $deposits;
+            $result['deposits'] = $realdeposits;
             $result['withdrawals'] = $withdrawals;
             $result['wins'] = $wins;
             $result['loses'] = $loses;
@@ -533,8 +534,8 @@ class User extends \Phalcon\Mvc\Model
 
         return $balance;
     }
-
-    public function getBalanceAmount($isreal = true)
+/*
+    public function getBalanceAmount(&$result)
     {
         $balance = $deposits = $withdrawals = $wins = $loses = $ingame = null;
         $account = $this->getRealAccount();
@@ -556,5 +557,5 @@ class User extends \Phalcon\Mvc\Model
         }
 
         return $balance;
-    }
+    }*/
 }

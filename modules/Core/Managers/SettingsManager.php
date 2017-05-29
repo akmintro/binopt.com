@@ -51,22 +51,19 @@ class SettingsManager extends BaseManager
         foreach ($data as $item)
         {
             if(!isset($item["id"]))
-                throw new \Exception("id is required", 500);
+                throw new \Exception("id is not set", 402);
             if(!isset($item["value"]))
-                throw new \Exception("value is required", 500);
+                throw new \Exception("value is not set", 402);
 
             $setting = Settings::findFirstById($item["id"]);
             if (!$setting) {
-                return ["meta" => [
-                    "code" => 404,
-                    "message" => "Setting Not Found"
-                ]];
+                throw new \Exception("Setting Not Found", 404);
             }
 
             $setting->setValue($item["value"]);
             if (false === $setting->update()) {
                 foreach ($item->getMessages() as $message) {
-                    throw new \Exception($message->getMessage(), 500);
+                    throw new \Exception($message->getMessage(), 400);
                 }
             }
         }

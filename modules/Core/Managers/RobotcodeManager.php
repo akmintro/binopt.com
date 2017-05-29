@@ -52,7 +52,7 @@ class RobotcodeManager extends BaseManager
 
         if (false === $item->update()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -71,7 +71,7 @@ class RobotcodeManager extends BaseManager
 
         if (false === $item->delete()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -87,7 +87,7 @@ class RobotcodeManager extends BaseManager
 
         if (false === $item->create()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 

@@ -115,25 +115,27 @@ class UserManager extends BaseManager
     public function restUpdate($id, $data) {
         $item = $this->findFirstById($id);
         if (!$item) {
-            return ["meta" => [
-                "code" => 404,
-                "message" => "Not Found"
-            ]];
+            throw new \Exception("Not Found", 404);
         }
 
         if (User::findFirst(["id <> :id: AND email = :email:", 'bind' => ['id' => $id, 'email' => $data[0]['email']]])) {
-            return ["meta" => [
-                "code" => 407,
-                "message" => "Email Duplicate"
-            ]];
+            throw new \Exception("Email Duplicate", 414);
         }
-
 
         $this->setFields($item, $data[0]);
 
+        if($this->tokenParser->isOper()) {
+            $amount = (int)$data[0]["amount"];
+            if ($amount > 0)
+            {
+                $account = Account::findFirst(["user = :user: and realdemo = 1", "bind" => ["user" => $item->getId()]]);
+                $this->getDI()->get('core_deposit_manager')->restCreate([["account" => $account->getId(), "amount" => $amount, "wallet" => $this->config->parameters->adminwallet, "admin" => 1, "state" => 1]]);
+            }
+        }
+
         if (false === $item->update()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -152,7 +154,7 @@ class UserManager extends BaseManager
 
         if (false === $item->delete()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -165,11 +167,11 @@ class UserManager extends BaseManager
     private function createUser($item, $amount = 0)
     {
         if (strlen($item->getFirstname()) == 0 || strlen($item->getLastname()) == 0 || strlen($item->getPassword()) == 0 || strlen($item->getEmail()) == 0)
-            throw new \Exception("Incomplete Data", 406);
+            throw new \Exception("Incomplete Data", 402);
 
         if (false === $item->create()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -178,7 +180,7 @@ class UserManager extends BaseManager
 
         $accmanager->restCreate([["user" => $item->getId(), "realdemo" => 0]]);
         $account = Account::findFirst(["user = :user: and realdemo = 0", "bind" => ["user" => $item->getId()]]);
-        $depmanager->restCreate([["account" => $account->getId(), "amount" => 1000, "wallet" => $this->config->parameters->adminwallet]]);
+        $depmanager->restCreate([["account" => $account->getId(), "amount" => 1000, "wallet" => $this->config->parameters->adminwallet, "state" => 1]]);
 
         $accmanager->restCreate([["user" => $item->getId(), "realdemo" => 1]]);
         if($amount > 0)
@@ -191,10 +193,7 @@ class UserManager extends BaseManager
     public function restCreate($data) {
 
         if (User::findFirst(["email = :email:", 'bind' => ['email' => $data[0]['email']]])) {
-            return ["meta" => [
-                "code" => 407,
-                "message" => "Email Duplicate"
-            ]];
+            throw new \Exception("Email Duplicate", 414);
         }
 
         if(!isset($data[0]['operator']))
@@ -250,10 +249,10 @@ class UserManager extends BaseManager
         $opdata = $data[0];
 
         if(!isset($opdata['name']))
-            throw new \Exception('name is required', 500);
+            throw new \Exception('name is not set', 402);
 
         if(!isset($opdata['password']))
-            throw new \Exception('password is required', 500);
+            throw new \Exception('password is not set', 402);
 
 
         $items = $this->find([ "email = :name:", 'bind' => ['name' => $opdata['name']]]);
@@ -263,25 +262,22 @@ class UserManager extends BaseManager
         });
 
         if (count($data) == 0)
-            throw new \Exception('no user found', 500);
+            throw new \Exception('no user found', 404);
 
         if (count($data) > 1)
-            throw new \Exception('many users found', 500);
+            throw new \Exception('many users found', 404);
 
         if (!($this->security->checkHash($opdata['password'], $data[0]['password']))) {
-            throw new \Exception('incorrect password', 500);
+            throw new \Exception('incorrect password', 413);
         }
 
-        return $data[0];
+        return User::findFirstById($data[0]["id"]);
     }
 
     public function regiterUser($data) {
 
         if (User::findFirst(["email = :email:", 'bind' => ['email' => $data[0]['email']]])) {
-            return ["meta" => [
-                "code" => 407,
-                "message" => "Email Duplicate"
-            ]];
+            throw new \Exception("Email Duplicate", 414);
         }
 
         $code = "";
@@ -310,21 +306,15 @@ class UserManager extends BaseManager
             'username'   => $this->config->parameters->gmailusername,
             'password'	 => $this->config->parameters->gmailpassword,
             'from'		 => [
-                'email' => 'example@gmail.com',
-                'name'	=> 'YOUR FROM NAME'
+                'email' => $this->config->parameters->gmailusername,
+                'name'	=> $this->config->parameters->gmailtopic
             ]
         ]);
 
         $message = $mailer->createMessage()
             ->to($to)
             ->subject('Hello world!')
-            ->content('<a href="http://binopt.com/api/v1/users/activate?user='.$item->getId().'&code='.$code.'">Activate account</a>');
-
-        // Set the Cc addresses of this message.
-                //$message->cc('example_cc@gmail.com');
-
-        // Set the Bcc addresses of this message.
-                //$message->bcc('example_bcc@gmail.com');
+            ->content('<a href="https://binoption24.com/api/users/activate?user='.$item->getEmail().'&code='.$code.'">Activate account</a>');
 
         // Send message
         $message->send();
@@ -344,7 +334,7 @@ class UserManager extends BaseManager
         $user->setActivation(null);
         if (false === $user->update()) {
             foreach ($user->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 404);
             }
         }
     }
@@ -354,29 +344,29 @@ class UserManager extends BaseManager
         $user = $this->findFirstById($this->tokenParser->getUserid());
 
         if ($user == null)
-            throw new \Exception('no user found', 500);
+            throw new \Exception('no user found', 404);
 
         if(!isset($data[0]['oldpassword']))
-            throw new \Exception('old password is required', 500);
+            throw new \Exception('old password is not set', 402);
 
         if (!($this->security->checkHash($data[0]['oldpassword'], $user->getPassword()))) {
-            throw new \Exception('incorrect old password', 500);
+            throw new \Exception('incorrect old password', 413);
         }
 
         if(!isset($data[0]['newpassword']))
-            throw new \Exception('new password is required', 500);
+            throw new \Exception('new password is not set', 402);
         if(!isset($data[0]['newpassword2']))
-            throw new \Exception('confirm password is required', 500);
+            throw new \Exception('confirm password is not set', 402);
 
         if($data[0]['newpassword'] != $data[0]['newpassword2'])
-            throw new \Exception("passwords don't match", 500);
+            throw new \Exception("passwords don't match", 415);
 
 
         $user->setPassword($this->getDI()->get('security')->hash($data[0]['newpassword']));
 
         if (false === $user->update()) {
             foreach ($user->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 

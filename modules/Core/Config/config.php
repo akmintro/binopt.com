@@ -7,7 +7,7 @@ $module_config = new Phalcon\Config(array(
         'viewsDir' => __DIR__ . '/../Views/',
         'baseUri' => '/core/',
         'cryptSalt' => '5up3r5tr0n6p@55',
-        'publicUrl' => 'http://www.learning-phalcon.dev'
+        'publicUrl' => 'http://localhost:889'
     )));
 
 $config->merge($module_config);

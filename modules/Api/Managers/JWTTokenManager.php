@@ -16,6 +16,7 @@ class JWTTokenManager
     protected $algorithm;
     protected $secret;
 
+    protected $role;
     protected $actorid;
 
 
@@ -23,7 +24,7 @@ class JWTTokenManager
     {
         if (!class_exists('\Firebase\JWT\JWT')) {
 //            throw new SessionException(SessionErrorCodes::GENERAL_SYSTEM, 'JWT class is needed for the JWT token parser');
-            throw new \Exception('JWT class is needed for the JWT token parser');
+            throw new \Exception('JWT class is needed for the JWT token parser', 400);
         }
 
         $this->algorithm = $algorithm;
@@ -110,6 +111,7 @@ class JWTTokenManager
     {
         $tokenData = $this->decode($token);
 
+        $this->role = $tokenData->iss;
         $this->actorid = $tokenData->sub;
 
         /*@TODO iss from login password authZ and authN*/
@@ -136,5 +138,10 @@ class JWTTokenManager
     public function getOperid()
     {
         return $this->actorid;
+    }
+
+    public function isOper()
+    {
+        return ($this->role == "operator" || $this->role == "admin");
     }
 }

@@ -1,5 +1,7 @@
 <?php
-error_reporting(0);
+error_reporting(E_ALL); //Выводим все ошибки и предупреждения
+set_time_limit(0);		//Время выполнения скрипта безгранично
+ob_implicit_flush();	//Включаем вывод без буферизации
 
 function get_rand($max, $last)
 {
@@ -115,7 +117,7 @@ function curl_post_async($url, $data)
 
 function save_history($history)
 {
-    curl_post_async('http://binopt.com/api/v1/currency', json_encode($history));
+    curl_post_async('http://localhost:890/api/v1/currency', json_encode($history));
 }
 
 function curl_delete_async($url)
@@ -127,7 +129,10 @@ function curl_delete_async($url)
         isset($parts['port'])?$parts['port']:80,
         $errno, $errstr, 30);
 
-    $out = "DELETE ".$parts['path'].'?'.$parts['query']." HTTP/1.1\r\n";
+    $out = "DELETE ".$parts['path'];
+    if(isset($parts['query']))
+        $out.= '?'.$parts['query'];
+    $out.= " HTTP/1.1\r\n";
     $out.= "Host: ".$parts['host']."\r\n";
     $out.= "APITOKEN: ".file_get_contents($baseDir.'/servertoken.txt')."\r\n";
     $out.= "Connection: Close\r\n\r\n";
@@ -138,12 +143,12 @@ function curl_delete_async($url)
 
 function clear_history($time)
 {
-    curl_delete_async('http://binopt.com/api/v1/currency?before='.$time);
+    curl_delete_async('http://localhost:890/api/v1/currency?before='.$time);
 }
 
 function clear_tokens()
 {
-    curl_delete_async('http://binopt.com/api/v1/login');
+    curl_delete_async('http://localhost:890/api/v1/login');
 }
 
 function curl_put_async($url)
@@ -166,7 +171,7 @@ function curl_put_async($url)
 
 function close_bets($time)
 {
-    curl_put_async('http://binopt.com/api/v1/bets?time='.$time);
+    curl_put_async('http://localhost:890/api/v1/bets?time='.$time);
 }
 
 $filename = $baseDir."/currency_data.txt";
@@ -185,15 +190,21 @@ time_sleep_until($launchtime + 1);
 $full_data = null;
 
 while(true) {
+//    $day = gmdate("w", $start+1);
+//    if($day == 0 || $day == 6 ) {
+//        $offset = 0;
+//        $start = ceil($start / 86400) * 86400;
+//        time_sleep_until($start + 1);
+//        $full_data = null;
+//        continue;
+//    }
+
     for ($i = $offset; $i < 60; ++$i) {
-        //echo $i."\n";
         $current_time = gmdate("Y-m-d H:i:s", $start + $i);
 
         if (($i % 6) == 0) {
             $real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1,2,3,4,5,6,7,8,9,11,12,15,16,49,50,53,54,57&timeframe=60'), true);
-            //$real_data = json_decode(file_get_contents('http://tsw.ru.forexprostools.com/api.php?action=refresher&pairs=1&timeframe=60'), true);
 
-            //$new_full_data = array("time" => $current_time);
             foreach ($real_data as $key => $value) {
                 if ($key != "time") {
                     $real = str_replace(',', '.', $value['summaryLast']);
@@ -211,49 +222,37 @@ while(true) {
 
         $result = array();
         foreach ($full_data as $key => $value) {
-            //if ($key != "time") {
-                $length = 0;
-                $newclose = get_last($value['close'], $value['real'], $length);
-                if($newclose < $value['min'])
-                    $value['min'] = $newclose;
-                if($newclose > $value['max'])
-                    $value['max'] = $newclose;
-                $value['close'] = $newclose;
-                //$value['length'] = $length;
-                $new_value = $value;
-                unset($new_value['real']);
-                $new_value['currencytime'] = $current_time;
-            //} else
-            //    $new_value = $value = $current_time;
+
+            $newclose = get_last($value['close'], $value['real'], $length);
+            if ($newclose < $value['min'])
+                $value['min'] = $newclose;
+            if ($newclose > $value['max'])
+                $value['max'] = $newclose;
+            $value['close'] = $newclose;
+            $new_value = $value;
+            unset($new_value['real']);
+            $new_value['currencytime'] = $current_time;
 
             $full_data[$key] = $value;
             $result[$key] = $new_value;
         }
 
-        //var_dump($full_data);
-
         file_put_contents($filename, json_encode($result));
 
         if (($i % 10) == 0) {
-            //echo $current_time."\n";
             save_history($result);
             if($i == 0)
             {
                 foreach ($full_data as $key => $value) {
-                    //if ($key != "time") {
-                        $value['open'] = $value['min'] = $value['max'] = $value['close'];
-                        $full_data[$key] = $value;
-                    //}
+                    $value['open'] = $value['min'] = $value['max'] = $value['close'];
+                    $full_data[$key] = $value;
                 }
                 close_bets(gmdate("Y-m-d H:i:s", $start-60));
             }
-            //echo $current_time."\n";
         }
 
-        time_sleep_until($start + $i + 2);
+        time_sleep_until($start + $i + 1);
     }
-
-
 
     $start += 60;
     $offset = 0;
@@ -261,13 +260,13 @@ while(true) {
     if($start >= $cleartime)
     {
         clear_history(gmdate("Y-m-d H:i:s", $start-$historyinterval));
-        $cleartime += $clearinterval;
+        $cleartime = (floor($start / $clearinterval) + 1) * $clearinterval;
     }
 
     if($start >= $tokentime)
     {
         clear_tokens();
-        $tokentime += $tokeninterval;
+        $tokentime += (floor($start / $tokeninterval) + 1) * $tokeninterval;
     }
 }
 ?>

@@ -48,21 +48,21 @@ class OperatorManager extends BaseManager
         }
 
         if ((isset($data[0]['name']) && strlen($data[0]['name']) == 0) || (isset($data[0]['password']) && strlen($data[0]['password']) == 0) || (isset($data[0]['emailsuffix']) && strlen($data[0]['emailsuffix']) == 0))
-            throw new \Exception("Incomplete Data", 406);
+            throw new \Exception("Incomplete Data", 402);
 
         $item2 = Operator::findFirst(["id <> :id: AND (name = :name: OR emailsuffix = :emailsuffix:)", "bind" => ["id" => $id, "name" => $data[0]['name'], "emailsuffix" => $data[0]['emailsuffix']]]);
         if($item2 != null)
         {
             if($item2->getName() == $data[0]['name'])
-                throw new \Exception("Name Duplicate", 409);
-            throw new \Exception("Emailsuffix Duplicate", 408);
+                throw new \Exception("Name Duplicate", 411);
+            throw new \Exception("Emailsuffix Duplicate", 412);
         }
 
         $this->setFields($item, $data[0]);
 
         if (false === $item->update()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -82,7 +82,7 @@ class OperatorManager extends BaseManager
 
         if (false === $item->delete()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -102,8 +102,8 @@ class OperatorManager extends BaseManager
         if($item != null)
         {
             if($item->getName() == $data[0]['name'])
-                throw new \Exception("Name Duplicate", 409);
-            throw new \Exception("Emailsuffix Duplicate", 408);
+                throw new \Exception("Name Duplicate", 411);
+            throw new \Exception("Emailsuffix Duplicate", 412);
         }
 
         $item = new Operator();
@@ -111,7 +111,7 @@ class OperatorManager extends BaseManager
 
         if (false === $item->create()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -159,10 +159,10 @@ class OperatorManager extends BaseManager
         $opdata = $data[0];
 
         if(!isset($opdata['name']))
-            throw new \Exception('name is required', 500);
+            throw new \Exception('name is not set', 402);
 
         if(!isset($opdata['password']))
-            throw new \Exception('password is required', 500);
+            throw new \Exception('password is not set', 402);
 
         $parameters = [
             'name = :name:',
@@ -175,13 +175,13 @@ class OperatorManager extends BaseManager
         });
 
         if (count($data) == 0)
-            throw new \Exception('no operator found', 500);
+            throw new \Exception('no operator found', 404);
 
         if (count($data) > 1)
-            throw new \Exception('many operators found', 500);
+            throw new \Exception('many operators found', 404);
 
         if (!($this->security->checkHash($opdata['password'], $data[0]['password']))) {
-            throw new \Exception('incorrect password', 500);
+            throw new \Exception('incorrect password', 413);
         }
 
         return $data[0];

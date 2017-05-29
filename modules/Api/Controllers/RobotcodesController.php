@@ -40,7 +40,6 @@ class RobotcodesController extends BaseController {
                 $binds['end'] = $end;
             }
 
-
             if($this->tokenParser->getOperid() == 0) {
                 $operator = $this->request->getQuery('operator');
                 if ($operator != null) {
@@ -89,17 +88,10 @@ class RobotcodesController extends BaseController {
     public function updateAction($id) {
         try {
             $manager = $this->getDI()->get('core_robotcode_manager');
-            /*
-            if ($this->request->getHeader('CONTENT_TYPE') ==
-                'application/json') {
-                $data = $this->request->getJsonRawBody(true);
-            } else {
-                $data = $this->request->getPost();
-            }
-            */
+
             $data = $this->request->getJsonRawBody(true);
             if (count($data[0]) == 0) {
-                throw new \Exception('Please provide data', 400);
+                throw new \Exception('Please provide data', 401);
             }
             $result = $manager->restUpdate($id, $data);
 
@@ -129,17 +121,10 @@ class RobotcodesController extends BaseController {
 
         try {
             $manager = $this->getDI()->get('core_robotcode_manager');
-            /*
-            if ($this->request->getHeader('CONTENT_TYPE') ==
-                'application/json') {
-                $data = $this->request->getJsonRawBody(true);
-            } else {
-                $data = $this->request->getPost();
-            }
-            */
+
             $data = $this->request->getJsonRawBody(true);
             if (count($data) == 0) {
-                throw new \Exception('Please provide data', 400);
+                throw new \Exception('Please provide data', 401);
             }
             $st_output = $manager->restCreate($data);
             return $this->render($st_output);

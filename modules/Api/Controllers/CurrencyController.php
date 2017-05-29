@@ -79,7 +79,7 @@ class CurrencyController extends BaseController {
             $data = $this->request->getJsonRawBody(true);
 
             if (count($data) == 0) {
-                throw new \Exception('Please provide data', 400);
+                throw new \Exception('Please provide data', 401);
             }
             $st_output = $manager->restCreate($data);
             return $this->render($st_output);
@@ -98,7 +98,7 @@ class CurrencyController extends BaseController {
 
             $before = $this->request->getQuery('before');
             if($before == null) {
-                throw new \Exception('Before is not set', 404);
+                throw new \Exception('Before is not set', 402);
             }
 
             $st_output = $manager->restDelete($before);

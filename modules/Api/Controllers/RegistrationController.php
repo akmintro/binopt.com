@@ -12,7 +12,7 @@ class RegistrationController extends BaseController {
 
             $data = $this->request->getJsonRawBody(true);
             if (count($data) == 0) {
-                throw new \Exception('Please provide data', 400);
+                throw new \Exception('Please provide data', 401);
             }
 
             $st_output = $manager->regiterUser($data);
@@ -38,21 +38,14 @@ class RegistrationController extends BaseController {
             $st_output = $manager->activateUser($parameters);
 
             $response = new Response();
-            $response->redirect("http://en.wikipedia.org", true, 200);
+            $response->redirect("https://binoption24.com", true, 200);
             $response->send();
         } catch (\Exception $e) {
 
             $response = new Response();
-            $response->redirect("http://en.wikipedia.org", true, $e->getCode());
+            $response->redirect("https://binoption24.com", true, $e->getCode());
             $response->send();
-            /*
-            return $this->render(["meta" => [
-                'code' => $e->getCode(),
-                'message' => $e->getMessage()
-            ]]);*/
         }
     }
-
-
 }
 ?>

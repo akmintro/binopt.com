@@ -1,7 +1,7 @@
 <?php
 return new \Phalcon\Config(array(
     'application' => array(
-        'name' => 'Bin Opt'
+        'name' => 'Binoption24 API'
     ),
 
     'root_dir' => __DIR__.'/../',
@@ -9,8 +9,8 @@ return new \Phalcon\Config(array(
     'redis' => array(
         'host' => '127.0.0.1',
         'port' => 6379,
-    ),
-*/
+    ),*/
+
     'session' => array(
         'unique_id' => 'binopt',
         'name' => 'binopt',
@@ -27,7 +27,7 @@ return new \Phalcon\Config(array(
         'adapter' => 'Mysql',
         'host' => 'localhost',
         'username' => 'binoptuser',
-        'password' => 'ufhhbgjnnthlcX2',
+        'password' => '5QulJ0hxeuxXsUMI',
         'dbname' => 'binopt',
     ),
 /*
@@ -36,9 +36,10 @@ return new \Phalcon\Config(array(
     ),
 */
     'parameters' => array(
-        'gmailusername' => 'anishenkokirill@gmail.com',
-        'gmailpassword' => 'fybotyr0',
-        'winpercent' => 0.86,
+        'gmailusername' => 'Some mail',
+        'gmailpassword' => 'Some password',
+        'gmailtopic' => 'Activation mail',
+
         'currencydata' => __DIR__ . '/../scripts/currency_data.txt',
         'scriptsfolder' => __DIR__ . '/../scripts',
         'adminwallet' => "walletwallet",

@@ -43,16 +43,13 @@ class RobotcodetypeManager extends BaseManager
     public function restUpdate($id, $data) {
         $item = $this->findFirstById($id);
         if (!$item) {
-            return ["meta" => [
-                "code" => 404,
-                "message" => "Not Found"
-            ]];
+            throw new \Exception('Not found', 404);
         }
         $this->setFields($item, $data[0]);
 
         if (false === $item->update()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -71,7 +68,7 @@ class RobotcodetypeManager extends BaseManager
 
         if (false === $item->delete()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 
@@ -87,7 +84,7 @@ class RobotcodetypeManager extends BaseManager
 
         if (false === $item->create()) {
             foreach ($item->getMessages() as $message) {
-                throw new \Exception($message->getMessage(), 500);
+                throw new \Exception($message->getMessage(), 400);
             }
         }
 

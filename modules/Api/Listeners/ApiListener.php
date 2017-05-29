@@ -2,21 +2,21 @@
 namespace App\Api\Listeners;
 
 use App\Api\Controllers\ErrorsController;
+use App\Core\Models\Operator;
 use App\Core\Models\User;
 
 
 class ApiListener extends \Phalcon\Mvc\User\Plugin{
     public function beforeExecuteRoute($event, $dispatcher) {
 
-        if (//false === $this->checkForValidApiKey()
-            //|| false === $this->checkIpRateLimit()
-            //||
+        if (//false === $this->checkForValidApiKey() ||
+            //false === $this->checkIpRateLimit() ||
             false === $this->resourceWithToken()
         ) {
             return false;
         }
     }
-
+/*
     private function checkForValidApiKey() {
         $apiKey = $this->request->getHeader('APIKEY');
 
@@ -30,9 +30,10 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
         }
 
         return true;
-    }
-
+    }*/
+/*
     private function checkIpRateLimit() {
+
         $ip   = $this->request->getClientAddress();
         $time = time();
         $key  = $ip.':'.$time;
@@ -57,7 +58,7 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
 
         return true;
     }
-
+*/
     private function resourceWithToken()
     {
 
@@ -73,6 +74,7 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
         $clientToken = $this->request->getHeader('APITOKEN');
         $clientSign = $this->request->getHeader('APISIGN');
         $clientTime = $this->request->getHeader('APITIME');
+        $clientIp = ip2long($this->request->getClientAddress(true));
 
         if(file_get_contents($this->config->parameters->servertoken) == $clientToken)
             $role = "server";
@@ -82,36 +84,43 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
             $manager = $this->getDI()->get('core_token_manager');
             $token = $manager->findToken($clientToken, $tokenData);
 
-            if (!$token || $clientTime > $tokenData["exp"] || $clientTime < $tokenData["iat"]) {
+            if (!$token || time() > $tokenData["exp"] || time() < $tokenData["iat"]) {
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
                     'action' => 'show',
-                    'params' => [403, 'Incorrect token' . time()]
+                    'params' => [405, 'Incorrect token']
                 ]);
                 return false;
             }
 
-
-/*
-            if($clientTime > time() || time() - $clientTime > 20){
+            if($clientTime - 60 > time() || time() - $clientTime > 60) {
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
-                    'action'     => 'show',
-                    'params'     => [403, 'Too old request or wrong time'.time()]
+                    'action' => 'show',
+                    'params' => [416, 'Too old request or incorrect time']
                 ]);
                 return false;
-            }*/
+            }
 
+            $tokenIp = $token->getIp();
+            if($tokenIp != null && $tokenIp != $clientIp){
+                $this->dispatcher->forward([
+                    'controller' => 'Errors',
+                    'action' => 'show',
+                    'params' => [417, 'Incorrect IP']
+                ]);
+                return false;
+            }
 
             $data = $clientTime . $clientToken . $clientTime;
             $serverSign = hash_hmac('sha256', $data, $token->getSecret());
 
-            //if($clientSign !== $serverSign){
-            if(!$clientSign){
+            if($clientSign !== $serverSign){
+            //if(!$clientSign){
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
                     'action'     => 'show',
-                    'params'     => [403, "Incorrect sign"]
+                    'params'     => [406, "Incorrect sign"]
                 ]);
                 return false;
             }
@@ -120,12 +129,59 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
             {
                 case 0:
                     $role = "admin";
+                    $adm = Operator::findFirstById($tokenData["sub"]);
+                    if($adm == null) {
+                        $this->dispatcher->forward([
+                            'controller' => 'Errors',
+                            'action' => 'show',
+                            'params' => [405, 'Incorrect token']
+                        ]);
+                        return false;
+                    }
+                    $serverIp = $adm->getIp();
+                    if($serverIp != null && $serverIp != $clientIp){
+                        $this->dispatcher->forward([
+                            'controller' => 'Errors',
+                            'action' => 'show',
+                            'params' => [417, 'Incorrect IP']
+                        ]);
+                        return false;
+                    }
+
                     break;
                 case 1:
                     $role = "operator";
+                    $oper = Operator::findFirstById($tokenData["sub"]);
+                    $serverIp = $oper->getIp();
+                    if($oper == null) {
+                        $this->dispatcher->forward([
+                            'controller' => 'Errors',
+                            'action' => 'show',
+                            'params' => [405, 'Incorrect token']
+                        ]);
+                        return false;
+                    }
+                    $serverIp = $oper->getIp();
+                    if($serverIp != null && $serverIp != $clientIp){
+                        $this->dispatcher->forward([
+                            'controller' => 'Errors',
+                            'action' => 'show',
+                            'params' => [417, 'Incorrect IP']
+                        ]);
+                        return false;
+                    }
                     break;
                 case 2:
                     $role = "user";
+                    $user = User::findFirstById($tokenData["sub"]);
+                    if($user == null) {
+                        $this->dispatcher->forward([
+                            'controller' => 'Errors',
+                            'action' => 'show',
+                            'params' => [405, 'Incorrect token null']
+                        ]);
+                        return false;
+                    }
                     break;
             }
         }
@@ -134,7 +190,7 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
             $this->dispatcher->forward([
                 'controller' => 'Errors',
                 'action'     => 'show',
-                'params'     => [404, 'Resource not found']
+                'params'     => [403, 'Resource not found']
             ]);
             return false;
         }
@@ -145,7 +201,7 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
             $this->dispatcher->forward(array(
                 'controller' => 'Errors',
                 'action'     => 'show',
-                'params'     => [401, 'Access denied']
+                'params'     => [407, 'Access denied']
             ));
             //$this->session->destroy();
             return false;

@@ -73,7 +73,7 @@ class Instrument extends \Phalcon\Mvc\Model
      */
     public function getId()
     {
-        return $this->id;
+        return (int)$this->id;
     }
 
     /**
@@ -83,7 +83,7 @@ class Instrument extends \Phalcon\Mvc\Model
      */
     public function getLength()
     {
-        return $this->length;
+        return (int)$this->length;
     }
 
     /**

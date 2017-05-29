@@ -21,7 +21,7 @@ class Daemon
         return false;
     }
 
-    public function runDaemon($pid_file, $log_file, $err_file)
+    public function runDaemon($pid_file)
     {
         if ($this->isDaemonActive($pid_file)) {
             echo "Daemon '".$pid_file."' is already exist!\n";
@@ -30,18 +30,6 @@ class Daemon
 
         //  Получаем pid процесса с помощью встроенной функции getmypid() и записываем его в pid файл...
         file_put_contents($pid_file, getmypid());
-
-        //  Закрываем порочные связи со стандартным вводом-выводом...
-
-        fclose(STDIN);
-        fclose(STDOUT);
-        fclose(STDERR);
-
-        //  Перенаправляем ввод-вывод туда куда нам надо или не надо...
-
-        $STDIN = fopen('/dev/null', 'r');
-        $STDOUT = fopen($log_file, 'wb');
-        $STDERR = fopen($err_file, 'wb');
     }
 }
 ?>

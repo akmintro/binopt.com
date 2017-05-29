@@ -1,6 +1,12 @@
 <?php
 namespace App\Api\Controllers;
 
+/*
+ *
+ * NOT USED ANYWHERE
+ *
+ */
+
 class SessionController extends BaseController {
 
     /**
