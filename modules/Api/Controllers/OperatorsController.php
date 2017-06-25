@@ -79,6 +79,21 @@ class OperatorsController extends BaseController {
         }
     }
 
+    public function getTemplateAction() {
+        try {
+            $manager = $this->getDI()->get('core_operator_manager');
+
+            $st_output = $manager->restGetTemplate();
+
+            return $this->render($st_output);
+        } catch (\Exception $e) {
+            return $this->render(["meta" => [
+                'code' => $e->getCode(),
+                'message' => $e->getMessage()
+            ]]);
+        }
+    }
+
     public function updateAction($id) {
         try {
             $manager = $this->getDI()->get('core_operator_manager');
@@ -88,6 +103,22 @@ class OperatorsController extends BaseController {
                 throw new \Exception('Please provide data', 401);
             }
             $result = $manager->restUpdate($id, $data);
+
+            return $this->render($result);
+        } catch (\Exception $e) {
+            return $this->render(["meta" => [
+                'code' => $e->getCode(),
+                'message' => $e->getMessage()
+            ]]);
+        }
+    }
+
+    public function updateTemplateAction() {
+        try {
+            $manager = $this->getDI()->get('core_operator_manager');
+            $data = $this->request->getJsonRawBody(true);
+
+            $result = $manager->restUpdateTemplate($data);
 
             return $this->render($result);
         } catch (\Exception $e) {
@@ -130,6 +161,7 @@ class OperatorsController extends BaseController {
             ]]);
         }
     }
+
 /*
     public function loginAction() {
 

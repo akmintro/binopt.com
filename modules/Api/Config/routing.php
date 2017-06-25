@@ -18,12 +18,24 @@ $operators->addGet('', array(
     'action' => 'read'
 ));
 
+$operators->addGet('/template', array(
+    'action' => 'getTemplate'
+));
+
 $operators->addPost('', array(
     'action' => 'create'
 ));
 
+$operators->addPost('/template', array(
+    'action' => 'createTemplate'
+));
+
 $operators->addPut('/{id:[0-9]+}', array(
     'action' => 'update'
+));
+
+$operators->addPut('/template', array(
+    'action' => 'updateTemplate'
 ));
 
 $operators->addDelete('/{id:[0-9]+}', array(

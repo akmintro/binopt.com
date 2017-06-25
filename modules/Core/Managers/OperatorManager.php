@@ -40,6 +40,16 @@ class OperatorManager extends BaseManager
         }
     }
 
+    public function restGetTemplate()
+    {
+        $oper = Operator::findFirstById($this->tokenParser->getOperid());
+
+        return ["meta" => [
+            "code" => 200,
+            "message" => "OK",
+        ], "data" => ["text" => $oper->getTemplate]];
+    }
+
     public function restUpdate($id, $data)
     {
         $item = $this->findFirstById($id);
@@ -70,6 +80,27 @@ class OperatorManager extends BaseManager
             "code" => 200,
             "message" => "OK"
         ]/*, "data" => $this->getItems($item)*/];
+    }
+
+    public function restUpdateTemplate($data)
+    {
+        $item = $this->findFirstById($this->tokenParser->getOperid());
+
+        if(strlen($data['text']) == 0)
+            throw new \Exception('Please provide text', 401);
+
+        $item->setTemplate($data['text']);
+
+        if (false === $item->update()) {
+            foreach ($item->getMessages() as $message) {
+                throw new \Exception($message->getMessage(), 400);
+            }
+        }
+
+        return ["meta" => [
+            "code" => 200,
+            "message" => "OK"
+        ]];
     }
 
     public function restDelete($id)
