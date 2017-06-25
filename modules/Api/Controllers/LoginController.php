@@ -23,12 +23,15 @@ class LoginController extends BaseController {
             if($data[0]["remember"])
                 $endTime = $startTime + $this->sessionDuration * 30;
 
+            $clientTime = $startTime;
+            if($data[0]["time"])
+                $clientTime = $data[0]["time"];
+
             $token = $this->tokenParser->getToken("user", $user->getId(), $startTime, $endTime);
             $secret = hash("sha512", $user->getEmail().$token.$startTime.$user->getId());
 
             $clientIp = ip2long($this->request->getClientAddress(true));
             $user->setLastip($clientIp);
-            $user->setLastvisit(gmdate("Y-m-d H:i:s", time()));
             if (false === $user->update()) {
                 foreach ($user->getMessages() as $message) {
                     throw new \Exception($message->getMessage(), 400);
@@ -36,7 +39,7 @@ class LoginController extends BaseController {
             }
 
             $manager = $this->getDI()->get('core_token_manager');
-            $manager->restCreate("user", $user->getId(), $token, $secret, gmdate("Y-m-d H:i:s", $endTime), $clientIp);
+            $manager->restCreate("user", $user->getId(), $token, $secret, gmdate("Y-m-d H:i:s", $endTime), $clientIp, $startTime - $clientTime);
             return $this->render(["token" => $token, "secret" => $secret]);
 
         } catch (\Exception $e) {
@@ -98,17 +101,25 @@ class LoginController extends BaseController {
             if($data[0]["remember"])
                 $endTime = $startTime + $this->sessionDuration * 30;
 
+            $clientTime = $startTime;
+            if($data[0]["time"])
+                $clientTime = $data[0]["time"];
+
             $clientIp = ip2long($this->request->getClientAddress(true));
+            if($oper['ip'] != null && $oper['ip'] != $clientIp){
+                throw new \Exception('IP not allowed', 418);
+            }
+
             $manager = $this->getDI()->get('core_token_manager');
             if($oper["id"] == 0) {
                 $token = $this->tokenParser->getToken("admin", $oper["id"], $startTime, $endTime);
                 $secret = hash("sha512", $oper["name"].$token.$startTime.$oper["id"]);
-                $manager->restCreate("admin", $oper["id"], $token, $secret, gmdate("Y-m-d H:i:s", $endTime), $clientIp);
+                $manager->restCreate("admin", $oper["id"], $token, $secret, gmdate("Y-m-d H:i:s", $endTime), $clientIp, $startTime - $clientTime);
             }
             else {
                 $token = $this->tokenParser->getToken("operator", $oper["id"], $startTime, $endTime);
                 $secret = hash("sha512", $oper["name"].$token.$startTime.$oper["id"]);
-                $manager->restCreate("operator", $oper["id"], $token, $secret, gmdate("Y-m-d H:i:s", $endTime), $clientIp);
+                $manager->restCreate("operator", $oper["id"], $token, $secret, gmdate("Y-m-d H:i:s", $endTime), $clientIp, $startTime - $clientTime);
             }
 
             return $this->render(["token" => $token, "secret" => $secret]);

@@ -99,17 +99,62 @@ class UserManager extends BaseManager
         ];
 
         $item = $data->toArray();
-        $item['operator'] = Operator::findFirstById($item['operator'])->toArray();
+        $oper = Operator::findFirstById($item['operator']);
+        if($oper == null)
+            $item['operator'] = null;
+        else {
+            $item['operator'] = $oper->toArray();
+            unset($item['operator']['password']);
+            unset($item['operator']['ip']);
+            unset($item['operator']['regdate']);
+        }
         $item['accounts'] = $data->account;
 
         unset($item['password']);
-        unset($item['operator']['password']);
-        unset($item['operator']['ip']);
-        unset($item['operator']['regdate']);
 
         $data->getBalance($item);
 
         return ["meta" => $meta, "data" => $item];
+    }
+
+    public function restGetNew()
+    {
+        $f_contents = file("male.txt");
+        $line = explode(' ', $f_contents[rand(0, count($f_contents) - 1)])[0];
+        $firstname = ucfirst(strtolower($line));
+
+        $f_contents = file("lastnames.txt");
+        $lastname = $f_contents[rand(0, count($f_contents) - 1)];
+
+        $password = "";
+        for($i = 0; $i < 10; $i++)
+            $password .= mt_rand(0,9);
+
+        $phone = "380".mt_rand(10,99).mt_rand(1000000,9999999);
+
+        $min = mktime(0, 0, 0, 1, 1, 1960);
+        $max = mktime(0, 0, 0, 1, 1, 1990);
+        $birth = date("Y-m-d", mt_rand($min, $max));
+
+        $oper = Operator::findFirstById($this->tokenParser->getOperid());
+        $item = [
+            "firstname" => $firstname,
+            "lastname" => $lastname,
+            "email" => $firstname.".".$lastname.($oper->getEmailsuffix()),
+            "phone" => $phone,
+            "password" => $password,
+            "country" => "123",
+            "birthday" => $birth,
+            "operator" => $oper->toArray()
+        ];
+        unset($item['operator']['password']);
+        unset($item['operator']['ip']);
+        unset($item['operator']['regdate']);
+
+        return ["meta" => [
+            "code" => 200,
+            "message" => "OK"
+        ], "data" => $item];
     }
 
     public function restUpdate($id, $data) {
@@ -290,11 +335,10 @@ class UserManager extends BaseManager
         unset($data[0]['operator']);
         $this->setFields($item, $data[0]);
 
-        $item->setActivation($code);
-
+        //$item->setActivation($code);
 
         $this->createUser($item);
-
+/*
         $to = $item->getEmail();
 
         $mailer = new \Phalcon\Ext\Mailer\Manager([
@@ -318,7 +362,7 @@ class UserManager extends BaseManager
 
         // Send message
         $message->send();
-
+*/
         return ["meta" => [
             "code" => 200,
             "message" => "OK"

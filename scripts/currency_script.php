@@ -5,7 +5,7 @@ ob_implicit_flush();	//Включаем вывод без буферизации
 
 function get_rand($max, $last)
 {
-    $q = 0.4;
+    $q = 0.3;
     $fullsum = (1 - $q**($last+1))/(1 - $q) + (1 - $q**($max-$last+1))/(1 - $q) - 1;
 
     $array = array();
@@ -239,7 +239,7 @@ while(true) {
 
         file_put_contents($filename, json_encode($result));
 
-        if (($i % 10) == 0) {
+        //if (($i % 10) == 0) {
             save_history($result);
             if($i == 0)
             {
@@ -249,7 +249,7 @@ while(true) {
                 }
                 close_bets(gmdate("Y-m-d H:i:s", $start-60));
             }
-        }
+        //}
 
         time_sleep_until($start + $i + 1);
     }

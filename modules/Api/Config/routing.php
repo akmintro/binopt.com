@@ -46,6 +46,10 @@ $users->addGet('/{id:[0-9]+}', array(
     'action' => 'get'
 ));
 
+$users->addGet('/new', array(
+    'action' => 'getNew'
+));
+
 $users->addPost('', array(
     'action' => 'create'
 ));

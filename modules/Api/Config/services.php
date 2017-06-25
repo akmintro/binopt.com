@@ -93,7 +93,7 @@ $di['acl'] = function() {
     }
     //Admin area resources
     $adminResources = array(
-        'users'      => array('read', 'get', 'update', 'create', 'delete'),
+        'users'      => array('read', 'get', 'update', 'create', 'delete', 'getNew'),
         'operators'  => array('read', 'update', 'create', 'delete'),
         'bets'       => array('read'),
         'deposits'   => array('read'),
@@ -110,7 +110,7 @@ $di['acl'] = function() {
     }
     //Operator area resources
     $operResources = array(
-        'users'      => array('read', 'create', 'update'),
+        'users'      => array('read', 'get', 'create', 'update', 'getNew'),
         'bets'       => array('read'),
         'deposits'   => array('read'),
         'withdrawals'=> array('read'),

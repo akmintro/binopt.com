@@ -48,6 +48,13 @@ class Token extends \Phalcon\Mvc\Model
     protected $ip;
 
     /**
+     *
+     * @var integer
+     * @Column(type="integer", length=11, nullable=false)
+     */
+    protected $timeshift;
+
+    /**
      * Method to set the value of field role
      *
      * @param integer $role
@@ -126,6 +133,19 @@ class Token extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field timeshift
+     *
+     * @param integer $timeshift
+     * @return $this
+     */
+    public function setTimeshift($timeshift)
+    {
+        $this->timeshift = $timeshift;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field role
      *
      * @return integer
@@ -183,6 +203,16 @@ class Token extends \Phalcon\Mvc\Model
     public function getIp()
     {
         return $this->ip;
+    }
+
+    /**
+     * Returns the value of field timeshift
+     *
+     * @return integer
+     */
+    public function getTimeshift()
+    {
+        return (int)$this->timeshift;
     }
 
     /**

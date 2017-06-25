@@ -11,7 +11,8 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
 
         if (//false === $this->checkForValidApiKey() ||
             //false === $this->checkIpRateLimit() ||
-            false === $this->resourceWithToken()
+            false === $this->resourceWithToken() ||
+            false
         ) {
             return false;
         }
@@ -84,20 +85,21 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
             $manager = $this->getDI()->get('core_token_manager');
             $token = $manager->findToken($clientToken, $tokenData);
 
-            if (!$token || time() > $tokenData["exp"] || time() < $tokenData["iat"]) {
+            if (!$token || time() > (int)$tokenData["exp"] || time() < (int)$tokenData["iat"]) {
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
                     'action' => 'show',
-                    'params' => [405, 'Incorrect token']
+                    'params' => [405, 'Incorrect token' . time() . "-" . $tokenData["iat"].((!$token ) ? $tokenData : "false")]
                 ]);
                 return false;
             }
 
-            if($clientTime - 60 > time() || time() - $clientTime > 60) {
+            $timeshift = $token->getTimeshift();
+            if($clientTime + $timeshift - 15 > time() || $clientTime + $timeshift + 15 < time()) {
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
                     'action' => 'show',
-                    'params' => [416, 'Too old request or incorrect time']
+                    'params' => [416, 'Too old request or incorrect time' . (time() - $clientTime)]
                 ]);
                 return false;
             }
@@ -152,7 +154,6 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
                 case 1:
                     $role = "operator";
                     $oper = Operator::findFirstById($tokenData["sub"]);
-                    $serverIp = $oper->getIp();
                     if($oper == null) {
                         $this->dispatcher->forward([
                             'controller' => 'Errors',
@@ -181,6 +182,12 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
                             'params' => [405, 'Incorrect token null']
                         ]);
                         return false;
+                    }
+                    $user->setLastvisit(gmdate("Y-m-d H:i:s", time()));
+                    if (false === $user->update()) {
+                        foreach ($user->getMessages() as $message) {
+                            throw new \Exception($message->getMessage(), 400);
+                        }
                     }
                     break;
             }

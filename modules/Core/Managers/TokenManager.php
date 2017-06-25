@@ -13,7 +13,7 @@ class TokenManager extends BaseManager
         return Token::find($parameters);
     }
 
-    public function restCreate($role, $id, $token, $secret, $exptime, $ip) {
+    public function restCreate($role, $id, $token, $secret, $exptime, $ip, $timeshift) {
         $item = new Token();
         $item->setRole($this->roles[$role]);
         $item->setId($id);
@@ -21,6 +21,7 @@ class TokenManager extends BaseManager
         $item->setSecret($secret);
         $item->setExptime($exptime);
         $item->setIp($ip);
+        $item->setTimeshift($timeshift);
 
         if (false === $item->create()) {
             foreach ($item->getMessages() as $message) {
