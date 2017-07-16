@@ -39,6 +39,13 @@ class User extends \Phalcon\Mvc\Model
 
     /**
      *
+     * @var integer
+     * @Column(type="integer", length=11, nullable=true)
+     */
+    protected $socnet;
+
+    /**
+     *
      * @var string
      * @Column(type="string", length=15, nullable=false)
      */
@@ -155,6 +162,19 @@ class User extends \Phalcon\Mvc\Model
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field socnet
+     *
+     * @param integer $socnet
+     * @return $this
+     */
+    public function setSocnet($socnet)
+    {
+        $this->socnet = $socnet;
 
         return $this;
     }
@@ -330,6 +350,16 @@ class User extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field socnet
+     *
+     * @return integer
+     */
+    public function getSocnet()
+    {
+        return $this->socnet;
+    }
+
+    /**
      * Returns the value of field phone
      *
      * @return string
@@ -460,6 +490,7 @@ class User extends \Phalcon\Mvc\Model
         $this->hasMany('id', 'App\Core\Models\Account', 'user', ['alias' => 'Account']);
         $this->belongsTo('country', '\Country', 'id', ['alias' => 'Country']);
         $this->belongsTo('operator', 'App\Core\Models\Operator', 'id', ['alias' => 'Operator']);
+        $this->belongsTo('socnet', 'App\Core\Models\Socnetwork', 'id', ['alias' => 'Socnetwork']);
     }
 
     /**

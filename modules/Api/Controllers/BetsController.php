@@ -101,7 +101,6 @@ class BetsController extends BaseController {
 
             $time = $this->request->getQuery('time');
 
-
             if($time != null) {
                 $conditions[] = "starttime <= :time:";
                 $binds['time'] = $time;

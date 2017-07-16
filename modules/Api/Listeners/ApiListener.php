@@ -89,7 +89,7 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
                     'action' => 'show',
-                    'params' => [405, 'Incorrect token' . time() . "-" . $tokenData["iat"].((!$token ) ? $tokenData : "false")]
+                    'params' => [405, 'Incorrect token']
                 ]);
                 return false;
             }
@@ -99,7 +99,7 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
                 $this->dispatcher->forward([
                     'controller' => 'Errors',
                     'action' => 'show',
-                    'params' => [416, 'Too old request or incorrect time' . (time() - $clientTime)]
+                    'params' => [416, 'Too old request or incorrect time']
                 ]);
                 return false;
             }
@@ -179,7 +179,7 @@ class ApiListener extends \Phalcon\Mvc\User\Plugin{
                         $this->dispatcher->forward([
                             'controller' => 'Errors',
                             'action' => 'show',
-                            'params' => [405, 'Incorrect token null']
+                            'params' => [405, 'Incorrect token']
                         ]);
                         return false;
                     }

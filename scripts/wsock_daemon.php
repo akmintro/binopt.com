@@ -27,6 +27,6 @@ $STDIN = fopen('/dev/null', 'r');
 $STDOUT = fopen($baseDir.'/wsock_log.txt', 'wb');
 $STDERR = fopen($baseDir.'/wsock_err.txt', 'wb');
 
-require($baseDir.'/echows.php');
+require($baseDir.'/wsock.php');
 
 ?>

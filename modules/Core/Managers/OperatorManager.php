@@ -15,12 +15,14 @@ class OperatorManager extends BaseManager
         return Operator::findFirstById((int)$id);
     }
 
-    public function restGet(array $parameters = null, $limit = 10, $offset = 0)
+    public function restGet(array $parameters = null, $limit = null, $offset = 0)
     {
         $items = $this->find($parameters);
         $data = $items->filter(function ($item) {
             return $item->toArray();
         });
+        if($limit == null)
+            $limit = count($data);
         $meta = [
             "code" => 200,
             "message" => "OK",
@@ -47,7 +49,7 @@ class OperatorManager extends BaseManager
         return ["meta" => [
             "code" => 200,
             "message" => "OK",
-        ], "data" => ["text" => $oper->getTemplate]];
+        ], "data" => ["text" => $oper->getTemplate()]];
     }
 
     public function restUpdate($id, $data)
@@ -98,7 +100,7 @@ class OperatorManager extends BaseManager
         }
 
         return ["meta" => [
-            "code" => 200,
+            "code" => 200+strlen($data['text']),
             "message" => "OK"
         ]];
     }
@@ -180,6 +182,7 @@ class OperatorManager extends BaseManager
         foreach ($new_items as &$item)
         {
             unset($item['password']);
+            unset($item['template']);
         }
 
         return $new_items;

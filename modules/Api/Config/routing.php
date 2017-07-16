@@ -383,6 +383,10 @@ $login->addPost('/users/auth', array(
     'action' => 'authUser'
 ));
 
+$login->addPost('/users/authsn', array(
+    'action' => 'uloginUser'
+));
+
 $login->addPost('/users/unauth', array(
     'action' => 'unauthUser'
 ));

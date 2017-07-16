@@ -43,7 +43,9 @@ return new \Phalcon\Config(array(
         'currencydata' => __DIR__ . '/../scripts/currency_data.txt',
         'scriptsfolder' => __DIR__ . '/../scripts',
         'adminwallet' => "walletwallet",
-        'servertoken' => __DIR__ .'/../scripts/servertoken.txt'
+        'servertoken' => __DIR__ .'/../scripts/servertoken.txt',
+        'malenames' => __DIR__.'/../modules/Core/Managers/male.txt',
+        'lastnames' => __DIR__.'/../modules/Core/Managers/lastnames.txt'
     )
 ));
 ?>

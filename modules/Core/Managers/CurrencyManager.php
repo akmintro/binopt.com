@@ -15,7 +15,7 @@ class CurrencyManager extends BaseManager
         $items = $this->find($parameters);
 
         $data = $items->filter(function ($item) {
-            return ["open" => $item->getOpen(), "max" => $item->getMax(), "min" => $item->getMin(), "close" => $item->getClose(), "currencytime" => $item->getCurrencytime()];
+            return ["open" => $item->getOpen(), "max" => $item->getMax(), "min" => $item->getMin(), "close" => $item->getClose(), "currencytime" => date("Y-m-d\TH:i:s+00:00", strtotime($item->getCurrencytime()))];
         });
 
         $meta = [
@@ -78,7 +78,7 @@ class CurrencyManager extends BaseManager
             $item->setMax($obj['max']);
 
         if ($obj['currencytime'])
-            $item->setCurrencytime($obj['currencytime']);
+            $item->setCurrencytime(gmdate("Y-m-d H:i:s", strtotime($obj['currencytime'])));
     }
 
     public function restDelete($before)

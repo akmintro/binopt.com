@@ -136,7 +136,7 @@ $di['acl'] = function() {
     //Public area resources
     $publicResources = array(
         'registration' => array('registerUser', 'activateUser'),
-        'login'      => array('authUser', 'authOper'),
+        'login'      => array('authUser', 'authOper', 'uloginUser'),
         'currency'   => array('readHistory', 'readLast'),
         'instruments'=> array('read'),
         'countries'  => array('read')

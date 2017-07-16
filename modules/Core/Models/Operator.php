@@ -49,6 +49,13 @@ class Operator extends \Phalcon\Mvc\Model
     protected $regdate;
 
     /**
+     *
+     * @var string
+     * @Column(type="string", length=1000, nullable=true)
+     */
+    protected $template;
+
+    /**
      * Method to set the value of field id
      *
      * @param integer $id
@@ -127,6 +134,19 @@ class Operator extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Method to set the value of field template
+     *
+     * @param string $template
+     * @return $this
+     */
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field id
      *
      * @return integer
@@ -184,6 +204,16 @@ class Operator extends \Phalcon\Mvc\Model
     public function getRegdate()
     {
         return $this->regdate;
+    }
+
+    /**
+     * Returns the value of field template
+     *
+     * @return string
+     */
+    public function getTemplate()
+    {
+        return $this->template;
     }
 
     /**

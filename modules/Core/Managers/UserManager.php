@@ -3,6 +3,7 @@ namespace App\Core\Managers;
 
 use App\Core\Models\Account;
 use App\Core\Models\Operator;
+use App\Core\Models\Socnetwork;
 use App\Core\Models\User;
 
 class UserManager extends BaseManager
@@ -10,6 +11,11 @@ class UserManager extends BaseManager
     public function find($parameters = null)
     {
         return User::find($parameters);
+    }
+
+    public function findFirst($parameters = null)
+    {
+        return User::findFirst($parameters);
     }
 
     public function findFirstById($id)
@@ -72,6 +78,10 @@ class UserManager extends BaseManager
             //$item['username'] = $user->getUsername();
             $user->getBalance($item);
 
+            if($user->getSocnet() != null){
+                $item['email'] .= ' ('.strtoupper(Socnetwork::findFirstById($user->socnet)->getCode()).')';
+            }
+
             unset($item['firstname']);
             unset($item['lastname']);
             unset($item['activation']);
@@ -107,6 +117,7 @@ class UserManager extends BaseManager
             unset($item['operator']['password']);
             unset($item['operator']['ip']);
             unset($item['operator']['regdate']);
+            unset($item['operator']['template']);
         }
         $item['accounts'] = $data->account;
 
@@ -119,12 +130,11 @@ class UserManager extends BaseManager
 
     public function restGetNew()
     {
-        $f_contents = file("male.txt");
-        $line = explode(' ', $f_contents[rand(0, count($f_contents) - 1)])[0];
-        $firstname = ucfirst(strtolower($line));
+        $lines = file($this->config->parameters->malenames, FILE_IGNORE_NEW_LINES);
+        $firstname = ucfirst(strtolower(explode(' ', $lines[array_rand($lines)])[0]));
 
-        $f_contents = file("lastnames.txt");
-        $lastname = $f_contents[rand(0, count($f_contents) - 1)];
+        $lines = file($this->config->parameters->lastnames, FILE_IGNORE_NEW_LINES);
+        $lastname = $lines[array_rand($lines)];
 
         $password = "";
         for($i = 0; $i < 10; $i++)
@@ -143,13 +153,14 @@ class UserManager extends BaseManager
             "email" => $firstname.".".$lastname.($oper->getEmailsuffix()),
             "phone" => $phone,
             "password" => $password,
-            "country" => "123",
+            "country" => 229,
             "birthday" => $birth,
             "operator" => $oper->toArray()
         ];
         unset($item['operator']['password']);
         unset($item['operator']['ip']);
         unset($item['operator']['regdate']);
+        unset($item['operator']['template']);
 
         return ["meta" => [
             "code" => 200,
@@ -209,9 +220,9 @@ class UserManager extends BaseManager
         ]];
     }
 
-    private function createUser($item, $amount = 0)
+    private function createUser($item, $amount = 0, $sn = false)
     {
-        if (strlen($item->getFirstname()) == 0 || strlen($item->getLastname()) == 0 || strlen($item->getPassword()) == 0 || strlen($item->getEmail()) == 0)
+        if (strlen($item->getFirstname()) == 0 || strlen($item->getLastname()) == 0 || (strlen($item->getPassword()) == 0 && !$sn) || strlen($item->getEmail()) == 0)
             throw new \Exception("Incomplete Data", 402);
 
         if (false === $item->create()) {
@@ -279,6 +290,9 @@ class UserManager extends BaseManager
         if(isset($data['email']))
             $item->setEmail($data['email']);
 
+        if(isset($data['socnet']))
+            $item->setSocnet($data['socnet']);
+
         if(isset($data['operator']))
             $item->setOperator($data['operator']);
 
@@ -299,6 +313,8 @@ class UserManager extends BaseManager
         if(!isset($opdata['password']))
             throw new \Exception('password is not set', 402);
 
+        if(!filter_var($opdata['name'], FILTER_VALIDATE_EMAIL))
+            throw new \Exception("Incorrect Email", 418);
 
         $items = $this->find([ "email = :name:", 'bind' => ['name' => $opdata['name']]]);
 
@@ -306,22 +322,23 @@ class UserManager extends BaseManager
             return $item->toArray();
         });
 
-        if (count($data) == 0)
-            throw new \Exception('no user found', 404);
+        if (count($data) != 1)
+            throw new \Exception('Incorrect email or password', 413);
 
-        if (count($data) > 1)
-            throw new \Exception('many users found', 404);
+        $user = User::findFirstById($data[0]["id"]);
 
         if (!($this->security->checkHash($opdata['password'], $data[0]['password']))) {
-            throw new \Exception('incorrect password', 413);
+            throw new \Exception('Incorrect email or password', 413);
         }
 
-        return User::findFirstById($data[0]["id"]);
+        return $user;
     }
 
-    public function regiterUser($data) {
+    public function registerUser($data, $sn = false) {
+        if(!filter_var($data[0]['email'], FILTER_VALIDATE_EMAIL))
+            throw new \Exception("Incorrect Email", 418);
 
-        if (User::findFirst(["email = :email:", 'bind' => ['email' => $data[0]['email']]])) {
+        if (User::findFirst(["email = :email: and socnet = :socnet:", 'bind' => ['email' => $data[0]['email'], 'socnet' => $data[0]['socnet']]])) {
             throw new \Exception("Email Duplicate", 414);
         }
 
@@ -333,11 +350,12 @@ class UserManager extends BaseManager
 
         $item = new User();
         unset($data[0]['operator']);
+
         $this->setFields($item, $data[0]);
 
         //$item->setActivation($code);
 
-        $this->createUser($item);
+        $this->createUser($item, 0, $sn);
 /*
         $to = $item->getEmail();
 

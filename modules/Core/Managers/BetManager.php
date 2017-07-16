@@ -108,7 +108,10 @@ class BetManager extends BaseManager
         foreach ($data as $bet)
         {
             if($bet['account'] == $accountId) {
-                $result[] = $bet;
+                $item = $bet;
+                $item['starttime'] = date("Y-m-d\TH:i:s+00:00", strtotime($item['starttime']));
+                $item['endtime'] = date("Y-m-d\TH:i:s+00:00", strtotime($item['endtime']));
+                $result[] = $item;
             }
         }
         return $result;
@@ -164,7 +167,13 @@ class BetManager extends BaseManager
 
         $data[0]['account'] = $account->getId();
         $data[0]['startval'] = $currency_data[$data[0]['instrument']]['close'];
-        $data[0]['starttime'] = $currency_data[$data[0]['instrument']]['currencytime'];
+        $data[0]['starttime'] = gmdate("Y-m-d H:i:s", strtotime($currency_data[$data[0]['instrument']]['currencytime']));
+
+        $parameters = ["account = :account: and instrument = :inst: and starttime = :st:",
+            'bind' => ["account" => $account->getId(), "inst" => $data[0]['instrument'], "st" => $data[0]['starttime']],
+        ];
+        if(count(Bet::find($parameters)) > 0)
+            throw new \Exception("Bet already made", 419);
 
         $item = new Bet();
         $this->setFields($item, $data[0]);

@@ -15,7 +15,7 @@ class RegistrationController extends BaseController {
                 throw new \Exception('Please provide data', 401);
             }
 
-            $st_output = $manager->regiterUser($data);
+            $st_output = $manager->registerUser($data);
             return $this->render($st_output);
         } catch (\Exception $e) {
             return $this->render(["meta" => [
